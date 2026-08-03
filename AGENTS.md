@@ -1,11 +1,9 @@
 ---
 title: "Правила ИИ-агентов по работе с внешними данными"
-abbr: "AI_RULES"
-version: "1.0"
-date: 2026-08-04
-status: active
-author: "Архитектурный комитет"
-depends_on: []
+version: "1.0-н"
+status: "active"
+date: "2026-08-04"
+protocols: 0
 ---
 
 # AGENTS.md — Правила ИИ-агентов по работе с внешними данными
