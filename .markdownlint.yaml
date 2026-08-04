@@ -1,0 +1,10 @@
+default: true
+line-length: false
+no-inline-html:
+  allowed_elements: ["br", "details", "summary"]
+first-line-heading: false
+no-duplicate-heading:
+  siblings_only: true
+no-emphasis-as-heading: false
+ignore:
+  - "docs/STATUS.md"
