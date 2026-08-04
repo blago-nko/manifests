@@ -20,6 +20,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install PyYAML
+        run: python -m pip install --quiet pyyaml
+
       - name: Regenerate STATUS.md
         run: python scripts/update_status.py
 
