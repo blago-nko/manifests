@@ -1,39 +1,124 @@
-name: update-status
+name: Auto-update STATUS.md
+
+# Автоматическое обновление timestamp в STATUS.md после merge в main
+# Источник требования: САМ v1.3 п. 1.5, СУМКа v1.5 п. 7.2
+# Метрика мониторинга: status_md_autoupdate_success_rate (цель ≥ 99%)
 
 on:
   push:
-    branches: [main, master, "основной"]
-  workflow_dispatch:
+    branches:
+      - main
+    paths:
+      - 'docs/STATUS.md'
+      - 'docs/TASKS.md'
+      - 'blogger_image_metadata.json'
+  schedule:
+    # Каждые 6 часов для поддержания актуальности (только timestamp, без спама в журнале)
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Ручной запуск
 
 permissions:
   contents: write
 
 jobs:
-  update:
+  update-status:
+    name: Update STATUS.md Timestamp
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-
-      - name: Install PyYAML
-        run: python -m pip install --quiet pyyaml
-
-      - name: Regenerate STATUS.md
-        run: python scripts/update_status.py
-
-      - name: Commit if changed
+          fetch-depth: 0
+      
+      - name: Check if STATUS.md exists
+        id: check
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/STATUS.md
-          if git diff --cached --quiet; then
-            echo "STATUS.md актуален, изменений нет"
+          if [ -f "docs/STATUS.md" ]; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "✅ docs/STATUS.md found"
           else
-            git commit -m "📈 Auto-update STATUS.md [skip ci]"
-            git push origin "HEAD:${GITHUB_REF_NAME}"
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "⚠️ docs/STATUS.md not found - skipping update"
           fi
+      
+      - name: Update timestamp and changelog
+        if: steps.check.outputs.exists == 'true'
+        run: |
+          CURRENT_DATE=$(date -u +"%d.%m.%Y %H:%M UTC")
+          CURRENT_DATE_SHORT=$(date -u +"%d.%m.%Y")
+          
+          # Получаем текущую дату из файла (для проверки изменений)
+          EXISTING_DATE=$(grep -oP "(?<=\*\*Последнее обновление\*\*: )[0-9]{2}\.[0-9]{2}\.[0-9]{4}" docs/STATUS.md | head -n 1 || echo "")
+          
+          echo "Existing date in file: $EXISTING_DATE"
+          echo "Current date: $CURRENT_DATE_SHORT"
+          
+          # Если дата уже актуальна — пропускаем обновление (защита от пустых коммитов)
+          if [ "$EXISTING_DATE" = "$CURRENT_DATE_SHORT" ]; then
+            echo "📋 Date is already up-to-date. Skipping update."
+            exit 0
+          fi
+          
+          # 1. Обновляем строку "Последнее обновление"
+          sed -i "s/^\*\*Последнее обновление\*\*: .*/\*\*Последнее обновление\*\*: $CURRENT_DATE/" docs/STATUS.md
+          
+          # 2. Добавляем запись в журнал изменений ТОЛЬКО при push-событии
+          # (чтобы не спамить записями «Авто-обновление» каждые 6 часов)
+          if [ "${{ github.event_name }}" = "push" ]; then
+            TRIGGER_DESC="Изменение контента (${{ github.event.head_commit.id }})"
+            echo "" >> docs/STATUS.md
+            echo "| $CURRENT_DATE | $TRIGGER_DESC | github-actions[bot] |" >> docs/STATUS.md
+            echo "✅ Added changelog entry for push event"
+          elif [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "⏰ Scheduled/manual run — only updating main timestamp (no changelog entry)."
+          fi
+          
+          echo "✅ Updated timestamp to: $CURRENT_DATE"
+      
+      - name: Validate STATUS.md structure
+        if: steps.check.outputs.exists == 'true'
+        run: |
+          # Проверка обязательных разделов
+          REQUIRED_SECTIONS=("Состояние 14 доменов" "Состояние манифестов" "Ключевые метрики" "Активные риски")
+          
+          for section in "${REQUIRED_SECTIONS[@]}"; do
+            if grep -q "$section" docs/STATUS.md; then
+              echo "✅ Found section: $section"
+            else
+              echo "❌ Missing section: $section"
+              exit 1
+            fi
+          done
+      
+      - name: Commit and push
+        if: steps.check.outputs.exists == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/STATUS.md
+          
+          if git diff --staged --quiet; then
+            echo "📋 No changes to commit"
+          else
+            git commit -m "docs: auto-update STATUS.md timestamp
+            
+            Automated update via GitHub Actions
+            Workflow run: ${{ github.run_id }}
+            Trigger: ${{ github.event_name }}
+            
+            Ref: САМ v1.3 п. 1.5, СУМКа v1.5 п. 7.2"
+            git push
+            echo "✅ STATUS.md updated successfully"
+          fi
+      
+      - name: Report metrics
+        if: always()
+        run: |
+          echo "## 📊 STATUS.md Update Metrics" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Timestamp**: $(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_STEP_SUMMARY
+          echo "- **Metric**: status_md_autoupdate_success_rate" >> $GITHUB_STEP_SUMMARY
+          echo "- **Target**: ≥ 99%" >> $GITHUB_STEP_SUMMARY
+          echo "- **File exists**: ${{ steps.check.outputs.exists }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Trigger**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
