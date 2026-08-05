@@ -8,3 +8,4 @@ no-duplicate-heading:
 no-emphasis-as-heading: false
 ignore:
   - "docs/STATUS.md"
+  - "HUGO-LICENSE-GUIDE.md"
