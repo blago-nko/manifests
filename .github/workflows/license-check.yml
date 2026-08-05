@@ -1,0 +1,45 @@
+name: License Compliance Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-licenses:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Check for MIT License
+        run: |
+          if [ ! -f LICENSE ]; then
+            echo "❌ Отсутствует LICENSE (MIT)"
+            exit 1
+          fi
+          if ! grep -q "MIT License" LICENSE; then
+            echo "❌ LICENSE не является MIT"
+            exit 1
+          fi
+          echo "✅ MIT License найден"
+      
+      - name: Check for Content License
+        run: |
+          if [ ! -f LICENSE-CONTENT ]; then
+            echo "⚠️ Отсутствует LICENSE-CONTENT (CC BY-SA 4.0)"
+            exit 1
+          fi
+          echo "✅ LICENSE-CONTENT найден"
+      
+      - name: Check README for license section
+        run: |
+          if [ ! -f README.md ]; then
+            echo "⚠️ README.md отсутствует"
+            exit 1
+          fi
+          if ! grep -q "## 📜 Лицензирование" README.md; then
+            echo "⚠️ В README.md отсутствует секция лицензирования"
+            exit 1
+          fi
+          echo "✅ README.md содержит секцию лицензирования"
