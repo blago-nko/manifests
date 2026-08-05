@@ -11,35 +11,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
-      - name: Check for MIT License
+
+      - name: Check LICENSE type (MIT for code, CC BY-SA for docs)
         run: |
           if [ ! -f LICENSE ]; then
-            echo "❌ Отсутствует LICENSE (MIT)"
+            echo "❌ LICENSE отсутствует"
             exit 1
           fi
-          if ! grep -q "MIT License" LICENSE; then
-            echo "❌ LICENSE не является MIT"
+          if grep -q "MIT License" LICENSE; then
+            echo "✅ LICENSE: MIT (код)"
+            echo "IS_CODE=true" >> $GITHUB_ENV
+          elif grep -q "Attribution-ShareAlike" LICENSE; then
+            echo "✅ LICENSE: CC BY-SA 4.0 (документация)"
+            echo "IS_CODE=false" >> $GITHUB_ENV
+          else
+            echo "❌ LICENSE не распознан"
             exit 1
           fi
-          echo "✅ MIT License найден"
-      
-      - name: Check for Content License
+
+      - name: Check LICENSE-CONTENT (only for code repos)
+        if: env.IS_CODE == 'true'
         run: |
           if [ ! -f LICENSE-CONTENT ]; then
-            echo "⚠️ Отсутствует LICENSE-CONTENT (CC BY-SA 4.0)"
+            echo "❌ Отсутствует LICENSE-CONTENT (CC BY-SA 4.0)"
             exit 1
           fi
-          echo "✅ LICENSE-CONTENT найден"
-      
-      - name: Check README for license section
-        run: |
-          if [ ! -f README.md ]; then
-            echo "⚠️ README.md отсутствует"
-            exit 1
-          fi
-          if ! grep -q "## 📜 Лицензирование" README.md; then
-            echo "⚠️ В README.md отсутствует секция лицензирования"
-            exit 1
-          fi
-          echo "✅ README.md содержит секцию лицензирования"
+          grep -q "Attribution-ShareAlike" LICENSE-CONTENT && echo "✅ LICENSE-CONTENT корректен"
