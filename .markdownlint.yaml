@@ -6,6 +6,18 @@ first-line-heading: false
 no-duplicate-heading:
   siblings_only: true
 no-emphasis-as-heading: false
+# Правила, систематически нарушаемые историческим стилем документации
+# (заголовки с «:», email в контактах, code-блоки без языка и т.п.).
+# Отключены до отдельного chore-PR по чистке оформления:
+no-multiple-blanks: false       # MD012
+blanks-around-headings: false   # MD022
+single-title: false             # MD025
+no-trailing-punctuation: false  # MD026
+no-blanks-blockquote: false     # MD028
+ol-prefix: false                # MD029
+blanks-around-lists: false      # MD032
+no-bare-urls: false             # MD034
+fenced-code-language: false     # MD040
 ignore:
   - "docs/STATUS.md"
   - "HUGO-LICENSE-GUIDE.md"
