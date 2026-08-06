@@ -16,6 +16,7 @@
 ## 🌐 Экосистема (14 доменов)
 
 ### Основная сеть (11 RSS-сайтов на Hugo):
+
 1. `blagorussia.ru` — общественно-политический портал
 2. `obrazslov.ru` — культурно-образовательный портал
 3. `partnerstvo.blagorussia.ru` — центральный хаб НКО
@@ -29,6 +30,7 @@
 11. `nasa-istoria.blagorussia.ru` — историко-биографический портал
 
 ### Специализированные платформы:
+
 **12.** **`grekpanteon.obrazslov.ru`** — база знаний (Hugo + SQLite, 16 505+ персонажей)
 **13.** **`can.blagorussia.ru`** — платформа САН (Next.js + PostgreSQL, Vercel)
 **14.** **`gallery.obrazslov.ru`** — витрина НКО на Blogger (фотоархив)
