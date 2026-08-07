@@ -61,6 +61,7 @@
 - **Организация:** НП «Общественное благополучие Воронежа»
 - **Архитектурный комитет:** Управляет изменениями через Протокол архитектурных изменений.
 - **GitHub:** [@blago-nko](https://github.com/blago-nko) (основная сеть), [@can-secure-dev](https://github.com/can-secure-dev) (платформа САН)
+- 
 - **Email:** blagorussia@yandex.ru
 
 ---
