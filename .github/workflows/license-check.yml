@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Check LICENSE type (MIT for code, CC BY-SA for docs)
+      - name: Check LICENSE type (MIT for code, CC BY 4.0 for docs)
         run: |
           if [ ! -f LICENSE ]; then
             echo "❌ LICENSE отсутствует"
@@ -21,19 +21,21 @@ jobs:
           if grep -q "MIT License" LICENSE; then
             echo "✅ LICENSE: MIT (код)"
             echo "IS_CODE=true" >> $GITHUB_ENV
-          elif grep -q "Attribution-ShareAlike" LICENSE; then
-            echo "✅ LICENSE: CC BY-SA 4.0 (документация)"
-            echo "IS_CODE=false" >> $GITHUB_ENV
           else
-            echo "❌ LICENSE не распознан"
+            echo "❌ LICENSE должен быть MIT (согласно SAM-LIC-006)"
             exit 1
           fi
 
-      - name: Check LICENSE-CONTENT (only for code repos)
+      - name: Check LICENSE-CONTENT (CC BY 4.0 for content)
         if: env.IS_CODE == 'true'
         run: |
           if [ ! -f LICENSE-CONTENT ]; then
-            echo "❌ Отсутствует LICENSE-CONTENT (CC BY-SA 4.0)"
+            echo "❌ Отсутствует LICENSE-CONTENT (CC BY 4.0)"
             exit 1
           fi
-          grep -q "Attribution-ShareAlike" LICENSE-CONTENT && echo "✅ LICENSE-CONTENT корректен"
+          if grep -q "Creative Commons Attribution 4.0 International" LICENSE-CONTENT; then
+            echo "✅ LICENSE-CONTENT: CC BY 4.0 (SAM-LIC-006)"
+          else
+            echo "❌ LICENSE-CONTENT должен быть CC BY 4.0 International"
+            exit 1
+          fi
