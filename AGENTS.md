@@ -152,21 +152,20 @@ def write_file(repo, path, content, message):
 Если пользователь или другой агент просит изменить манифест, ИИ-агент обязан:
 
 1. **Не пытаться** применять изменения к локальным файлам (так как их не должно быть на диске).
-2. Вывести в чат блок:
+2. Вывести в чат блок «⚠️ ТРЕБУЕТСЯ ПРАВКА МАНИФЕСТА (Web UI Protocol)» в формате:
 
-   ```text
-   ⚠️ ТРЕБУЕТСЯ ПРАВКА МАНИФЕСТА (Web UI Protocol)
-   Файл: [Имя файла.md]
-   Префикс протокола: [SAM-/SAN-/GP-/MIG-/LITS-CHORE-XXX]
-   
-   ИНСТРУКЦИЯ ДЛЯ ЧЕЛОВЕКА:
-   1. Перейдите по ссылке: [URL файла на GitHub]
-   2. Нажмите карандаш (Edit).
-   3. Найдите блок: `[старый текст]`
-   4. Замените на:
-   [новый готовый блок Markdown]
-   5. Внизу выберите "Create a new branch" и назовите её: `chore/префикс-описание`.
-   6. Нажмите "Propose changes".
+```text
+⚠️ ТРЕБУЕТСЯ ПРАВКА МАНИФЕСТА (Web UI Protocol)
+Файл: [Имя файла.md]
+Префикс протокола: [SAM-/SAN-/GP-/MIG-/LITS-CHORE-XXX]
+
+ИНСТРУКЦИЯ ДЛЯ ЧЕЛОВЕКА:
+1. Перейдите по ссылке: [URL файла на GitHub]
+2. Нажмите карандаш (Edit).
+3. Найдите блок: [старый текст]
+4. Замените на: [новый готовый блок Markdown]
+5. Внизу выберите "Create a new branch" и назовите её: chore/префикс-описание.
+6. Нажмите "Propose changes".
 ```
 
 ### 5.1 Работа с ветками и Pull Request (Branch Protocol)
@@ -191,11 +190,11 @@ def write_file(repo, path, content, message):
 
 - `fix/SAM-FIX-001-version-sync`
 - `fix/GP-FIX-002-hugo-first-strategy`
-- `fix/CAN-FIX-003-db-budget-recalc`
-- `fix/CAN-FIX-004-bytea-152fz`
+- `fix/SAN-FIX-003-db-budget-recalc`
+- `fix/SAN-FIX-004-bytea-152fz`
 - `fix/MIG-FIX-005-tracks-separation`
 - `fix/LIC-FIX-006-dual-licensing`
-- `chore/INFRA-CHORE-007-readme-sync`
+- `chore/DOCS-CHORE-007-readme-sync`
 - `docs/SUMKA-CHORE-008-markdown-cleanup`
 
 **Запрещено использовать:**
@@ -229,7 +228,7 @@ def write_file(repo, path, content, message):
 [SAN-FIX-003] перерасчёт бюджета БД и лимитов Supabase Free
 [SAN-FIX-004] унификация типов данных для 152-ФЗ (bytea)
 [MIG-FIX-005] разделение треков миграции и внедрения САН
-[LIC-FIX-006] настройка Dual Licensing (CC BY 4.0)
+[LIC-FIX-006] настройка Dual Licensing (CC BY-SA 4.0)
 [DOCS-CHORE-007] синхронизация README.md
 ```
 
