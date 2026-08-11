@@ -27,22 +27,28 @@ MANIFESTS = [
 START_MARK = "<!-- AUTO-VERSION-TABLE START -->"
 END_MARK = "<!-- AUTO-VERSION-TABLE END -->"
 
-
 def parse_frontmatter(path: Path) -> dict:
-    """Извлекает YAML из frontmatter Markdown-файла."""
+    """Извлекает YAML из frontmatter Markdown-файла с диагностикой ошибок."""
     if not path.exists():
+        print(f"⚠️  {path.name}: файл не найден")
         return {}
+    
     text = path.read_text(encoding="utf-8")
+    
     if not text.startswith("---"):
+        print(f"⚠️  {path.name}: отсутствует YAML-фронтматтер (должен начинаться с '---')")
         return {}
+    
     parts = text.split("---", 2)
     if len(parts) < 3:
+        print(f"⚠️  {path.name}: некорректный YAML-фронтматтер (отсутствует закрывающий '---')")
         return {}
+    
     try:
         return yaml.safe_load(parts[1]) or {}
-    except yaml.YAMLError:
+    except yaml.YAMLError as e:
+        print(f"⚠️  {path.name}: ошибка парсинга YAML - {str(e).split()[0]}")
         return {}
-
 
 def fmt_date(value) -> str:
     """Форматирует дату из ISO в DD.MM.YYYY."""
