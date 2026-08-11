@@ -21,6 +21,7 @@ MANIFESTS = [
     {"file": "ГРЕК-ПАНТЕОН.md",  "name": "ГРЕК-ПАНТЕОН",  "group": "arch"},
     {"file": "МИГРАЦИЯ.md",      "name": "МИГРАЦИЯ",      "group": "arch"},
     {"file": "ЛИЦ.md",           "name": "ЛИЦ",           "group": "legal"},
+    {"file": "AGENTS.md",        "name": "AGENTS",        "group": "tech"},
 ]
 
 START_MARK = "<!-- AUTO-VERSION-TABLE START -->"
@@ -72,18 +73,24 @@ def build_table() -> str:
     """Генерирует полный блок таблицы с маркерами."""
     arch = [build_row(m) for m in MANIFESTS if m["group"] == "arch"]
     legal = [build_row(m) for m in MANIFESTS if m["group"] == "legal"]
+    tech = [build_row(m) for m in MANIFESTS if m["group"] == "tech"]
     parts = [
         START_MARK,
         "",
-        "### Архитектурные манифесты",
+        "## Архитектурные манифесты",
         "",
         HEADER,
         *arch,
         "",
-        "### Юридический пакет",
+        "## Юридический пакет",
         "",
         HEADER,
         *legal,
+        "",
+        "## Технические регламенты",
+        "",
+        HEADER,
+        *tech,
         "",
         f"*Таблица обновлена автоматически: {datetime.utcnow():%d.%m.%Y %H:%M} UTC (SAM-INFRA-008)*",
         "",
