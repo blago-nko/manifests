@@ -1,4 +1,5 @@
 ---
+title: "AGENTS.md — Инструкции для ИИ-агентов"
 version: "1.2-н"
 status: active
 date: "2026-08-06"
