@@ -17,19 +17,21 @@ protocols: 1
 
 ### Обязательные правила
 
-1. **ЗАПРЕЩЕНО:**
+**ЗАПРЕЩЕНО**
 
-   - Локальная разработка на рабочей машине
-   - Клонирование репозиториев на локальный диск (`git clone`)
-   - Использование локальных IDE (VS Code, IntelliJ и т.д.)
-   - Локальные коммиты и push (`git commit`, `git push`)
+- Локальная разработка на рабочей машине.
+- Клонирование репозиториев на локальный диск (`git clone`).
+- Использование локальных IDE (VS Code desktop, IntelliJ IDEA, WebStorm и т.д.).
+- Локальные коммиты и push (`git commit`, `git push`) из терминала локальной машины.
+- Хранение Personal Access Tokens в локальных конфигурациях, `.env`-файлах или keyring ОС.
+- Прямой коммит в ветку `main` любого репозитория экосистемы.
 
-2. **ОБЯЗАТЕЛЬНО:**
+**ОБЯЗАТЕЛЬНО:**
 
-   - Google Colab или Jupyter notebooks для всей разработки
-   - GitHub API для всех изменений файлов
-   - Personal Access Tokens для аутентификации
-   - Обработка всех данных в памяти (RAM), без сохранения на диск
+- Google Colab или Jupyter notebooks для всей разработки
+- GitHub API для всех изменений файлов
+- Personal Access Tokens для аутентификации
+- Обработка всех данных в памяти (RAM), без сохранения на диск
 
 ## 🧩 Формат выдачи кода ИИ-агентом
 
@@ -131,7 +133,7 @@ def write_file(repo, path, content, message):
 
 ИИ-агентам и разработчикам **КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО**:
 
-1. Клонирировать репозиторий `blago-nko/manifests` на локальные машины.
+1. Клонировать репозиторий `blago-nko/manifests` на локальные машины.
 2. Создавать локальные ветки (`git checkout -b`) для редактирования текстов манифестов.
 3. Делать локальные коммиты и выполнять `git push` в этот репозиторий из IDE (VSCode, Cursor и т.д.) или терминала.
 
@@ -164,6 +166,7 @@ def write_file(repo, path, content, message):
    [новый готовый блок Markdown]
    5. Внизу выберите "Create a new branch" и назовите её: `chore/префикс-описание`.
    6. Нажмите "Propose changes".
+```
 
 ### 5.1 Работа с ветками и Pull Request (Branch Protocol)
 
@@ -187,11 +190,12 @@ def write_file(repo, path, content, message):
 
 - `fix/SAM-FIX-001-version-sync`
 - `fix/GP-FIX-002-hugo-first-strategy`
-- `fix/SAN-FIX-003-db-budget-recalc`
-- `fix/SAN-FIX-004-bytea-152fz`
+- `fix/CAN-FIX-003-db-budget-recalc`
+- `fix/CAN-FIX-004-bytea-152fz`
 - `fix/MIG-FIX-005-tracks-separation`
 - `fix/LIC-FIX-006-dual-licensing`
-- `chore/DOCS-CHORE-007-readme-sync`
+- `chore/INFRA-CHORE-007-readme-sync`
+- `docs/SUMKA-CHORE-008-markdown-cleanup`
 
 **Запрещено использовать:**
 
@@ -224,7 +228,7 @@ def write_file(repo, path, content, message):
 [SAN-FIX-003] перерасчёт бюджета БД и лимитов Supabase Free
 [SAN-FIX-004] унификация типов данных для 152-ФЗ (bytea)
 [MIG-FIX-005] разделение треков миграции и внедрения САН
-[LIC-FIX-006] настройка Dual Licensing (CC BY-SA 4.0)
+[LIC-FIX-006] настройка Dual Licensing (CC BY 4.0)
 [DOCS-CHORE-007] синхронизация README.md
 ```
 
@@ -320,5 +324,11 @@ def write_file(repo, path, content, message):
 ---
 
 **Дата утверждения:** 6 августа 2026 г.
-**Версия:** 1.2-н (добавлен формат выдачи кода ячейками)
+**Последняя редакция:** 10 августа 2026 г.
+**Версия:** 1.2-н (добавлен формат выдачи кода ячейками; префиксы веток обновлены по SAM-REF-007)
 **Статус:** Активен
+
+**Связанные документы:**
+
+- Системный Архитектурный Манифест (САМ)
+- Лицензионный Пакет (ЛИЦ)
