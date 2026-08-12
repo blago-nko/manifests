@@ -1,72 +1,67 @@
 manifests:
-  - id: sam
-    file: "САМ.md"
-    short_title: "САМ"
-    title: "Системный Архитектурный Манифест"
-    description: "Системный Архитектурный Манифест (77 принципов, 14 доменов)"
-    version: "2.1-н"
-    status: "active"
-    approved_date: "2026-07-26"
-    last_revision: "2026-08-10"
-    protocols: 3
-    content_hash: ""
-
-  - id: sumka
-    file: "СУМКа.md"
-    short_title: "СУМКа"
-    title: "Система Управления Медийным Контентом"
-    description: "дистрибуция, соцсети, фиды"
-    version: "1.1-н"
-    status: "active"
-    approved_date: "2026-07-26"
-    last_revision: "2026-08-10"
-    protocols: 1
-    content_hash: ""
-
-  - id: san
-    file: "САН.md"
-    short_title: "САН"
-    title: "Сообщество Агентов Недвижимости"
-    description: "Платформа САН (Сообщество Агентов Недвижимости, Next.js, RESO)"
-    version: "1.0-н"
-    status: "active"
-    approved_date: "2026-07-26"
-    last_revision: ""
-    protocols: 1
-    content_hash: ""
-
-  - id: grek-panteon
-    file: "ГРЕК-ПАНТЕОН.md"
-    short_title: "ГРЕК-ПАНТЕОН"
-    title: "База знаний по античной мифологии"
-    description: "База знаний по античной мифологии (16 505+ страниц, Hugo)"
-    version: "1.1-н"
-    status: "active"
-    approved_date: "2026-07-26"
-    last_revision: "2026-08-10"
-    protocols: 1
-    content_hash: ""
-
-  - id: migraciya
-    file: "МИГРАЦИЯ.md"
-    short_title: "МИГРАЦИЯ"
-    title: "План миграции 14 доменов на новую инфраструктуру"
-    description: "План миграции 14 доменов на новую инфраструктуру"
-    version: "1.1-н"
-    status: "active"
-    approved_date: "2026-07-26"
-    last_revision: "2026-08-10"
-    protocols: 1
-    content_hash: ""
-
-  - id: lic
-    file: "ЛИЦ.md"
-    short_title: "ЛИЦ"
-    title: "Лицензирование и интеллектуальная собственность"
-    description: "Лицензирование и интеллектуальная собственность (CC BY-SA 4.0 + MIT)"
-    version: "1.1-н"
-    status: "active"
-    approved_date: "2026-08-10"
-    last_revision: "2026-08-12"
-    protocols: 1
-    content_hash: ""
+- id: sam
+  file: САМ.md
+  short_title: САМ
+  title: Системный Архитектурный Манифест
+  description: Системный Архитектурный Манифест (77 принципов, 14 доменов)
+  version: 2.1-н
+  status: active
+  approved_date: '2026-07-26'
+  last_revision: '2026-08-10'
+  protocols: 3
+  content_hash: 09f3549c697eaae06788a8ca5027686b63756eecd2ed88b8a9b3530bcd899579
+- id: sumka
+  file: СУМКа.md
+  short_title: СУМКа
+  title: Система Управления Медийным Контентом
+  description: дистрибуция, соцсети, фиды
+  version: 1.1-н
+  status: active
+  approved_date: '2026-07-26'
+  last_revision: '2026-08-10'
+  protocols: 1
+  content_hash: c42969dc8cb19fa323bc294669cc93d1e3741a67dca424e94dd4fcc67e9fb04c
+- id: san
+  file: САН.md
+  short_title: САН
+  title: Сообщество Агентов Недвижимости
+  description: Платформа САН (Сообщество Агентов Недвижимости, Next.js, RESO)
+  version: 1.0-н
+  status: active
+  approved_date: '2026-07-26'
+  last_revision: '2026-08-12'
+  protocols: 1
+  content_hash: 7e19d603e0d4e66ef760d7b4f521b3ad8f2775995147857b01755a61e333aaac
+- id: grek-panteon
+  file: ГРЕК-ПАНТЕОН.md
+  short_title: ГРЕК-ПАНТЕОН
+  title: База знаний по античной мифологии
+  description: База знаний по античной мифологии (16 505+ страниц, Hugo)
+  version: 1.1-н
+  status: active
+  approved_date: '2026-07-26'
+  last_revision: '2026-08-10'
+  protocols: 1
+  content_hash: 8d82440fb929f3dd3896ef680ce8627ba7deb7717ed87a24f9eb9ecfa35508e3
+- id: migraciya
+  file: МИГРАЦИЯ.md
+  short_title: МИГРАЦИЯ
+  title: План миграции 14 доменов на новую инфраструктуру
+  description: План миграции 14 доменов на новую инфраструктуру
+  version: 1.1-н
+  status: active
+  approved_date: '2026-07-26'
+  last_revision: '2026-08-10'
+  protocols: 1
+  content_hash: 262e39424983f565f7f2257407bfd38822beee91c6d1b290919244587ddff34d
+- id: lic
+  file: ЛИЦ.md
+  short_title: ЛИЦ
+  title: Лицензирование и интеллектуальная собственность
+  description: Лицензирование и интеллектуальная собственность (CC BY-SA 4.0 + MIT)
+  version: 1.1-н
+  status: active
+  approved_date: '2026-08-10'
+  last_revision: '2026-08-12'
+  protocols: 1
+  content_hash: 314c09bc1551f4d0ea6fd04959c972ae31690de6227032139106bbd876816579
