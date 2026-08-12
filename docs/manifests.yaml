@@ -1,0 +1,72 @@
+manifests:
+  - id: sam
+    file: "САМ.md"
+    short_title: "САМ"
+    title: "Системный Архитектурный Манифест"
+    description: "Системный Архитектурный Манифест (77 принципов, 14 доменов)"
+    version: "2.1-н"
+    status: "active"
+    approved_date: "2026-07-26"
+    last_revision: "2026-08-10"
+    protocols: 3
+    content_hash: ""
+
+  - id: sumka
+    file: "СУМКа.md"
+    short_title: "СУМКа"
+    title: "Система Управления Медийным Контентом"
+    description: "дистрибуция, соцсети, фиды"
+    version: "1.1-н"
+    status: "active"
+    approved_date: "2026-07-26"
+    last_revision: "2026-08-10"
+    protocols: 1
+    content_hash: ""
+
+  - id: san
+    file: "САН.md"
+    short_title: "САН"
+    title: "Сообщество Агентов Недвижимости"
+    description: "Платформа САН (Сообщество Агентов Недвижимости, Next.js, RESO)"
+    version: "1.0-н"
+    status: "active"
+    approved_date: "2026-07-26"
+    last_revision: ""
+    protocols: 1
+    content_hash: ""
+
+  - id: grek-panteon
+    file: "ГРЕК-ПАНТЕОН.md"
+    short_title: "ГРЕК-ПАНТЕОН"
+    title: "База знаний по античной мифологии"
+    description: "База знаний по античной мифологии (16 505+ страниц, Hugo)"
+    version: "1.1-н"
+    status: "active"
+    approved_date: "2026-07-26"
+    last_revision: "2026-08-10"
+    protocols: 1
+    content_hash: ""
+
+  - id: migraciya
+    file: "МИГРАЦИЯ.md"
+    short_title: "МИГРАЦИЯ"
+    title: "План миграции 14 доменов на новую инфраструктуру"
+    description: "План миграции 14 доменов на новую инфраструктуру"
+    version: "1.1-н"
+    status: "active"
+    approved_date: "2026-07-26"
+    last_revision: "2026-08-10"
+    protocols: 1
+    content_hash: ""
+
+  - id: lic
+    file: "ЛИЦ.md"
+    short_title: "ЛИЦ"
+    title: "Лицензирование и интеллектуальная собственность"
+    description: "Лицензирование и интеллектуальная собственность (CC BY-SA 4.0 + MIT)"
+    version: "1.1-н"
+    status: "active"
+    approved_date: "2026-08-10"
+    last_revision: "2026-08-12"
+    protocols: 1
+    content_hash: ""
