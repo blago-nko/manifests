@@ -117,12 +117,16 @@ def meta_block(m: dict) -> str:
     return f"{META_BEGIN}\n\n" + "\n".join(rows) + f"\n\n{META_END}"
 
 
+BULLET_STYLE = {"ЛИЦ.md": "*"}  # SAM-INFRA-010: MD004 — маркер по стилю файла
+
+
 def related_block(m: dict, active: list) -> str:
+    bullet = BULLET_STYLE.get(m["file"], "-")
     lines = ["## Связанные документы", ""]
     for other in active:
         if other["file"] == m["file"]:
             continue
-        lines.append(f"- [{other['short_title']} — {other['title']}]({other['file']})")
+        lines.append(f"{bullet} [{other['short_title']} — {other['title']}]({other['file']})")
     return f"{REL_BEGIN}\n\n" + "\n".join(lines) + f"\n\n{REL_END}"
 
 
