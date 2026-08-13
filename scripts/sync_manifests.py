@@ -117,7 +117,7 @@ def meta_block(m: dict) -> str:
     return f"{META_BEGIN}\n\n" + "\n".join(rows) + f"\n\n{META_END}"
 
 
-BULLET_STYLE = {"ЛИЦ.md": "*"}  # SAM-INFRA-010: MD004 — маркер по стилю файла
+BULLET_STYLE = {"ЛИЦ.md": "-"}  # SAM-INFRA-010: MD004 — маркер по стилю файла
 
 
 def related_block(m: dict, active: list) -> str:
