@@ -4,12 +4,12 @@ manifests:
   short_title: САМ
   title: Системный Архитектурный Манифест
   description: Системный Архитектурный Манифест (77 принципов, 14 доменов)
-  version: 2.1-н
+  version: 2.2-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-10'
+  last_revision: '2026-08-13'
   protocols: 3
-  content_hash: 09f3549c697eaae06788a8ca5027686b63756eecd2ed88b8a9b3530bcd899579
+  content_hash: aca64f6dae122017751b354acd091aa21108e6210478126b563a0eb4e76fef98
 - id: sumka
   file: СУМКа.md
   short_title: СУМКа
