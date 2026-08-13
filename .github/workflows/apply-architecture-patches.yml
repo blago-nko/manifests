@@ -1,0 +1,67 @@
+name: 🏗️ Применить архитектурный патч
+
+on:
+  workflow_dispatch:
+    inputs:
+      patch:
+        description: 'Какой протокол применить'
+        required: true
+        type: choice
+        options:
+          - all
+          - SAM-INFRA-011
+          - SAM-LIC-007
+          - SAM-LIC-008
+          - SAM-INFRA-012
+          - SAM-MIG-005
+          - SAM-INFRA-013
+      reviewer:
+        description: 'GitHub-логин ревьюера (необязательно)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🐍 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 🔧 Применить патч
+        env:
+          PATCH: ${{ inputs.patch }}
+          REVIEWER: ${{ inputs.reviewer }}
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/apply_arch_patches.py
+
+      - name: 🔀 Создать PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PATCH: ${{ inputs.patch }}
+          REVIEWER: ${{ inputs.reviewer }}
+        run: |
+          BRANCH="fix/patch-${PATCH}-$(date +%s)"
+          git checkout -B "$BRANCH"
+          git config user.name "Architecture Bot"
+          git config user.email "bot@blago-nko.local"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "ℹ️ Нет изменений для коммита" >> $GITHUB_STEP_SUMMARY
+            exit 0
+          fi
+          git commit -m "fix(manifests): apply patch $PATCH"
+          git push -u origin "$BRANCH" --force
+          ARGS=(gh pr create --title "[$PATCH] Архитектурная правка" --body "Автоматически применён протокол $PATCH через workflow. См. AGENTS.md.")
+          [[ -n "$REVIEWER" ]] && ARGS+=(--reviewer "$REVIEWER")
+          PR_URL=$("${ARGS[@]}" 2>&1 | grep -oE 'https://[^ ]+')
+          echo "✅ PR создан: $PR_URL" >> $GITHUB_STEP_SUMMARY
