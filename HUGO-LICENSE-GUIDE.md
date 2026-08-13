@@ -7,15 +7,15 @@
 ````text
 web-example.ru/
 ├── LICENSE                    # MIT License (для всего кода)
-├── LICENSE-CONTENT            # CC BY-SA 4.0 (для контента)
+├── LICENSE-CONTENT            # CC BY 4.0 (для контента)
 ├── README.md                  # С секцией лицензирования
 ├── hugo.toml                  # MIT
 ├── layouts/                   # MIT (шаблоны)
 ├── static/                    # MIT (статика)
 ├── assets/                    # MIT (CSS/JS)
 ├── .github/workflows/         # MIT (CI/CD)
-└── content/                   # CC BY-SA 4.0 (контент)
-    ├── LICENSE                # Дополнительный файл CC BY-SA 4.0
+└── content/                   # CC BY 4.0 (контент)
+    ├── LICENSE                # Дополнительный файл CC BY 4.0
     └── posts/
         └── статьи.md
 ````
@@ -43,6 +43,6 @@ Copyright (c) 2026 НП «Общественное благополучие Во
 *.html    linguist-language=HTML
 *.css     linguist-language=CSS
 
-# Контент - CC BY-SA 4.0
+# Контент - CC BY 4.0
 content/* linguist-detectable=false
 ```
