@@ -3,7 +3,7 @@ manifests:
   file: САМ.md
   short_title: САМ
   title: Системный Архитектурный Манифест
-  description: Системный Архитектурный Манифест (77 принципов, 14 доменов)
+  description: Системный Архитектурный Манифест (78 принципов, 14 доменов)
   version: 2.5-н
   status: active
   approved_date: '2026-07-26'
