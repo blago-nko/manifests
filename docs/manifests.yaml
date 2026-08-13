@@ -4,23 +4,23 @@ manifests:
   short_title: САМ
   title: Системный Архитектурный Манифест
   description: Системный Архитектурный Манифест (77 принципов, 14 доменов)
-  version: 2.3-н
+  version: 2.4-н
   status: active
   approved_date: '2026-07-26'
   last_revision: '2026-08-13'
   protocols: 3
-  content_hash: 0a5c9137b407d57070190e8090f19fa409bc5e3407546fc1498bdaaf214fbd7e
+  content_hash: f3463aeb71bf80362f25511142e2c0b6e794f837485d80e80df24dfdc6e3c7c7
 - id: sumka
   file: СУМКа.md
   short_title: СУМКа
   title: Система Управления Медийным Контентом
   description: дистрибуция, соцсети, фиды
-  version: 1.1-н
+  version: 1.2-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-10'
+  last_revision: '2026-08-12'
   protocols: 1
-  content_hash: c42969dc8cb19fa323bc294669cc93d1e3741a67dca424e94dd4fcc67e9fb04c
+  content_hash: e95eaa972e4a20eed6786142f5b5e159e4dd4ecc8b2e8068ec60ee9ccc809553
 - id: san
   file: САН.md
   short_title: САН
@@ -48,20 +48,20 @@ manifests:
   short_title: МИГРАЦИЯ
   title: План миграции 14 доменов на новую инфраструктуру
   description: План миграции 14 доменов на новую инфраструктуру
-  version: 1.2-н
+  version: 1.3-н
   status: active
   approved_date: '2026-07-26'
   last_revision: '2026-08-13'
   protocols: 1
-  content_hash: 7701065f7441f0fdccd2966f638d1cc818f59a93553b80d61471b7226ae0f1cd
+  content_hash: 951bf50b485f5a1dc3e7e473f6ae268c4ed44ab3f91db3c4a3e672e5cf550f62
 - id: lic
   file: ЛИЦ.md
   short_title: ЛИЦ
   title: Лицензирование и интеллектуальная собственность
   description: Лицензирование и интеллектуальная собственность (CC BY-SA 4.0 + MIT)
-  version: 1.1-н
+  version: 1.2-н
   status: active
   approved_date: '2026-08-10'
-  last_revision: '2026-08-12'
+  last_revision: '2026-08-13'
   protocols: 1
-  content_hash: 314c09bc1551f4d0ea6fd04959c972ae31690de6227032139106bbd876816579
+  content_hash: 477ce94d8b41296711fe3967b67027c9a97fe668126e0b57f646d3b3872b71a4
