@@ -8,10 +8,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          # Ищем количество принципов в САМ.md по маркеру или по старой форме
-          SAM=$(grep -oP 'Количество принципов:\*\* \K\d+' САМ.md || grep -oP 'Принципы \(все \K\d+' САМ.md || true)
+          SAM=$(grep -oP 'SAM-PRINCIPLES-COUNT: \K\d+' САМ.md || grep -oP 'Количество принципов:\*\* \K\d+' САМ.md || grep -oP 'Принципы \(все \K\d+' САМ.md || true)
           if [ -z "$SAM" ]; then
-            echo "::error::В САМ.md не найдено количество принципов (маркер SAM-PRINCIPLES-COUNT)"
+            echo "::error::В САМ.md не найдено количество принципов"
             exit 1
           fi
           echo "📌 САМ declares: $SAM принципов"
@@ -20,8 +19,7 @@ jobs:
             R=$(grep -oP 'Принципы \(все \K\d+' "$f" || true)
             [ -z "$R" ] && continue
             if [ "$SAM" != "$R" ]; then
-              echo "❌ $f: указано $R, но в САМ.md — $SAM"
-              exit 1
+              echo "❌ $f: указано $R, но в САМ.md — $SAM"; exit 1
             fi
             echo "✅ $f: $R (OK)"
           done
