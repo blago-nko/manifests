@@ -1,0 +1,18 @@
+name: Manifest Consistency Check
+on:
+  pull_request:
+    paths: ['**.md']
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          SAM=$(grep -oP 'Принципы \(все \K\d+' САМ.md || true)
+          for f in ГРЕК-ПАНТЕОН.md СУМКа.md САН.md МИГРАЦИЯ.md; do
+            [ -f "$f" ] || continue
+            R=$(grep -oP 'Принципы \(все \K\d+' "$f" || true)
+            [ -z "$R" ] && continue
+            [ "$SAM" = "$R" ] || { echo "❌ $f: $R vs $SAM"; exit 1; }
+          done
+          echo "✅ OK ($SAM)"
