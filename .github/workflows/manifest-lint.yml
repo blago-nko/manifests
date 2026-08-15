@@ -1,0 +1,46 @@
+name: Manifest Linter (Чистота текста)
+
+on:
+  pull_request:
+    paths:
+      - '*.md'
+
+jobs:
+  lint-manifests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Проверка на загрязнение текста (Протоколы и Версии)
+        run: |
+          echo "🔍 Проверка манифестов на наличие протоколов и версий в основном тексте..."
+          ERROR=0
+          
+          for file in ЛИЦ.md САМ.md САН.md СУМКа.md МИГРАЦИЯ.md ГРЕК-ПАНТЕОН.md; do
+            if [ -f "$file" ]; then
+              # Проверяем текст ПОСЛЕ 15-й строки (пропускаем шапку METADATA)
+              PROTOCOLS=$(tail -n +15 "$file" | grep -E -o '[A-Z]+-[A-Z]+-[0-9]+' || true)
+              VERSIONS=$(tail -n +15 "$file" | grep -E -o '(версии|v)[[:space:]]*[0-9]+\.[0-9]+-н' || true)
+              
+              if [ -n "$PROTOCOLS" ]; then
+                echo "❌ ОШИБКА в $file: Найдены протоколы в тексте (должны быть только в CHANGELOG.md):"
+                echo "$PROTOCOLS"
+                ERROR=1
+              fi
+              
+              if [ -n "$VERSIONS" ]; then
+                echo "❌ ОШИБКА в $file: Найдены версии в тексте (должны быть только в шапке):"
+                echo "$VERSIONS"
+                ERROR=1
+              fi
+            fi
+          done
+          
+          if [ $ERROR -eq 1 ]; then
+            echo ""
+            echo "🚫 ПРАВИЛО НАРУШЕНО: Манифесты должны описывать только текущее состояние."
+            echo "👉 Перенесите историю изменений в CHANGELOG.md и удалите протоколы/версии из текста."
+            exit 1
+          else
+            echo "✅ Манифесты кристально чисты!"
+          fi
