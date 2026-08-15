@@ -9,6 +9,9 @@ on:
       - "scripts/sync_manifests.py"
       - ".github/workflows/sync-manifests.yml"
 
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
 permissions:
   contents: write
 
