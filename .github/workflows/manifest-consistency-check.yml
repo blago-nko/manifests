@@ -8,11 +8,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
-          SAM=$(grep -oP 'Принципы \(все \K\d+' САМ.md || true)
+          # Ищем количество принципов в САМ.md по маркеру или по старой форме
+          SAM=$(grep -oP 'Количество принципов:\*\* \K\d+' САМ.md || grep -oP 'Принципы \(все \K\d+' САМ.md || true)
+          if [ -z "$SAM" ]; then
+            echo "::error::В САМ.md не найдено количество принципов (маркер SAM-PRINCIPLES-COUNT)"
+            exit 1
+          fi
+          echo "📌 САМ declares: $SAM принципов"
           for f in ГРЕК-ПАНТЕОН.md СУМКа.md САН.md МИГРАЦИЯ.md; do
             [ -f "$f" ] || continue
             R=$(grep -oP 'Принципы \(все \K\d+' "$f" || true)
             [ -z "$R" ] && continue
-            [ "$SAM" = "$R" ] || { echo "❌ $f: $R vs $SAM"; exit 1; }
+            if [ "$SAM" != "$R" ]; then
+              echo "❌ $f: указано $R, но в САМ.md — $SAM"
+              exit 1
+            fi
+            echo "✅ $f: $R (OK)"
           done
-          echo "✅ OK ($SAM)"
+          echo "🎉 Все манифесты синхронизированы"
