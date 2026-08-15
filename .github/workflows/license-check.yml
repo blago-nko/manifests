@@ -10,32 +10,32 @@ jobs:
   check-licenses:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Check LICENSE type (MIT for code, CC BY 4.0 for docs)
+      - name: Check LICENSE type (GNU AGPLv3 for code)
         run: |
           if [ ! -f LICENSE ]; then
             echo "❌ LICENSE отсутствует"
             exit 1
           fi
-          if grep -q "MIT License" LICENSE; then
-            echo "✅ LICENSE: MIT (код)"
+          if grep -q "GNU AFFERO GENERAL PUBLIC LICENSE" LICENSE || grep -q "AGPLv3" LICENSE; then
+            echo "✅ LICENSE: GNU AGPLv3 (код защищен от закрытия)"
             echo "IS_CODE=true" >> $GITHUB_ENV
           else
-            echo "❌ LICENSE должен быть MIT (согласно SAM-LIC-006)"
+            echo "❌ LICENSE должен быть GNU AGPLv3 (согласно ЛИЦ Раздел 1)"
             exit 1
           fi
 
-      - name: Check LICENSE-CONTENT (CC BY 4.0 for content)
+      - name: Check LICENSE-CONTENT (CC BY-NC 4.0 for content)
         if: env.IS_CODE == 'true'
         run: |
           if [ ! -f LICENSE-CONTENT ]; then
-            echo "❌ Отсутствует LICENSE-CONTENT (CC BY 4.0)"
+            echo "❌ Отсутствует LICENSE-CONTENT (CC BY-NC 4.0)"
             exit 1
           fi
-          if grep -q "Creative Commons Attribution 4.0 International" LICENSE-CONTENT; then
-            echo "✅ LICENSE-CONTENT: CC BY 4.0 (SAM-LIC-006)"
+          if grep -q "Attribution-NonCommercial 4.0 International" LICENSE-CONTENT || grep -q "CC BY-NC" LICENSE-CONTENT; then
+            echo "✅ LICENSE-CONTENT: CC BY-NC 4.0 (запрет коммерции без договора)"
           else
-            echo "❌ LICENSE-CONTENT должен быть CC BY 4.0 International"
+            echo "❌ LICENSE-CONTENT должен быть CC BY-NC 4.0 International (согласно ЛИЦ Раздел 2)"
             exit 1
           fi
