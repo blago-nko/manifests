@@ -4,23 +4,23 @@ manifests:
   short_title: САМ
   title: Системный Архитектурный Манифест
   description: Системный Архитектурный Манифест (78 принципов, 14 доменов)
-  version: 2.5-н
+  version: 2.6-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-13'
+  last_revision: '2026-08-15'
   protocols: 3
-  content_hash: 3d1dd37361913f7702aa64887e1615c81659de7fd08ddfd6f75f17c431671469
+  content_hash: a0cdb4cda17ae0f96120dac8f4ae44809b6cd238b2ee21ac2b9424e42e2ec1b2
 - id: sumka
   file: СУМКа.md
   short_title: СУМКа
   title: Система Управления Медийным Контентом
   description: дистрибуция, соцсети, фиды
-  version: 1.4-н
+  version: 1.5-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-13'
+  last_revision: '2026-08-15'
   protocols: 1
-  content_hash: 2606adae1c8fac43ccc22372ae07a276658fb69c88b43242b810d6e3ca936119
+  content_hash: 88cf0c4894057fa816472012397b31c2aa39bc94e93c028ca0746ed216876d57
 - id: san
   file: САН.md
   short_title: САН
@@ -37,12 +37,12 @@ manifests:
   short_title: ГРЕК-ПАНТЕОН
   title: База знаний по античной мифологии
   description: База знаний по античной мифологии (16 505+ страниц, Hugo)
-  version: 1.2-н
+  version: 1.3-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-12'
+  last_revision: '2026-08-15'
   protocols: 1
-  content_hash: 9f27375306ea48bd7140d25b1ddaf0b83d201b05f1c68e9c37136677763b57d2
+  content_hash: 911609db124ba596745b07bcd921793cb7e340ba1c1105c258f4ef4466292659
 - id: migraciya
   file: МИГРАЦИЯ.md
   short_title: МИГРАЦИЯ
