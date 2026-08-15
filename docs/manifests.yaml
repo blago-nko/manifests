@@ -26,12 +26,12 @@ manifests:
   short_title: САН
   title: Сообщество Агентов Недвижимости
   description: Платформа САН (Сообщество Агентов Недвижимости, Next.js, RESO)
-  version: 1.2-н
+  version: 1.3-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-13'
+  last_revision: '2026-08-15'
   protocols: 1
-  content_hash: cfcec3a3e3b831f2c0f6035bc7e6f05f9f0f5c933933d041b07baa90db9133e2
+  content_hash: dd4f2c5cf65fa39a634b96950732af8d01078040a9144e4420ee9affda476393
 - id: grek-panteon
   file: ГРЕК-ПАНТЕОН.md
   short_title: ГРЕК-ПАНТЕОН
@@ -59,9 +59,9 @@ manifests:
   short_title: ЛИЦ
   title: Лицензирование и интеллектуальная собственность
   description: Лицензирование и интеллектуальная собственность (CC BY 4.0 + MIT)
-  version: 1.3-н
+  version: 1.4-н
   status: active
   approved_date: '2026-08-10'
-  last_revision: '2026-08-13'
+  last_revision: '2026-08-15'
   protocols: 1
-  content_hash: 4b0b0ef29db3d4776f057ad9b7a9fca2d950e0122dad121c10ae42a87ca6ca56
+  content_hash: 9ce1f26f7cfab567d00072fbf5c6c9735436e5faaf7230a9a246bfe3e50f89c6
