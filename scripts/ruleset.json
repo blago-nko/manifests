@@ -1,0 +1,21 @@
+{
+  "name": "SAM-BRANCH-001: main protection",
+  "target": "branch",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": { "include": ["~DEFAULT_BRANCH"], "exclude": [] },
+    "repository_name": { "include": ["~ALL"], "exclude": [] }
+  },
+  "rules": [
+    { "type": "deletion" },
+    { "type": "non_fast_forward" },
+    { "type": "pull_request", "parameters": {
+        "required_approving_review_count": 0,
+        "dismiss_stale_reviews_on_push": true,
+        "require_last_push_approval": false,
+        "required_review_thread_resolution": false } }
+  ],
+  "bypass_actors": [
+    { "actor_id": 15368, "actor_type": "Integration", "bypass_mode": "always" }
+  ]
+}
