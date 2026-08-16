@@ -64,7 +64,13 @@ RE_MAN = re.compile(r"^## ⚖️ Двойное Лицензирование\n.*
 RE_STALE = re.compile(r"MIT License|CC BY-SA|CC BY 4\.0")
 
 def run(cmd, cwd=None):
-    return subprocess.run(cmd, cwd=cwd, check=True, capture_output=True, text=True)
+    p = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True)
+    if p.returncode != 0:
+        print(f"[fail] cmd: {' '.join(cmd)}")
+        print(f"[fail] stdout: {p.stdout.strip()}")
+        print(f"[fail] stderr: {p.stderr.strip()}")
+        raise SystemExit(p.returncode)
+    return p
 
 repos = json.loads(run(["gh", "repo", "list", ORG, "--limit", "100",
                         "--json", "nameWithOwner"]).stdout)
@@ -103,6 +109,10 @@ for r in repos:
 
         run(["git", "checkout", "-b", BRANCH], dst)
         run(["git", "add", "-A"], dst)
+        staged = run(["git", "status", "--porcelain"], dst).stdout.strip()
+        if not staged:
+            print(f"[skip] {slug}: нет изменений для коммита")
+            continue
         run(["git", "commit", "-m",
              "fix(LIC): SAM-LIC-010 — README → AGPLv3 + CC BY-NC 4.0 + readme-license-check"], dst)
         run(["git", "push", "-u", "origin", BRANCH], dst)
