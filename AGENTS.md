@@ -400,3 +400,160 @@ def write_file(repo, path, content, message, branch="main"):
 
 - Системный Архитектурный Манифест (САМ)
 - Лицензионный Пакет (ЛИЦ)
+
+---
+
+## РАЗДЕЛ 10. ИНСТРУКЦИИ ДЛЯ ИИ-АГЕНТОВ ПО МИГРАЦИИ
+
+### 10.1 Роль ИИ-агента в миграции
+
+ИИ-агенты (Qwen, Claude, GPT-4) участвуют в миграции экосистемы БЛАГО-НКО в следующих ролях:
+
+1. **Архитектурный консультант** — анализ структуры сайтов, предложение URL-структуры
+2. **Генератор кода** — создание миграционных скриптов на Python
+3. **Валидатор** — проверка корректности Redirect Map, валидация JSON-LD
+4. **Контент-аналитик** — парсинг Blogger XML, извлечение метаданных
+5. **Тестировщик** — автоматическая проверка 301-редиректов, PageSpeed
+
+### 10.2 Протоколы работы ИИ-агентов
+
+**Обязательные правила**:
+
+1. **Cloud-Only Development** — весь код пишется только в GitHub Codespaces
+2. **Strict Branch Protocol** — все изменения через PR с префиксами:
+   - `feat(MIG):` — новые функции миграции
+   - `fix(MIG):` — исправления миграционных скриптов
+   - `test(MIG):` — тесты миграции
+3. **Atomic Commits** — каждый коммит содержит одно логическое изменение
+4. **Documentation First** — перед написанием кода обновить соответствующий манифест
+
+### 10.3 Автоматизация через ИИ-агентов
+
+**Пример: ИИ-агент генерирует Redirect Map**
+
+Код скрипта generate_redirect_map.py:
+
+    import xml.etree.ElementTree as ET
+    import json
+    import re
+
+    def parse_blogger_feed(feed_path):
+        tree = ET.parse(feed_path)
+        root = tree.getroot()
+        
+        entries = []
+        for entry in root.findall('.//entry'):
+            title = entry.find('title').text
+            url = entry.find('link[@rel="alternate"]').get('href')
+            published = entry.find('published').text
+            slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')
+            
+            entries.append({
+                'old_url': url,
+                'title': title,
+                'published': published,
+                'slug': slug
+            })
+        
+        return entries
+
+    def generate_redirect_map(entries, site_type):
+        redirect_map = {}
+        
+        for entry in entries:
+            if site_type == 'news':
+                year = entry['published'][:4]
+                month = entry['published'][5:7]
+                new_url = f"/posts/{year}/{month}/{entry['slug']}/"
+            elif site_type == 'educational':
+                new_url = f"/topics/general/{entry['slug']}/"
+            else:
+                new_url = f"/articles/{entry['slug']}/"
+            
+            redirect_map[entry['old_url']] = new_url
+        
+        return redirect_map
+
+    entries = parse_blogger_feed('backup/feed.xml')
+    redirect_map = generate_redirect_map(entries, 'educational')
+
+    with open('redirect_map.json', 'w') as f:
+        json.dump(redirect_map, f, indent=2, ensure_ascii=False)
+
+    print(f"Сгенерировано {len(redirect_map)} редиректов")
+
+### 10.4 Проверки качества (Quality Gates)
+
+ИИ-агент должен выполнить следующие проверки перед завершением задачи:
+
+**Для миграционных скриптов**:
+- Все старые URL имеют соответствие в Redirect Map
+- Нет дубликатов новых URL
+- Все новые URL валидны (соответствуют структуре из СУМКа.md)
+- Нет циклических редиректов
+- Скрипт обработал 100% записей из feed.xml
+
+**Для Hugo-шаблонов**:
+- JSON-LD разметка валидна (проверка через Google Rich Results Test)
+- Open Graph теги заполнены корректно
+- Mobile-First адаптация работает (проверка через Lighthouse)
+- PageSpeed >= 90 (desktop и mobile)
+- Все изображения оптимизированы (WebP формат)
+
+**Для контента**:
+- Все изображения загружены на gallery.obrazslov.ru (Blogger, безлимитное хранение)
+- Все изображения ресайзнуты до 4 размеров (400, 800, 1200, 1600 px) согласно регламенту 5.6 СУМКа
+- PDF и медиа-паспорта загружены в R2 бакет blago-nko-backups
+- Соблюдено условие ≤1600 пикселей для активации безлимитного хранения на Blogger
+- Все внутренние ссылки обновлены на новые URL
+- Мета-теги (title, description) заполнены
+- Нет битых ссылок (проверка через broken-link-checker)
+
+### 10.5 Отчётность ИИ-агента
+
+После выполнения каждой задачи миграции ИИ-агент должен создать отчёт:
+
+**Формат отчёта**:
+
+    # Отчёт о миграции: [название задачи]
+
+    **Дата**: YYYY-MM-DD
+    **ИИ-агент**: [название модели]
+    **Статус**: Успешно / Частично / Ошибка
+
+    ## Выполнено
+
+    - Задача 1
+    - Задача 2
+
+    ## Метрики
+
+    - Обработано записей: X
+    - Сгенерировано редиректов: Y
+    - Ошибок: Z
+
+    ## Проблемы и решения
+
+    ### Проблема 1
+    **Описание**: ...
+    **Решение**: ...
+
+    ## Рекомендации
+
+    ...
+
+### 10.6 Координация между ИИ-агентами
+
+При работе нескольких ИИ-агентов (например, Qwen + Claude):
+
+1. **Разделение ответственности**:
+   - Qwen: генерация кода, парсинг данных
+   - Claude: валидация, тестирование, документация
+
+2. **Синхронизация через Git**:
+   - Каждый агент работает в своей ветке
+   - Синхронизация через PR и code review
+
+3. **Разрешение конфликтов**:
+   - При конфликтах приоритет у агента, который первым создал PR
+   - Арбитр — человек (bobralv-cyber)
