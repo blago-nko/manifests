@@ -91,34 +91,21 @@ jobs:
             fi
           done
       
-      - name: Commit and push
+      - name: Create Pull Request
         if: steps.check.outputs.exists == 'true'
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/STATUS.md
-          
-          if git diff --staged --quiet; then
-            echo "📋 No changes to commit"
-          else
-            git commit -m "docs: auto-update STATUS.md timestamp
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "docs: auto-update STATUS.md timestamp"
+          title: "docs: автообновление timestamp в STATUS.md"
+          body: |
+            Автоматическое обновление даты в STATUS.md
             
-            Automated update via GitHub Actions
-            Workflow run: ${{ github.run_id }}
-            Trigger: ${{ github.event_name }}
+            **Workflow run:** ${{ github.run_id }}  
+            **Trigger:** ${{ github.event_name }}
             
-            Ref: САМ v1.3 п. 1.5, СУМКа v1.5 п. 7.2"
-            git push
-            echo "✅ STATUS.md updated successfully"
-          fi
-      
-      - name: Report metrics
-        if: always()
-        run: |
-          echo "## 📊 STATUS.md Update Metrics" >> $GITHUB_STEP_SUMMARY
-          echo "- **Status**: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Timestamp**: $(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_STEP_SUMMARY
-          echo "- **Metric**: status_md_autoupdate_success_rate" >> $GITHUB_STEP_SUMMARY
-          echo "- **Target**: ≥ 99%" >> $GITHUB_STEP_SUMMARY
-          echo "- **File exists**: ${{ steps.check.outputs.exists }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Trigger**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+            Ref: САМ v1.3 п. 1.5, СУМКа v1.5 п. 7.2
+          branch: "chore/auto-update-status-md"
+          delete-branch: true
+          labels: "chore, automated"
+          reviewers: "bobralv-cyber"
