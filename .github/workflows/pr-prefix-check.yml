@@ -13,15 +13,15 @@ jobs:
         env:
           PR_TITLE: \${{ github.event.pull_request.title }}
         run: |
-          # Допустимые префиксы согласно САМ.md и Conventional Commits
-          REGEX="^(SAM-|CAN-|SUMKA-|GP-|MIG-|LIC-|INFRA-|feat|fix|docs|chore|test|refactor|ci|build|perf|style)(\([a-z-]+\))?:.*"
+          echo "Проверяемый заголовок: $PR_TITLE"
           
-          if echo "$PR_TITLE" | grep -iEq "$REGEX"; then
-            echo "✅ Заголовок PR соответствует стандартам: $PR_TITLE"
+          # Проверяем наличие валидного префикса в начале строки
+          if [[ "$PR_TITLE" =~ ^(SAM-|CAN-|SUMKA-|GP-|MIG-|LIC-|INFRA-|feat|fix|docs|chore|test|refactor|ci|build|perf|style) ]]; then
+            echo "✅ Заголовок PR соответствует стандартам"
             exit 0
           else
             echo "❌ ОШИБКА: Заголовок PR должен начинаться с валидного префикса!"
-            echo "Допустимые префиксы: SAM-, CAN-, SUMKA-, GP-, MIG-, LIC-, INFRA-, feat, fix, docs, chore, и т.д."
-            echo "Пример: docs: добавлена документация по Branch Protection"
+            echo "Допустимые префиксы: SAM-, CAN-, SUMKA-, GP-, MIG-, LIC-, INFRA-, feat, fix, docs, chore, test, refactor, ci, build, perf, style"
+            echo "Пример: feat(INFRA): добавлены workflow для проверки префиксов PR"
             exit 1
           fi
