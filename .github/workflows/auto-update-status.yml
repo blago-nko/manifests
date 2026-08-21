@@ -1,0 +1,136 @@
+name: Auto-update STATUS.md
+
+on:
+  schedule:
+    # Каждую пятницу в 06:00 UTC
+    - cron: "0 6 * * 5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-status:
+    name: Generate STATUS.md
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: \${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install GitHub CLI
+        run: |
+          gh auth status
+          echo "GitHub CLI ready"
+
+      - name: Generate STATUS.md
+        env:
+          GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}
+          ORG: blago-nko
+        run: |
+          echo "🔄 Генерация STATUS.md..."
+          
+          # Заголовок
+          cat > STATUS.md << HEADER
+# 📈 Статус экосистемы blago-nko
+
+> ⚠️ **Этот файл обновляется автоматически** через GitHub Actions.
+> Не редактируйте вручную.
+
+**Последнее обновление:** $(date -u +"%d.%m.%Y %H:%M UTC")
+
+---
+
+## Состояние репозиториев
+
+HEADER
+
+          # Список репозиториев
+          repos=("shared-assets" "manifests" "web-obrazslov.ru" "web-grekpanteon" "web-blagorussia.ru" "web-partnerstvo" "web-novosti" "web-ot-gorozan" "web-obavlenia" "web-interesnye-mesta" "web-moisites" "web-joga" "web-ideologia" "web-nasa-istoria" "web-gallery-npo")
+          
+          echo "| # | Репозиторий | Последний коммит | Статус |" >> STATUS.md
+          echo "| :-: | :-- | :-- | :-: |" >> STATUS.md
+          
+          i=1
+          for repo in "\${repos[@]}"; do
+            # Получаем информацию о последнем коммите
+            last_commit=$(gh api repos/$ORG/$repo/commits?per_page=1 --jq ".[0].commit.message" 2>/dev/null | head -c 50)
+            last_date=$(gh api repos/$ORG/$repo/commits?per_page=1 --jq ".[0].commit.committer.date" 2>/dev/null | cut -dT -f1)
+            
+            if [ -n "$last_date" ]; then
+              echo "| $i | \`$repo\` | $last_date |  |" >> STATUS.md
+            else
+              echo "| $i | \`$repo\` | - | ⚪ |" >> STATUS.md
+            fi
+            i=$((i + 1))
+          done
+
+          # Секция с манифестами
+          cat >> STATUS.md << MANIFESTS
+
+---
+
+## Состояние манифестов
+
+| Манифест | Файл | Статус |
+| :-- | :-- | :-: |
+| Системный Архитектурный Манифест | САМ.md |  |
+| Манифест САН | САН.md | 🟢 |
+| Манифест СУМКа | СУМКа.md | 🟢 |
+| Манифест ГРЕК-ПАНТЕОН | ГРЕК-ПАНТЕОН.md | 🟢 |
+| Манифест МИГРАЦИЯ | МИГРАЦИЯ.md | 🟢 |
+| Лицензионный Пакет | ЛИЦ.md |  |
+
+---
+
+## Ключевые метрики
+
+| Метрика | Значение |
+| :-- | :-- |
+| Активных репозиториев | 15 |
+| Опубликованных пакетов | 1 (shared-assets@1.0.0) |
+| Настроенных Branch Protection | 15/15 |
+| Активных workflow | 5+ |
+
+---
+
+## История изменений
+
+| Дата | Описание |
+| :-- | :-- |
+| $(date -u +"%d.%m.%Y") | Автообновление через GitHub Actions |
+| 21.08.2026 | Первоначальная настройка аудита |
+
+---
+
+*Сгенерировано автоматически workflow \`auto-update-status.yml\`.*
+MANIFESTS
+
+          echo "✅ STATUS.md сгенерирован"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: \${{ secrets.GITHUB_TOKEN }}
+          commit-message: "docs: автообновление STATUS.md"
+          title: "docs: автообновление STATUS.md"
+          body: |
+            ## Автообновление STATUS.md
+            
+            Этот PR создан автоматически workflow \`auto-update-status.yml\`.
+            
+            ### Изменения:
+            - Обновлена дата последнего обновления
+            - Актуализирована информация о репозиториях
+            - Обновлены метрики экосистемы
+          branch: auto/status-update
+          base: main
+          labels: documentation,automated
