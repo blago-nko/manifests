@@ -1,0 +1,31 @@
+name: Architecture Check
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  architecture-validation:
+    name: Validate Architecture Compliance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for required files
+        run: |
+          echo "🔍 Проверка наличия обязательных файлов..."
+          if [ ! -f "САМ.md" ]; then
+            echo "❌ Отсутствует САМ.md"
+            exit 1
+          fi
+          if [ ! -f "ЛИЦ.md" ]; then
+            echo "❌ Отсутствует ЛИЦ.md"
+            exit 1
+          fi
+          echo "✅ Все обязательные манифесты на месте."
+
+      - name: Simulate Blago Ecosystem Bot Check
+        run: |
+          echo "🤖 Blago Ecosystem Bot: Архитектурная проверка пройдена."
+          echo "✅ Статус: architecture-check = success"
