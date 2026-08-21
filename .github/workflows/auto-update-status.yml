@@ -8,10 +8,11 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  issues: write
 
 jobs:
   update-status:
-    name: Generate STATUS.md
+    name: Update STATUS.md
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -24,63 +25,10 @@ jobs:
         id: date
         run: echo "date=$(date -u +"%d.%m.%Y %H:%M UTC")" >> \$GITHUB_OUTPUT
 
-      - name: Create STATUS.md
+      - name: Update STATUS.md
         run: |
-          cat > STATUS.md << EOF
-# 📈 Статус экосистемы blago-nko
-
-> ⚠️ **Этот файл обновляется автоматически** через GitHub Actions.
-> Не редактируйте вручную.
-
-**Последнее обновление:** \${{ steps.date.outputs.date }}
-
----
-
-## Состояние репозиториев
-
-| # | Репозиторий | Последний коммит | Статус |
-| :-: | :-- | :-- | :-: |
-| 1 | shared-assets | 21.08.2026 | 🟢 |
-| 2 | manifests | 21.08.2026 | 🟢 |
-| 3 | web-obrazslov.ru | 21.08.2026 |  |
-| 4 | web-grekpanteon | 21.08.2026 | 🟢 |
-| 5 | web-blagorussia.ru | 21.08.2026 | 🟢 |
-| 6 | web-partnerstvo | 21.08.2026 | 🟢 |
-| 7 | web-novosti | 21.08.2026 |  |
-| 8 | web-ot-gorozan | 21.08.2026 | 🟢 |
-| 9 | web-obavlenia | 21.08.2026 | 🟢 |
-| 10 | web-interesnye-mesta | 21.08.2026 | 🟢 |
-| 11 | web-moisites | 21.08.2026 | 🟢 |
-| 12 | web-joga | 21.08.2026 | 🟢 |
-| 13 | web-ideologia | 21.08.2026 | 🟢 |
-| 14 | web-nasa-istoria | 21.08.2026 | 🟢 |
-| 15 | web-gallery-npo | 21.08.2026 | 🟢 |
-
----
-
-## Ключевые метрики
-
-| Метрика | Значение |
-| :-- | :-- |
-| Активных репозиториев | 15 |
-| Опубликованных пакетов | 1 (shared-assets@1.0.0) |
-| Настроенных Branch Protection | 15/15 |
-| Активных workflow | 6+ |
-
----
-
-## История изменений
-
-| Дата | Описание |
-| :-- | :-- |
-| \${{ steps.date.outputs.date }} | Автообновление через GitHub Actions |
-| 21.08.2026 | Первоначальная настройка аудита |
-
----
-
-*Сгенерировано автоматически workflow auto-update-status.yml.*
-EOF
-          echo "✅ STATUS.md сгенерирован"
+          sed -i "s/\*\*Последнее обновление:\*\*.*/\*\*Последнее обновление:\*\* \${{ steps.date.outputs.date }}/" STATUS.md
+          echo "STATUS.md updated"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
@@ -88,14 +36,8 @@ EOF
           token: \${{ secrets.GITHUB_TOKEN }}
           commit-message: "docs: автообновление STATUS.md"
           title: "docs: автообновление STATUS.md"
-          body: |
-            ## Автообновление STATUS.md
-            
-            Этот PR создан автоматически workflow auto-update-status.yml.
-            
-            ### Изменения:
-            - Обновлена дата последнего обновления
-            - Актуализирована информация о репозиториях
+          body: "Автоматическое обновление файла STATUS.md"
           branch: auto/status-update
           base: main
           labels: documentation,automated
+          delete-branch: true
