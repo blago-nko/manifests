@@ -1,0 +1,27 @@
+name: PR Prefix Check
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  check-prefix:
+    name: Check PR Title Prefix
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate PR Title
+        env:
+          PR_TITLE: \${{ github.event.pull_request.title }}
+        run: |
+          # Допустимые префиксы согласно САМ.md и Conventional Commits
+          REGEX="^(SAM-|CAN-|SUMKA-|GP-|MIG-|LIC-|INFRA-|feat|fix|docs|chore|test|refactor|ci|build|perf|style)(\([a-z-]+\))?:.*"
+          
+          if echo "$PR_TITLE" | grep -iEq "$REGEX"; then
+            echo "✅ Заголовок PR соответствует стандартам: $PR_TITLE"
+            exit 0
+          else
+            echo "❌ ОШИБКА: Заголовок PR должен начинаться с валидного префикса!"
+            echo "Допустимые префиксы: SAM-, CAN-, SUMKA-, GP-, MIG-, LIC-, INFRA-, feat, fix, docs, chore, и т.д."
+            echo "Пример: docs: добавлена документация по Branch Protection"
+            exit 1
+          fi
