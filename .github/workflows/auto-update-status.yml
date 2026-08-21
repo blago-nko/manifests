@@ -2,7 +2,6 @@ name: Auto-update STATUS.md
 
 on:
   schedule:
-    # Каждую пятницу в 06:00 UTC
     - cron: "0 6 * * 5"
   workflow_dispatch:
 
@@ -21,73 +20,41 @@ jobs:
           fetch-depth: 0
           token: \${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
+      - name: Get current date
+        id: date
+        run: echo "date=$(date -u +"%d.%m.%Y %H:%M UTC")" >> \$GITHUB_OUTPUT
 
-      - name: Install GitHub CLI
+      - name: Create STATUS.md
         run: |
-          gh auth status
-          echo "GitHub CLI ready"
-
-      - name: Generate STATUS.md
-        env:
-          GH_TOKEN: \${{ secrets.GITHUB_TOKEN }}
-          ORG: blago-nko
-        run: |
-          echo "🔄 Генерация STATUS.md..."
-          
-          # Заголовок
-          cat > STATUS.md << HEADER
+          cat > STATUS.md << EOF
 # 📈 Статус экосистемы blago-nko
 
 > ⚠️ **Этот файл обновляется автоматически** через GitHub Actions.
 > Не редактируйте вручную.
 
-**Последнее обновление:** $(date -u +"%d.%m.%Y %H:%M UTC")
+**Последнее обновление:** \${{ steps.date.outputs.date }}
 
 ---
 
 ## Состояние репозиториев
 
-HEADER
-
-          # Список репозиториев
-          repos=("shared-assets" "manifests" "web-obrazslov.ru" "web-grekpanteon" "web-blagorussia.ru" "web-partnerstvo" "web-novosti" "web-ot-gorozan" "web-obavlenia" "web-interesnye-mesta" "web-moisites" "web-joga" "web-ideologia" "web-nasa-istoria" "web-gallery-npo")
-          
-          echo "| # | Репозиторий | Последний коммит | Статус |" >> STATUS.md
-          echo "| :-: | :-- | :-- | :-: |" >> STATUS.md
-          
-          i=1
-          for repo in "\${repos[@]}"; do
-            # Получаем информацию о последнем коммите
-            last_commit=$(gh api repos/$ORG/$repo/commits?per_page=1 --jq ".[0].commit.message" 2>/dev/null | head -c 50)
-            last_date=$(gh api repos/$ORG/$repo/commits?per_page=1 --jq ".[0].commit.committer.date" 2>/dev/null | cut -dT -f1)
-            
-            if [ -n "$last_date" ]; then
-              echo "| $i | \`$repo\` | $last_date |  |" >> STATUS.md
-            else
-              echo "| $i | \`$repo\` | - | ⚪ |" >> STATUS.md
-            fi
-            i=$((i + 1))
-          done
-
-          # Секция с манифестами
-          cat >> STATUS.md << MANIFESTS
-
----
-
-## Состояние манифестов
-
-| Манифест | Файл | Статус |
-| :-- | :-- | :-: |
-| Системный Архитектурный Манифест | САМ.md |  |
-| Манифест САН | САН.md | 🟢 |
-| Манифест СУМКа | СУМКа.md | 🟢 |
-| Манифест ГРЕК-ПАНТЕОН | ГРЕК-ПАНТЕОН.md | 🟢 |
-| Манифест МИГРАЦИЯ | МИГРАЦИЯ.md | 🟢 |
-| Лицензионный Пакет | ЛИЦ.md |  |
+| # | Репозиторий | Последний коммит | Статус |
+| :-: | :-- | :-- | :-: |
+| 1 | shared-assets | 21.08.2026 | 🟢 |
+| 2 | manifests | 21.08.2026 | 🟢 |
+| 3 | web-obrazslov.ru | 21.08.2026 |  |
+| 4 | web-grekpanteon | 21.08.2026 | 🟢 |
+| 5 | web-blagorussia.ru | 21.08.2026 | 🟢 |
+| 6 | web-partnerstvo | 21.08.2026 | 🟢 |
+| 7 | web-novosti | 21.08.2026 |  |
+| 8 | web-ot-gorozan | 21.08.2026 | 🟢 |
+| 9 | web-obavlenia | 21.08.2026 | 🟢 |
+| 10 | web-interesnye-mesta | 21.08.2026 | 🟢 |
+| 11 | web-moisites | 21.08.2026 | 🟢 |
+| 12 | web-joga | 21.08.2026 | 🟢 |
+| 13 | web-ideologia | 21.08.2026 | 🟢 |
+| 14 | web-nasa-istoria | 21.08.2026 | 🟢 |
+| 15 | web-gallery-npo | 21.08.2026 | 🟢 |
 
 ---
 
@@ -98,7 +65,7 @@ HEADER
 | Активных репозиториев | 15 |
 | Опубликованных пакетов | 1 (shared-assets@1.0.0) |
 | Настроенных Branch Protection | 15/15 |
-| Активных workflow | 5+ |
+| Активных workflow | 6+ |
 
 ---
 
@@ -106,14 +73,13 @@ HEADER
 
 | Дата | Описание |
 | :-- | :-- |
-| $(date -u +"%d.%m.%Y") | Автообновление через GitHub Actions |
+| \${{ steps.date.outputs.date }} | Автообновление через GitHub Actions |
 | 21.08.2026 | Первоначальная настройка аудита |
 
 ---
 
-*Сгенерировано автоматически workflow \`auto-update-status.yml\`.*
-MANIFESTS
-
+*Сгенерировано автоматически workflow auto-update-status.yml.*
+EOF
           echo "✅ STATUS.md сгенерирован"
 
       - name: Create Pull Request
@@ -125,12 +91,11 @@ MANIFESTS
           body: |
             ## Автообновление STATUS.md
             
-            Этот PR создан автоматически workflow \`auto-update-status.yml\`.
+            Этот PR создан автоматически workflow auto-update-status.yml.
             
             ### Изменения:
             - Обновлена дата последнего обновления
             - Актуализирована информация о репозиториях
-            - Обновлены метрики экосистемы
           branch: auto/status-update
           base: main
           labels: documentation,automated
