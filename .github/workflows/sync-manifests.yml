@@ -8,12 +8,13 @@ on:
       - "docs/manifests.yaml"
       - "scripts/sync_manifests.py"
       - ".github/workflows/sync-manifests.yml"
-
   schedule:
     - cron: "0 3 * * *"
   workflow_dispatch:
+
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   sync:
@@ -37,13 +38,32 @@ jobs:
       - name: Run sync
         run: python scripts/sync_manifests.py
 
-      - name: Commit and push
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(INFRA): auto-sync manifests metadata"
+          title: "chore(INFRA): автоматическая синхронизация метаданных манифестов"
+          body: |
+            Автоматическая синхронизация метаданных манифестов.
+            
+            **Что изменилось:**
+            - Обновлены версии манифестов (minor +1) при изменении контента
+            - Обновлены даты последних редакций
+            - Обновлены content hash
+            - Синхронизированы сгенерированные блоки в README.md и docs/manifests.yaml
+            
+            Этот PR создан автоматически workflow `sync-manifests.yml`.
+          branch: "chore/auto-sync-manifests"
+          delete-branch: true
+          labels: "automated, chore"
+          reviewers: "bobralv-cyber"
+
+      - name: Enable Auto-Merge
+        if: steps.cpr.outputs.pull-request-number != ''
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/manifests.yaml README.md
-          git add "*.md"
-          if ! git diff --staged --quiet; then
-            git commit -m "chore(INFRA): auto-sync manifests metadata [skip ci]"
-            git push
-          fi
+          echo "⏳ Включение автоматического мержа для PR #${{ steps.cpr.outputs.pull-request-number }}"
+          gh pr merge ${{ steps.cpr.outputs.pull-request-number }} --auto --squash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
