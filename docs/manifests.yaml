@@ -15,12 +15,12 @@ manifests:
   short_title: СУМКа
   title: Система Управления Медийным Контентом
   description: дистрибуция, соцсети, фиды
-  version: 1.7-н
+  version: 1.8-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-22'
+  last_revision: '2026-08-23'
   protocols: 1
-  content_hash: fc2269b1c1b00da74440d1d24fc8bc867d560cb0387551f2547bbe004be691bf
+  content_hash: 7f15ea63d4f86273dfa2da096cb8c228203252b21a9dd7be1f072b1f78bc8d2a
 - id: san
   file: САН.md
   short_title: САН
@@ -37,31 +37,31 @@ manifests:
   short_title: ГРЕК-ПАНТЕОН
   title: База знаний по античной мифологии
   description: База знаний по античной мифологии (16 505+ страниц, Hugo)
-  version: 1.5-н
+  version: 1.6-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-22'
+  last_revision: '2026-08-23'
   protocols: 1
-  content_hash: 3f19723d1744f7f57e2d18b0b06986b84785d6a328210c8561a5653db3256065
+  content_hash: 23b350c5db99ddf86579cc75a2bf8b95b94bffd55c3a641b7d22dcf83d5117ba
 - id: migraciya
   file: МИГРАЦИЯ.md
   short_title: МИГРАЦИЯ
   title: План миграции 14 доменов на новую инфраструктуру
   description: План миграции 14 доменов на новую инфраструктуру
-  version: 1.7-н
+  version: 1.8-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-22'
+  last_revision: '2026-08-23'
   protocols: 1
-  content_hash: ad8e7dc516a7e5b8c0448d0547416f52947c231795c8438eb01785286de38059
+  content_hash: bfd51adb42eb1719fef7bd75075cb169bb939c2a7ea0eda8de11cdc120cc887f
 - id: lic
   file: ЛИЦ.md
   short_title: ЛИЦ
   title: Лицензирование и интеллектуальная собственность
   description: Лицензирование и интеллектуальная собственность (CC BY 4.0 + MIT)
-  version: 1.6-н
+  version: 1.7-н
   status: active
   approved_date: '2026-08-10'
-  last_revision: '2026-08-19'
+  last_revision: '2026-08-23'
   protocols: 1
-  content_hash: ace1039cfa1529dd1b192f4c367b4f2311b287450e948c4fc21d8ee0396646fd
+  content_hash: 2f12586a9a0dac16466629d32630bce06625c46e556325c31eac683032aeb3ad
