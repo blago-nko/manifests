@@ -4,64 +4,64 @@ manifests:
   short_title: САМ
   title: Системный Архитектурный Манифест
   description: Системный Архитектурный Манифест (78 принципов, 14 доменов)
-  version: 2.8-н
+  version: 2.9-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-15'
+  last_revision: '2026-08-23'
   protocols: 3
-  content_hash: 6aee7dfa3153586e3c6780b006544ad6857ad9df572035a7f2e8f82e8ad06739
+  content_hash: 423a49d45ad274208e43f3c31a16b1703f32de69ad2c048e2316866a049a4c00
 - id: sumka
   file: СУМКа.md
   short_title: СУМКа
   title: Система Управления Медийным Контентом
   description: дистрибуция, соцсети, фиды
-  version: 1.6-н
+  version: 1.7-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-15'
+  last_revision: '2026-08-22'
   protocols: 1
-  content_hash: ecd47374d14b68bc28f45e4c7489eb6b1aabfd80519b6d53faaf922e58d62d5c
+  content_hash: fc2269b1c1b00da74440d1d24fc8bc867d560cb0387551f2547bbe004be691bf
 - id: san
   file: САН.md
   short_title: САН
   title: Сообщество Агентов Недвижимости
   description: Платформа САН (Сообщество Агентов Недвижимости, Next.js, RESO)
-  version: 1.4-н
+  version: 1.5-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-15'
+  last_revision: '2026-08-22'
   protocols: 1
-  content_hash: 243ddf9125ee85f0e1e80731a4464b498610efa2ce70f1113cd776c24150a282
+  content_hash: 7b82c5e94ff7d2bdc77af3aef30f6d92d29633e039374288612a0ca850e8ec03
 - id: grek-panteon
   file: ГРЕК-ПАНТЕОН.md
   short_title: ГРЕК-ПАНТЕОН
   title: База знаний по античной мифологии
   description: База знаний по античной мифологии (16 505+ страниц, Hugo)
-  version: 1.4-н
+  version: 1.5-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-15'
+  last_revision: '2026-08-22'
   protocols: 1
-  content_hash: a5cbd414ee4f9f2138defc26144e8fa7184f5b9b082a671869654d7a6a69c452
+  content_hash: 3f19723d1744f7f57e2d18b0b06986b84785d6a328210c8561a5653db3256065
 - id: migraciya
   file: МИГРАЦИЯ.md
   short_title: МИГРАЦИЯ
   title: План миграции 14 доменов на новую инфраструктуру
   description: План миграции 14 доменов на новую инфраструктуру
-  version: 1.6-н
+  version: 1.7-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-15'
+  last_revision: '2026-08-22'
   protocols: 1
-  content_hash: db472165ecb93fcc1aaee6757fffeed864197752484993812946413336ea5133
+  content_hash: ad8e7dc516a7e5b8c0448d0547416f52947c231795c8438eb01785286de38059
 - id: lic
   file: ЛИЦ.md
   short_title: ЛИЦ
   title: Лицензирование и интеллектуальная собственность
   description: Лицензирование и интеллектуальная собственность (CC BY 4.0 + MIT)
-  version: 1.5-н
+  version: 1.6-н
   status: active
   approved_date: '2026-08-10'
-  last_revision: '2026-08-15'
+  last_revision: '2026-08-19'
   protocols: 1
-  content_hash: c48e197cb711602e9e18cd2b3873bdeef15286f1ca933a6799d49c4b85a956e1
+  content_hash: ace1039cfa1529dd1b192f4c367b4f2311b287450e948c4fc21d8ee0396646fd
