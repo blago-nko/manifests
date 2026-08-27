@@ -4,7 +4,7 @@ manifests:
   short_title: САМ
   title: Системный Архитектурный Манифест
   description: Системный Архитектурный Манифест (78 принципов, 14 доменов)
-  version: 2.9-н
+  version: 2.10-н
   status: active
   approved_date: '2026-07-26'
   last_revision: '2026-08-23'
@@ -15,7 +15,7 @@ manifests:
   short_title: СУМКа
   title: Система Управления Медийным Контентом
   description: дистрибуция, соцсети, фиды
-  version: 1.8-н
+  version: 1.9-н
   status: active
   approved_date: '2026-07-26'
   last_revision: '2026-08-23'
