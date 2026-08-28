@@ -13,7 +13,7 @@
   python blogger_page_parser.py --seo-map ~/Projects/blagorussia.ru/data/blogger/migration_seo_map.json \
       --domain blagorussia.blogspot.com --out-dir ~/Projects/blagorussia.ru
 """
-import argparse, gzip, json, re, sys, time, urllib.request
+import argparse, gzip, hashlib, json, re, sys, time, urllib.request
 from pathlib import Path
 
 def fetch(url, retries=3):
@@ -95,7 +95,9 @@ def html_to_markdown(html):
 
 def parse_url(old_url, domain, out_dir, passport):
     slug = Path(old_url).stem or re.sub(r"[^a-z0-9-]", "-", old_url.lower())[:60]
-    md_path = out_dir / f"{slug}.md"
+    # Windows MAX_PATH: короткое имя файла; публичный URL — через url: в front matter
+    fname = slug if len(slug) <= 100 else slug[:80] + "-" + hashlib.md5(slug.encode()).hexdigest()[:8]
+    md_path = out_dir / f"{fname}.md"
     if md_path.exists():
         return 0
     html = fetch(f"https://{domain}{old_url}")
@@ -118,7 +120,7 @@ def parse_url(old_url, domain, out_dir, passport):
         fm.append(f"date: {date}")
     if desc:
         fm.append(f'description: "{desc.replace(chr(34), chr(39))}"')
-    fm += ["aliases:", f'  - "{old_url}"']
+    fm += ["aliases:", f'  - "{old_url}"', f'url: "/{slug}/"']
     if labels:
         fm += ["tags:"] + [f"  - {t}" for t in labels]
     fm += ["---", "", body_md, ""]
