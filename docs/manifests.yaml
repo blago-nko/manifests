@@ -4,12 +4,12 @@ manifests:
   short_title: САМ
   title: Системный Архитектурный Манифест
   description: Системный Архитектурный Манифест (78 принципов, 14 доменов)
-  version: 2.10-н
+  version: 2.11-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-23'
+  last_revision: '2026-08-27'
   protocols: 3
-  content_hash: 423a49d45ad274208e43f3c31a16b1703f32de69ad2c048e2316866a049a4c00
+  content_hash: 4f6695a724a59f5d10e617de216ec2435e36c88b2f0ece4b8ef46507b7ecfaa0
 - id: sumka
   file: СУМКа.md
   short_title: СУМКа
@@ -48,12 +48,12 @@ manifests:
   short_title: МИГРАЦИЯ
   title: План миграции 14 доменов на новую инфраструктуру
   description: План миграции 14 доменов на новую инфраструктуру
-  version: 1.8-н
+  version: 1.9-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-23'
+  last_revision: '2026-08-28'
   protocols: 1
-  content_hash: bfd51adb42eb1719fef7bd75075cb169bb939c2a7ea0eda8de11cdc120cc887f
+  content_hash: 9f6ecf5174e7ffe5fd17fd185547047ecde787a7ebb8ea120d5b17fc2887f3ab
 - id: lic
   file: ЛИЦ.md
   short_title: ЛИЦ
