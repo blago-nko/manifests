@@ -3,8 +3,6 @@ name: Update Manifest Dates
 on:
   push:
     branches: [ main ]
-    paths:
-      - '**.md'
 
 permissions:
   contents: write
