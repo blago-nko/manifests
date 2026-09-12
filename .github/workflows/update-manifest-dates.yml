@@ -1,0 +1,51 @@
+name: Update Manifest Dates
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**.md'
+
+permissions:
+  contents: write
+
+jobs:
+  update-dates:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'github-actions[bot]' }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v41
+        with:
+          files: '**/*.md'
+      
+      - name: Update dates in manifests
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          CURRENT_DATE=$(date +%Y-%m-%d)
+          echo "Current date: $CURRENT_DATE"
+          
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            if [[ "$file" == *.md ]]; then
+              echo "Processing: $file"
+              if grep -q "MANIFEST:METADATA:BEGIN" "$file"; then
+                sed -i -E "s/\|[[:space:]]*Дата последней редакции[[:space:]]*\|[[:space:]]*[0-9-]+[[:space:]]*\|/| Дата последней редакции | $CURRENT_DATE |/" "$file"
+                echo "Updated date in $file"
+              fi
+            fi
+          done
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(AUTO): обновлена дата последней редакции в манифестах"
+          file_pattern: "*.md"
+          commit_options: "--no-verify"
