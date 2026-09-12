@@ -6,6 +6,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   update-dates:
@@ -35,7 +36,6 @@ jobs:
           current_date = datetime.now().strftime('%Y-%m-%d')
           print(f"Current date: {current_date}")
           
-          # Найти все markdown файлы
           md_files = list(Path('.').rglob('*.md'))
           print(f"Found {len(md_files)} markdown files")
           
@@ -46,9 +46,7 @@ jobs:
                   with open(file_path, 'r', encoding='utf-8') as f:
                       content = f.read()
                   
-                  # Проверить наличие маркера метаданных
                   if 'MANIFEST:METADATA:BEGIN' in content:
-                      # Паттерн для поиска строки с датой
                       pattern = r'(\|\s*Дата последней редакции\s*\|\s*)\d{4}-\d{2}-\d{2}(\s*\|)'
                       replacement = rf'\g<1>{current_date}\g<2>'
                       
@@ -67,9 +65,13 @@ jobs:
               print(f"  - {f}")
           PYTHON_SCRIPT
 
-      - name: Commit and push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
         with:
-          commit_message: "chore(AUTO): обновлена дата последней редакции в манифестах"
-          file_pattern: "*.md"
-          commit_options: "--no-verify"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(AUTO): обновлена дата последней редакции в манифестах"
+          title: "chore(AUTO): обновлена дата последней редакции в манифестах"
+          body: "Автоматическое обновление дат в манифестах"
+          branch: "auto/update-manifest-dates"
+          base: "main"
+          labels: "automated"
