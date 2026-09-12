@@ -19,27 +19,53 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v41
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          files: '**/*.md'
-      
+          python-version: '3.11'
+
       - name: Update dates in manifests
-        if: steps.changed-files.outputs.any_changed == 'true'
         run: |
-          CURRENT_DATE=$(date +%Y-%m-%d)
-          echo "Current date: $CURRENT_DATE"
+          python3 << 'PYTHON_SCRIPT'
+          import os
+          import re
+          from datetime import datetime
+          from pathlib import Path
           
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            if [[ "$file" == *.md ]]; then
-              echo "Processing: $file"
-              if grep -q "MANIFEST:METADATA:BEGIN" "$file"; then
-                sed -i -E "s/\|[[:space:]]*Дата последней редакции[[:space:]]*\|[[:space:]]*[0-9-]+[[:space:]]*\|/| Дата последней редакции | $CURRENT_DATE |/" "$file"
-                echo "Updated date in $file"
-              fi
-            fi
-          done
+          current_date = datetime.now().strftime('%Y-%m-%d')
+          print(f"Current date: {current_date}")
+          
+          # Найти все markdown файлы
+          md_files = list(Path('.').rglob('*.md'))
+          print(f"Found {len(md_files)} markdown files")
+          
+          updated_files = []
+          
+          for file_path in md_files:
+              try:
+                  with open(file_path, 'r', encoding='utf-8') as f:
+                      content = f.read()
+                  
+                  # Проверить наличие маркера метаданных
+                  if 'MANIFEST:METADATA:BEGIN' in content:
+                      # Паттерн для поиска строки с датой
+                      pattern = r'(\|\s*Дата последней редакции\s*\|\s*)\d{4}-\d{2}-\d{2}(\s*\|)'
+                      replacement = rf'\g<1>{current_date}\g<2>'
+                      
+                      new_content = re.sub(pattern, replacement, content)
+                      
+                      if new_content != content:
+                          with open(file_path, 'w', encoding='utf-8') as f:
+                              f.write(new_content)
+                          updated_files.append(str(file_path))
+                          print(f"Updated: {file_path}")
+              except Exception as e:
+                  print(f"Error processing {file_path}: {e}")
+          
+          print(f"\nTotal updated files: {len(updated_files)}")
+          for f in updated_files:
+              print(f"  - {f}")
+          PYTHON_SCRIPT
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
