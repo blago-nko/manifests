@@ -48,12 +48,12 @@ manifests:
   short_title: МИГРАЦИЯ
   title: План миграции 14 доменов на новую инфраструктуру
   description: План миграции 14 доменов на новую инфраструктуру
-  version: 1.10-н
+  version: 1.11-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-09-03'
+  last_revision: '2026-09-12'
   protocols: 1
-  content_hash: 58ac182a33d0c4e5bf0d52c898d10dcb2bbbb18b356c151ff26f5a594a860fc3
+  content_hash: 93ab80c70f2595a79806dd161920c749d8ccc710cc92b7123f7a1a246262c0fa
 - id: lic
   file: ЛИЦ.md
   short_title: ЛИЦ
