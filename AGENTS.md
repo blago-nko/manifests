@@ -127,9 +127,10 @@ def write_file(repo, path, content, message, branch="main"):
         data["sha"] = sha
     resp = requests.put(url, headers=HEADERS, json=data)
     return resp.status_code in [200, 201]
+```
 
-    Этот шаблон запрещено запускать локально — только в Google Colab или GitHub Actions.
-    
+Этот шаблон запрещено запускать локально — только в Google Colab или GitHub Actions.
+
 ---
 
 ## Ячейка 9 — Безопасность токенов
@@ -189,6 +190,8 @@ def write_file(repo, path, content, message, branch="main"):
 
 ### 5.4. Автообновление md-файлов
 Метаданные манифестов (шапка, таблица реквизитов, блок «Связанные документы») и таблица `README.md` перегенерируются скриптом `scripts/sync_manifests.py` из реестра `docs/manifests.yaml`: при каждом пуше в `main`, ежедневно по расписанию и вручную через Actions (workflow_dispatch). Тело манифестов редактируется только Человеком через PR — это источник правды.
+```
+
 ## Ячейка 15 — Правило именования веток
 
 ```markdown
@@ -223,6 +226,8 @@ def write_file(repo, path, content, message, branch="main"):
 | `INFRA` | Инфраструктура, скрипты, CI/CD |
 
 ---
+
+```
 
 ## Ячейка 16 — Примеры корректных имён веток
 
@@ -274,6 +279,8 @@ def write_file(repo, path, content, message, branch="main"):
 
 ---
 
+```
+
 ## Ячейка 19 — Шаблон Pull Request
 
 ```markdown
@@ -312,6 +319,8 @@ def write_file(repo, path, content, message, branch="main"):
 - [ ] GitHub Actions прошли зелёным статусом
 
 ---
+
+```
 
 ## Ячейка 20 — Автоматические проверки (GitHub Actions)
 
@@ -385,7 +394,7 @@ def write_file(repo, path, content, message, branch="main"):
 правки, прямые коммиты в main или diff-патчи для ручного применения.
 
 ### Шаг 1. GitHub Codespaces
-> Откройте https://github.com/blago-nko/manifests → `<> Code` → **Codespaces** → **Create codespace on main**
+> Откройте <https://github.com/blago-nko/manifests> → `<> Code` → **Codespaces** → **Create codespace on main**
 
 ### Шаг 2. Одна команда в терминале
 > Запустите патч-скрипт: он сам применит правки, создаст ветку, сделает
@@ -414,6 +423,7 @@ def write_file(repo, path, content, message, branch="main"):
 В связи с региональными ограничениями доступа к некоторым ИИ-сервисам, участникам разрешается создавать личные форки канонических репозиториев для выполнения задач, требующих использования таких сервисов (генерация контента, управление данными и др.).
 
 **Правила работы с форками:**
+
 - Форк создаётся от канонического репозитория организации `blago-nko`.
 - Вся разработка и использование ИИ-инструментов ведутся исключительно в личном форке.
 - Готовые изменения (код, сгенерированный контент) вносятся в канонический репозиторий **строго через Pull Request (PR)**.
@@ -421,6 +431,7 @@ def write_file(repo, path, content, message, branch="main"):
 - Перед созданием PR форк должен быть синхронизирован с актуальным состоянием канонического репозитория.
 
 **Запрещается:**
+
 - Делать личный форк каноническим репозиторием (единственным источником правды остаётся организация `blago-nko`).
 - Хранить в форке секреты или переменные окружения, предназначенные для продакшена.
 
@@ -431,6 +442,7 @@ def write_file(repo, path, content, message, branch="main"):
 В связи с региональными ограничениями доступа к некоторым ИИ-сервисам, участникам разрешается создавать личные форки канонических репозиториев для выполнения задач, требующих использования таких сервисов (генерация контента, управление данными и др.).
 
 **Правила работы с форками:**
+
 - Форк создаётся от канонического репозитория организации `blago-nko`.
 - Вся разработка и использование ИИ-инструментов ведутся исключительно в личном форке.
 - Готовые изменения (код, сгенерированный контент) вносятся в канонический репозиторий **строго через Pull Request (PR)**.
@@ -438,6 +450,7 @@ def write_file(repo, path, content, message, branch="main"):
 - Перед созданием PR форк должен быть синхронизирован с актуальным состоянием канонического репозитория.
 
 **Запрещается:**
+
 - Делать личный форк каноническим репозиторием (единственным источником правды остаётся организация `blago-nko`).
 - Хранить в форке секреты или переменные окружения, предназначенные для продакшена.
 
@@ -487,6 +500,7 @@ def write_file(repo, path, content, message, branch="main"):
 
 Код скрипта generate_redirect_map.py:
 
+```python
     import xml.etree.ElementTree as ET
     import json
     import re
@@ -494,26 +508,26 @@ def write_file(repo, path, content, message, branch="main"):
     def parse_blogger_feed(feed_path):
         tree = ET.parse(feed_path)
         root = tree.getroot()
-        
+
         entries = []
         for entry in root.findall('.//entry'):
             title = entry.find('title').text
             url = entry.find('link[@rel="alternate"]').get('href')
             published = entry.find('published').text
             slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')
-            
+
             entries.append({
                 'old_url': url,
                 'title': title,
                 'published': published,
                 'slug': slug
             })
-        
+
         return entries
 
     def generate_redirect_map(entries, site_type):
         redirect_map = {}
-        
+
         for entry in entries:
             if site_type == 'news':
                 year = entry['published'][:4]
@@ -523,9 +537,9 @@ def write_file(repo, path, content, message, branch="main"):
                 new_url = f"/topics/general/{entry['slug']}/"
             else:
                 new_url = f"/articles/{entry['slug']}/"
-            
+
             redirect_map[entry['old_url']] = new_url
-        
+
         return redirect_map
 
     entries = parse_blogger_feed('backup/feed.xml')
@@ -535,12 +549,14 @@ def write_file(repo, path, content, message, branch="main"):
         json.dump(redirect_map, f, indent=2, ensure_ascii=False)
 
     print(f"Сгенерировано {len(redirect_map)} редиректов")
+```
 
 ### 10.4 Проверки качества (Quality Gates)
 
 ИИ-агент должен выполнить следующие проверки перед завершением задачи:
 
 **Для миграционных скриптов**:
+
 - Все старые URL имеют соответствие в Redirect Map
 - Нет дубликатов новых URL
 - Все новые URL валидны (соответствуют структуре из СУМКа.md)
@@ -548,6 +564,7 @@ def write_file(repo, path, content, message, branch="main"):
 - Скрипт обработал 100% записей из feed.xml
 
 **Для Hugo-шаблонов**:
+
 - JSON-LD разметка валидна (проверка через Google Rich Results Test)
 - Open Graph теги заполнены корректно
 - Mobile-First адаптация работает (проверка через Lighthouse)
@@ -555,6 +572,7 @@ def write_file(repo, path, content, message, branch="main"):
 - Все изображения оптимизированы (WebP формат)
 
 **Для контента**:
+
 - Все изображения загружены на gallery.obrazslov.ru (Blogger, безлимитное хранение)
 - Все изображения ресайзнуты до 4 размеров (400, 800, 1200, 1600 px) согласно регламенту 5.6 СУМКа
 - PDF и медиа-паспорта загружены в R2 бакет blago-nko-backups
@@ -569,6 +587,7 @@ def write_file(repo, path, content, message, branch="main"):
 
 **Формат отчёта**:
 
+```markdown
     # Отчёт о миграции: [название задачи]
 
     **Дата**: YYYY-MM-DD
@@ -595,6 +614,8 @@ def write_file(repo, path, content, message, branch="main"):
     ## Рекомендации
 
     ...
+
+```
 
 ### 10.6 Координация между ИИ-агентами
 
