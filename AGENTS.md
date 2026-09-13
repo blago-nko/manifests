@@ -127,10 +127,10 @@ def write_file(repo, path, content, message, branch="main"):
         data["sha"] = sha
     resp = requests.put(url, headers=HEADERS, json=data)
     return resp.status_code in [200, 201]
-
-    Этот шаблон запрещено запускать локально — только в Google Colab или GitHub Actions.
 ```
-```plaintext
+
+Этот шаблон запрещено запускать локально — только в Google Colab или GitHub Actions.
+    
 ---
 
 ## Ячейка 9 — Безопасность токенов
@@ -190,13 +190,14 @@ def write_file(repo, path, content, message, branch="main"):
 
 ### 5.4. Автообновление md-файлов
 Метаданные манифестов (шапка, таблица реквизитов, блок «Связанные документы») и таблица `README.md` перегенерируются скриптом `scripts/sync_manifests.py` из реестра `docs/manifests.yaml`: при каждом пуше в `main`, ежедневно по расписанию и вручную через Actions (workflow_dispatch). Тело манифестов редактируется только Человеком через PR — это источник правды.
+```
+
 ## Ячейка 15 — Правило именования веток
 
 ```markdown
 ### 5.1 Работа с ветками и Pull Request (Branch Protocol)
 
 Все изменения в манифесты вносятся исключительно через **Pull Request** из отдельной ветки. Прямой коммит в `main` категорически запрещён и будет заблокирован Branch Protection Rules.
-
 
 #### 🌿 Правило именования веток
 
@@ -225,6 +226,8 @@ def write_file(repo, path, content, message, branch="main"):
 | `INFRA` | Инфраструктура, скрипты, CI/CD |
 
 ---
+
+```
 
 ## Ячейка 16 — Примеры корректных имён веток
 
@@ -276,6 +279,8 @@ def write_file(repo, path, content, message, branch="main"):
 
 ---
 
+```
+
 ## Ячейка 19 — Шаблон Pull Request
 
 ```markdown
@@ -314,6 +319,8 @@ def write_file(repo, path, content, message, branch="main"):
 - [ ] GitHub Actions прошли зелёным статусом
 
 ---
+
+```
 
 ## Ячейка 20 — Автоматические проверки (GitHub Actions)
 
@@ -387,7 +394,7 @@ def write_file(repo, path, content, message, branch="main"):
 правки, прямые коммиты в main или diff-патчи для ручного применения.
 
 ### Шаг 1. GitHub Codespaces
-> Откройте https://github.com/blago-nko/manifests → `<> Code` → **Codespaces** → **Create codespace on main**
+> Откройте <https://github.com/blago-nko/manifests> → `<> Code` → **Codespaces** → **Create codespace on main**
 
 ### Шаг 2. Одна команда в терминале
 > Запустите патч-скрипт: он сам применит правки, создаст ветку, сделает
@@ -489,6 +496,7 @@ def write_file(repo, path, content, message, branch="main"):
 
 Код скрипта generate_redirect_map.py:
 
+```python
     import xml.etree.ElementTree as ET
     import json
     import re
@@ -537,6 +545,7 @@ def write_file(repo, path, content, message, branch="main"):
         json.dump(redirect_map, f, indent=2, ensure_ascii=False)
 
     print(f"Сгенерировано {len(redirect_map)} редиректов")
+```
 
 ### 10.4 Проверки качества (Quality Gates)
 
@@ -571,6 +580,7 @@ def write_file(repo, path, content, message, branch="main"):
 
 **Формат отчёта**:
 
+```markdown
     # Отчёт о миграции: [название задачи]
 
     **Дата**: YYYY-MM-DD
@@ -597,6 +607,8 @@ def write_file(repo, path, content, message, branch="main"):
     ## Рекомендации
 
     ...
+
+```
 
 ### 10.6 Координация между ИИ-агентами
 
