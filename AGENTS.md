@@ -130,7 +130,7 @@ def write_file(repo, path, content, message, branch="main"):
 ```
 
 Этот шаблон запрещено запускать локально — только в Google Colab или GitHub Actions.
-    
+
 ---
 
 ## Ячейка 9 — Безопасность токенов
@@ -423,6 +423,7 @@ def write_file(repo, path, content, message, branch="main"):
 В связи с региональными ограничениями доступа к некоторым ИИ-сервисам, участникам разрешается создавать личные форки канонических репозиториев для выполнения задач, требующих использования таких сервисов (генерация контента, управление данными и др.).
 
 **Правила работы с форками:**
+
 - Форк создаётся от канонического репозитория организации `blago-nko`.
 - Вся разработка и использование ИИ-инструментов ведутся исключительно в личном форке.
 - Готовые изменения (код, сгенерированный контент) вносятся в канонический репозиторий **строго через Pull Request (PR)**.
@@ -430,6 +431,7 @@ def write_file(repo, path, content, message, branch="main"):
 - Перед созданием PR форк должен быть синхронизирован с актуальным состоянием канонического репозитория.
 
 **Запрещается:**
+
 - Делать личный форк каноническим репозиторием (единственным источником правды остаётся организация `blago-nko`).
 - Хранить в форке секреты или переменные окружения, предназначенные для продакшена.
 
@@ -440,6 +442,7 @@ def write_file(repo, path, content, message, branch="main"):
 В связи с региональными ограничениями доступа к некоторым ИИ-сервисам, участникам разрешается создавать личные форки канонических репозиториев для выполнения задач, требующих использования таких сервисов (генерация контента, управление данными и др.).
 
 **Правила работы с форками:**
+
 - Форк создаётся от канонического репозитория организации `blago-nko`.
 - Вся разработка и использование ИИ-инструментов ведутся исключительно в личном форке.
 - Готовые изменения (код, сгенерированный контент) вносятся в канонический репозиторий **строго через Pull Request (PR)**.
@@ -447,6 +450,7 @@ def write_file(repo, path, content, message, branch="main"):
 - Перед созданием PR форк должен быть синхронизирован с актуальным состоянием канонического репозитория.
 
 **Запрещается:**
+
 - Делать личный форк каноническим репозиторием (единственным источником правды остаётся организация `blago-nko`).
 - Хранить в форке секреты или переменные окружения, предназначенные для продакшена.
 
@@ -504,26 +508,26 @@ def write_file(repo, path, content, message, branch="main"):
     def parse_blogger_feed(feed_path):
         tree = ET.parse(feed_path)
         root = tree.getroot()
-        
+
         entries = []
         for entry in root.findall('.//entry'):
             title = entry.find('title').text
             url = entry.find('link[@rel="alternate"]').get('href')
             published = entry.find('published').text
             slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')
-            
+
             entries.append({
                 'old_url': url,
                 'title': title,
                 'published': published,
                 'slug': slug
             })
-        
+
         return entries
 
     def generate_redirect_map(entries, site_type):
         redirect_map = {}
-        
+
         for entry in entries:
             if site_type == 'news':
                 year = entry['published'][:4]
@@ -533,9 +537,9 @@ def write_file(repo, path, content, message, branch="main"):
                 new_url = f"/topics/general/{entry['slug']}/"
             else:
                 new_url = f"/articles/{entry['slug']}/"
-            
+
             redirect_map[entry['old_url']] = new_url
-        
+
         return redirect_map
 
     entries = parse_blogger_feed('backup/feed.xml')
