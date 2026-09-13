@@ -556,6 +556,7 @@ def write_file(repo, path, content, message, branch="main"):
 ИИ-агент должен выполнить следующие проверки перед завершением задачи:
 
 **Для миграционных скриптов**:
+
 - Все старые URL имеют соответствие в Redirect Map
 - Нет дубликатов новых URL
 - Все новые URL валидны (соответствуют структуре из СУМКа.md)
@@ -563,6 +564,7 @@ def write_file(repo, path, content, message, branch="main"):
 - Скрипт обработал 100% записей из feed.xml
 
 **Для Hugo-шаблонов**:
+
 - JSON-LD разметка валидна (проверка через Google Rich Results Test)
 - Open Graph теги заполнены корректно
 - Mobile-First адаптация работает (проверка через Lighthouse)
@@ -570,6 +572,7 @@ def write_file(repo, path, content, message, branch="main"):
 - Все изображения оптимизированы (WebP формат)
 
 **Для контента**:
+
 - Все изображения загружены на gallery.obrazslov.ru (Blogger, безлимитное хранение)
 - Все изображения ресайзнуты до 4 размеров (400, 800, 1200, 1600 px) согласно регламенту 5.6 СУМКа
 - PDF и медиа-паспорта загружены в R2 бакет blago-nko-backups
