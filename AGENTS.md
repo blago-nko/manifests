@@ -129,7 +129,8 @@ def write_file(repo, path, content, message, branch="main"):
     return resp.status_code in [200, 201]
 
     Этот шаблон запрещено запускать локально — только в Google Colab или GitHub Actions.
-    
+```
+```
 ---
 
 ## Ячейка 9 — Безопасность токенов
@@ -195,6 +196,7 @@ def write_file(repo, path, content, message, branch="main"):
 ### 5.1 Работа с ветками и Pull Request (Branch Protocol)
 
 Все изменения в манифесты вносятся исключительно через **Pull Request** из отдельной ветки. Прямой коммит в `main` категорически запрещён и будет заблокирован Branch Protection Rules.
+
 
 #### 🌿 Правило именования веток
 
