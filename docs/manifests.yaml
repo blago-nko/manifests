@@ -37,12 +37,12 @@ manifests:
   short_title: ГРЕК-ПАНТЕОН
   title: База знаний по античной мифологии
   description: База знаний по античной мифологии (16 505+ страниц, Hugo)
-  version: 1.6-н
+  version: 1.7-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-23'
+  last_revision: '2026-09-13'
   protocols: 1
-  content_hash: 23b350c5db99ddf86579cc75a2bf8b95b94bffd55c3a641b7d22dcf83d5117ba
+  content_hash: b701862f1ada0f01f6505f621c9f8e78e982585e1cb0dbb247ebc8c46bd7c8a9
 - id: migraciya
   file: МИГРАЦИЯ.md
   short_title: МИГРАЦИЯ
