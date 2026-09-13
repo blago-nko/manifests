@@ -130,7 +130,7 @@ def write_file(repo, path, content, message, branch="main"):
 
     Этот шаблон запрещено запускать локально — только в Google Colab или GitHub Actions.
 ```
-```
+```plaintext
 ---
 
 ## Ячейка 9 — Безопасность токенов
