@@ -133,7 +133,6 @@ def write_file(repo, path, content, message, branch="main"):
 
 ---
 
-
 ## 🔑 Безопасность токенов
 
 - Никогда не коммитьте токены в репозиторий.
