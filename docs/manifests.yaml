@@ -65,3 +65,14 @@ manifests:
   last_revision: '2026-08-23'
   protocols: 1
   content_hash: 2f12586a9a0dac16466629d32630bce06625c46e556325c31eac683032aeb3ad
+- id: agents
+  file: AGENTS.md
+  short_title: AGENTS
+  title: Инструкции для ИИ-агентов
+  description: Единые стандарты поведения ИИ-агентов экосистемы blago-nko
+  version: 1.3-н
+  status: active
+  approved_date: '2026-08-06'
+  last_revision: '2026-09-14'
+  protocols: 1
+  content_hash: 9b1b44b2acde06f9cf17dc35e00b9951567e7441fbcb93032336c76b459b4bfb
