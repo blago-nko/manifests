@@ -99,7 +99,7 @@
 
 <!-- README:REPOS:BEGIN -->
 
-- [manifests](https://github.com/blago-nko/manifests) — Р•РґРёРЅС‹Р№ РёСЃС‚РѕС‡РЅРёРє РїСЂР°РІРґС‹: Р°СЂС…РёС‚РµРєС‚СѓСЂРЅС‹Рµ РјР°РЅРёС„РµСЃС‚С‹ Рё СЃС‚Р°РЅРґР°СЂС‚С‹ СЌРєРѕСЃРёСЃС‚РµРјС‹ blago-nko
+- [manifests](https://github.com/blago-nko/manifests) — Единый источник правды: архитектурные манифесты и стандарты экосистемы blago-nko
 
 <!-- README:REPOS:END -->
 
