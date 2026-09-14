@@ -133,8 +133,6 @@ def write_file(repo, path, content, message, branch="main"):
 
 ---
 
-## Ячейка 9 — Безопасность токенов
-
 ## 🔑 Безопасность токенов
 
 - Никогда не коммитьте токены в репозиторий.
@@ -143,7 +141,7 @@ def write_file(repo, path, content, message, branch="main"):
 - При компрометации — немедленная ротация через GitHub Settings → Developer settings → Personal access tokens.
 - В ячейках Colab не используйте `os.environ` для хранения токенов — вводите их вручную в ячейку 1.
 
-## ✅ Примеры задач
+## 4. ✅ Примеры задач
 
 ### ✅ Правильно
 
@@ -159,7 +157,7 @@ def write_file(repo, path, content, message, branch="main"):
 - Сохранение файлов на локальный диск.
 - Прямой коммит в `main`.
 
-## 5. ПОРЯДОК ВНЕСЕНИЯ ИЗМЕНЕНИЙ В МАНИФЕСТЫ (Codespaces-Only Policy)
+## 5. 🚀 Порядок внесения изменений в манифесты (Codespaces-Only Policy) (Codespaces-Only Policy)
 
 Репозиторий `blago-nko/manifests` — высший орган архитектурного права экосистемы. Все изменения манифестов (САМ, САН, СУМКа, ГРЕК-ПАНТЕОН, МИГРАЦИЯ, ЛИЦ, AGENTS) вносятся **исключительно через GitHub Codespaces**. Локальное клонирование и `git push` вне Codespaces КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНЫ. GitHub Web UI допускается только для точечных опечаток, не меняющих смысл.
 
@@ -172,7 +170,7 @@ def write_file(repo, path, content, message, branch="main"):
 
 ### 5.2. Пошаговая инструкция для Человека
 
-1. **Откройте Codespaces:** на странице репозитория **Code → Codespaces → «+»** (или существующее пространство на https://github.com/codespaces).
+1. **Откройте Codespaces:** на странице репозитория **Code → Codespaces → «+»** (или существующее пространство на <https://github.com/codespaces>).
 2. **Включите терминал:** в окне «Вы доверяете авторам…» нажмите синюю кнопку доверия.
 3. **Создайте ветку:** `git pull origin main && git checkout -b fix/<имя>`.
 4. **Внесите правки** в редакторе (левая панель), сохраните `Ctrl+S`.
@@ -184,7 +182,7 @@ def write_file(repo, path, content, message, branch="main"):
 7. **Чеки и ревью:** вкладка **Checks** зелёная; approve Архитектурного комитета.
 8. **Мерж:** **Squash and merge**, удалить ветку.
 9. **Контроль:** дождаться `chore(INFRA): auto-sync manifests metadata [skip ci]`, проверить результат в `main`.
-10. **Остановите Codespace:** https://github.com/codespaces → «⋯» → **Stop/Delete**.
+10. **Остановите Codespace:** <https://github.com/codespaces> → «⋯» → **Stop/Delete**.
 
 ### 5.3. Роль ИИ-агента
 
@@ -194,9 +192,9 @@ def write_file(repo, path, content, message, branch="main"):
 
 Метаданные манифестов (шапка, таблица реквизитов, блок «Связанные документы») и таблица `README.md` перегенерируются скриптом `scripts/sync_manifests.py` из реестра `docs/manifests.yaml`: при каждом пуше в `main`, ежедневно по расписанию и вручную через Actions (workflow_dispatch). Тело манифестов редактируется только Человеком через PR — это источник правды.
 
-## Ячейка 15 — Правило именования веток
+### 5.5. Работа с ветками и Pull Request (Branch Protocol)
 
-### 5.1 Работа с ветками и Pull Request (Branch Protocol)
+#### 5.5.1. Правило именования веток
 
 Все изменения в манифесты вносятся исключительно через **Pull Request** из отдельной ветки. Прямой коммит в `main` категорически запрещён и будет заблокирован Branch Protection Rules.
 
@@ -228,7 +226,7 @@ def write_file(repo, path, content, message, branch="main"):
 
 ```
 
-## Ячейка 16 — Примеры корректных имён веток
+#### 5.5.2. Примеры корректных имён веток
 
 **Примеры корректных имен:**
 
@@ -276,7 +274,7 @@ def write_file(repo, path, content, message, branch="main"):
 [SUMKA-CHORE-008] markdown cleanup
 ```
 
-## Ячейка 19 — Шаблон Pull Request
+### 5.6. Шаблон Pull Request
 
 #### 🔀 Шаблон Pull Request
 
@@ -313,7 +311,7 @@ def write_file(repo, path, content, message, branch="main"):
 - [ ] GitHub Actions прошли зелёным статусом
 ```
 
-## Ячейка 20 — Автоматические проверки (GitHub Actions)
+### 5.7. Автоматические проверки (GitHub Actions)
 
 #### 🤖 Автоматические проверки (GitHub Actions)
 
@@ -440,9 +438,9 @@ def write_file(repo, path, content, message, branch="main"):
 - Системный Архитектурный Манифест (САМ)
 - Лицензионный Пакет (ЛИЦ)
 
-## РАЗДЕЛ 10. ИНСТРУКЦИИ ДЛЯ ИИ-АГЕНТОВ ПО МИГРАЦИИ
+## 7. 📜 Инструкции для ИИ-агентов по миграции
 
-### 10.1 Роль ИИ-агента в миграции
+### 7.1 Роль ИИ-агента в миграции
 
 ИИ-агенты (Qwen, Claude, GPT-4) участвуют в миграции экосистемы БЛАГО-НКО в следующих ролях:
 
@@ -452,7 +450,7 @@ def write_file(repo, path, content, message, branch="main"):
 4. **Контент-аналитик** — парсинг Blogger XML, извлечение метаданных
 5. **Тестировщик** — автоматическая проверка 301-редиректов, PageSpeed
 
-### 10.2 Протоколы работы ИИ-агентов
+### 7.2 Протоколы работы ИИ-агентов
 
 **Обязательные правила**:
 
@@ -464,7 +462,7 @@ def write_file(repo, path, content, message, branch="main"):
 3. **Atomic Commits** — каждый коммит содержит одно логическое изменение
 4. **Documentation First** — перед написанием кода обновить соответствующий манифест
 
-### 10.3 Автоматизация через ИИ-агентов
+### 7.3 Автоматизация через ИИ-агентов
 
 **Пример: ИИ-агент генерирует Redirect Map**
 
@@ -521,7 +519,7 @@ def write_file(repo, path, content, message, branch="main"):
     print(f"Сгенерировано {len(redirect_map)} редиректов")
 ```
 
-### 10.4 Проверки качества (Quality Gates)
+### 7.4 Проверки качества (Quality Gates)
 
 ИИ-агент должен выполнить следующие проверки перед завершением задачи:
 
@@ -551,7 +549,7 @@ def write_file(repo, path, content, message, branch="main"):
 - Мета-теги (title, description) заполнены
 - Нет битых ссылок (проверка через broken-link-checker)
 
-### 10.5 Отчётность ИИ-агента
+### 7.5 Отчётность ИИ-агента
 
 После выполнения каждой задачи миграции ИИ-агент должен создать отчёт:
 
@@ -587,7 +585,7 @@ def write_file(repo, path, content, message, branch="main"):
 
 ```
 
-### 10.6 Координация между ИИ-агентами
+### 7.6 Координация между ИИ-агентами
 
 При работе нескольких ИИ-агентов (например, Qwen + Claude):
 
