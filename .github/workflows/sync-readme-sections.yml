@@ -1,0 +1,51 @@
+name: Sync README sections
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run sync
+        run: python scripts/sync_readme_sections.py
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(INFRA): auto-sync README sections"
+          title: "chore(INFRA): автообновление секций README (дерево, репозитории, статус)"
+          body: "Автоматически обновлены секции README.md: дерево файлов, список репозиториев организации, ссылка на STATUS.md."
+          branch: "chore/auto-sync-readme"
+          delete-branch: true
+          labels: "automated, chore"
+          reviewers: "bobralv-cyber"
+
+      - name: Enable Auto-Merge
+        if: steps.cpr.outputs.pull-request-number != ''
+        run: |
+          gh pr merge ${{ steps.cpr.outputs.pull-request-number }} --auto --squash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
