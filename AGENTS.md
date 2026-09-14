@@ -170,7 +170,7 @@ def write_file(repo, path, content, message, branch="main"):
 
 ### 5.2. Пошаговая инструкция для Человека
 
-1. **Откройте Codespaces:** на странице репозитория **Code → Codespaces → «+»** (или существующее пространство на https://github.com/codespaces).
+1. **Откройте Codespaces:** на странице репозитория **Code → Codespaces → «+»** (или существующее пространство на <https://github.com/codespaces>).
 2. **Включите терминал:** в окне «Вы доверяете авторам…» нажмите синюю кнопку доверия.
 3. **Создайте ветку:** `git pull origin main && git checkout -b fix/<имя>`.
 4. **Внесите правки** в редакторе (левая панель), сохраните `Ctrl+S`.
@@ -182,7 +182,7 @@ def write_file(repo, path, content, message, branch="main"):
 7. **Чеки и ревью:** вкладка **Checks** зелёная; approve Архитектурного комитета.
 8. **Мерж:** **Squash and merge**, удалить ветку.
 9. **Контроль:** дождаться `chore(INFRA): auto-sync manifests metadata [skip ci]`, проверить результат в `main`.
-10. **Остановите Codespace:** https://github.com/codespaces → «⋯» → **Stop/Delete**.
+10. **Остановите Codespace:** <https://github.com/codespaces> → «⋯» → **Stop/Delete**.
 
 ### 5.3. Роль ИИ-агента
 
