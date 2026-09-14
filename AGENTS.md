@@ -600,4 +600,3 @@ def write_file(repo, path, content, message, branch="main"):
 
 - Системный Архитектурный Манифест (САМ)
 - Лицензионный Пакет (ЛИЦ)
-
