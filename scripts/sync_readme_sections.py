@@ -41,13 +41,13 @@ def fetch_repos() -> list[dict] | None:
         proc = subprocess.run(
             ["gh", "api", f"orgs/{ORG}/repos?per_page=100",
              "-q", '.[] | [.name, (.description // ""), .html_url] | @tsv'],
-            capture_output=True, text=True, check=True, timeout=60,
+            capture_output=True, check=True, timeout=60,
         )
     except Exception as exc:
         print(f"⚠️ Репозитории организации недоступны: {exc}")
         return None
     repos = []
-    for line in proc.stdout.splitlines():
+    for line in proc.stdout.decode("utf-8").splitlines():
         parts = line.split("\t")
         if len(parts) == 3:
             repos.append({"name": parts[0], "desc": parts[1] or "—", "url": parts[2]})
