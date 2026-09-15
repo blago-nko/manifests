@@ -65,6 +65,7 @@
 - [.markdownlint.yaml](.markdownlint.yaml)
 - [.markdownlintignore](.markdownlintignore)
 - [AGENTS.md](AGENTS.md)
+- [domains-graph.yaml](domains-graph.yaml)
 - [LICENSE](LICENSE)
 - [LICENSE-CONTENT](LICENSE-CONTENT)
 - [README.md](README.md)
