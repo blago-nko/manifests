@@ -61,6 +61,7 @@
   - [sync_readme_sections.py](scripts/sync_readme_sections.py)
   - [update_status.py](scripts/update_status.py)
 - [.cursorrules](.cursorrules)
+- [.gitignore](.gitignore)
 - [.markdownlint-cli2.jsonc](.markdownlint-cli2.jsonc)
 - [.markdownlint.yaml](.markdownlint.yaml)
 - [.markdownlintignore](.markdownlintignore)
