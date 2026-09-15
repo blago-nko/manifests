@@ -44,6 +44,7 @@ jobs:
           reviewers: "bobralv-cyber"
 
       - name: Enable Auto-Merge
+        continue-on-error: true
         if: steps.cpr.outputs.pull-request-number != ''
         run: |
           gh pr merge ${{ steps.cpr.outputs.pull-request-number }} --auto --squash
