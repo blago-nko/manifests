@@ -70,6 +70,7 @@
 - [LICENSE-CONTENT](LICENSE-CONTENT)
 - [README.md](README.md)
 - [STATUS.md](STATUS.md)
+- [TASKS.md](TASKS.md)
 - [ГРЕК-ПАНТЕОН.md](ГРЕК-ПАНТЕОН.md)
 - [ЛИЦ.md](ЛИЦ.md)
 - [МИГРАЦИЯ.md](МИГРАЦИЯ.md)
