@@ -1,0 +1,135 @@
+# =============================================================
+# domains-graph.yaml
+# Единственный машиночитаемый источник связей экосистемы (САМ, Протокол 016.1)
+# Формат: YAML, UTF-8, комментарии для человека (016.6)
+# Владелец: ИИ-агент «Хранитель графа» (016.5; AGENTS.md разд. 8)
+# Правило: новые домен/связь/категория — СНАЧАЛА сюда через PR (016.3)
+# Генераторы (Issue Forms, RSS, sitemap) берут категории ТОЛЬКО отсюда (016.4)
+# =============================================================
+
+version: 1
+updated: "2026-09-16"
+source: "САМ.md п.1.2, п.1.3 (Протокол 016), Приложение X; МИГРАЦИЯ.md разд. 5.1"
+
+contours:
+  A:
+    github_org: blago-nko
+    note: основная сеть
+  B:
+    github_org: can-secure-dev
+    note: изолированный контур ПДн (152-ФЗ)
+  V:
+    note: сайт-витрина НКО
+
+# --- 14 доменов экосистемы (САМ п.1.2) ---
+domains:
+  # A. Core Network: 11 тематических RSS-сайтов (Hugo + GitHub Pages, ветка main, Actions)
+  - fqdn: blagorussia.ru
+    role: rss-hub            # хаб архитектуры Hub and Spokes (МИГРАЦИЯ 5.1.1.2)
+    contour: A
+    engine: Hugo
+    hosting: GitHub Pages
+  - fqdn: obrazslov.ru
+    role: rss-site
+    contour: A
+    engine: Hugo
+    hosting: GitHub Pages
+  - fqdn: partnerstvo.blagorussia.ru
+    role: rss-site
+    contour: A
+    engine: Hugo
+    hosting: GitHub Pages
+  - fqdn: novosti.blagorussia.ru
+    role: rss-site
+    contour: A
+    engine: Hugo
+    hosting: GitHub Pages
+  - fqdn: ot-gorozan.blagorussia.ru
+    role: rss-site
+    contour: A
+    engine: Hugo
+    hosting: GitHub Pages
+  - fqdn: obavlenia.blagorussia.ru
+    role: rss-site
+    contour: A
+    engine: Hugo
+    hosting: GitHub Pages
+  - fqdn: interesnye-mesta.obrazslov.ru
+    role: rss-site
+    contour: A
+    engine: Hugo
+    hosting: GitHub Pages
+  - fqdn: moisites.blagorussia.ru
+    role: rss-site
+    contour: A
+    engine: Hugo
+    hosting: GitHub Pages
+  - fqdn: joga.blagorussia.ru
+    role: rss-site
+    contour: A
+    engine: Hugo
+    hosting: GitHub Pages
+  - fqdn: ideologia.obrazslov.ru
+    role: rss-site
+    contour: A
+    engine: Hugo
+    hosting: GitHub Pages
+  - fqdn: nasa-istoria.blagorussia.ru
+    role: rss-site
+    contour: A
+    engine: Hugo
+    hosting: GitHub Pages
+
+  # b. База знаний по античной мифологии (Этап 1: Hugo-дамп -> Этап 2: Astro)
+  - fqdn: grekpanteon.obrazslov.ru
+    role: knowledge-base
+    contour: A
+    engine: Astro
+    hosting: GitHub Pages
+
+  # c. Платформа САН (изолированный контур B, 152-ФЗ)
+  - fqdn: can.blagorussia.ru
+    role: pdn-platform
+    contour: B
+    engine: Next.js
+    hosting: Vercel
+    isolated: true           # Progressive Contour Separation (B.1): связей с контуром A нет
+
+  # d. Сайт-витрина НКО
+  - fqdn: gallery.obrazslov.ru
+    role: nko-vitrina
+    contour: V
+    engine: Blogger
+    hosting: Blogger
+
+# --- Технические поддомены (вне 14 доменов) ---
+infra:
+  - fqdn: r2.blagorussia.ru
+    role: storage-cdn        # роль уточнить: INFRA-020
+    note: технический поддомен, не входит в 14 доменов
+
+# --- Междоменные связи ---
+links:
+  - type: hub-and-spokes     # МИГРАЦИЯ 5.1.1.2
+    hub: blagorussia.ru
+    spokes:
+      - obrazslov.ru
+      - partnerstvo.blagorussia.ru
+      - novosti.blagorussia.ru
+      - ot-gorozan.blagorussia.ru
+      - obavlenia.blagorussia.ru
+      - interesnye-mesta.obrazslov.ru
+      - moisites.blagorussia.ru
+      - joga.blagorussia.ru
+      - ideologia.obrazslov.ru
+      - nasa-istoria.blagorussia.ru
+  - type: shared-component   # Приложение Г6: баннер на всех 14 сайтах
+    component: CookieConsent.js
+    applies_to: all-14
+
+# --- Единая таксономия (016.2) ---
+taxonomy:
+  # Состав категорий в манифестах не зафиксирован; наполнение — задача Хранителя графа.
+  # До наполнения генераторы НЕ используют категории (хардкод запрещён, 016.4).
+  shared_categories: []      # INFRA-020
+  subtaxonomies: {}          # INFRA-020
