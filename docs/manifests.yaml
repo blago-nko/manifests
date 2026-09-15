@@ -36,7 +36,7 @@ manifests:
   file: ГРЕК-ПАНТЕОН.md
   short_title: ГРЕК-ПАНТЕОН
   title: База знаний по античной мифологии
-  description: База знаний по античной мифологии (16 505+ страниц, Hugo)
+  description: База знаний по античной мифологии (~350 страниц сейчас; цель 16 505+, Hugo→Astro)
   version: 1.8-н
   status: active
   approved_date: '2026-07-26'
