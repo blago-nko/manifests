@@ -46,9 +46,9 @@
 | **SEC-001** | Аудит Secrets после сброса | Проверить уцелевшие секреты, скомпрометированные — ротировать | 🔴 | 👤 | ⬜ | Требует доступа Основателя |
 | **ORG-001** | Верификация `can-secure-dev` | Проверить, что org пуста; подготовить к Этапу 2 САН | 🟡 | 👤 | ⬜ | ПДн-контур, 152-ФЗ |
 | **PROC-001** | Автовалидация `TASKS.md` | В `manifest-consistency-check.yml`: у активных задач есть статус, у закрытых — результат | 🟠 | 🤖→👤 | ⬜ | Защита от протухания реестра |
-| **VERIFY-001** | Верификация существующих скриптов | Проверить 10 `.py` файлов из `/scripts/` | 🔴 | 🤖→👤 | ⬜ | Статус в Реестре |
-| **VERIFY-002** | Верификация существующих workflows | Проверить 13 `.yml` из `.github/workflows/` | 🔴 | 🤖→👤 | ⬜ | Статус в Реестре |
-| **VERIFY-003** | Верификация конфигов и шаблонов | Проверить применимость 3 `.json`, шаблона PR, конфигов линтера, `manifests.yaml`, `STATUS.md` | 🟠 | 🤖→👤 | ⬜ | Статус в Реестре |
+| **VERIFY-001** | Верификация существующих скриптов | Проверить 10 `.py` файлов из `/scripts/` | 🔴 | 🤖→👤 | ✅ | Статус в Реестре |
+| **VERIFY-002** | Верификация существующих workflows | Проверить 13 `.yml` из `.github/workflows/` | 🔴 | 🤖→👤 | ✅ | Статус в Реестре |
+| **VERIFY-003** | Верификация конфигов и шаблонов | Проверить применимость 3 `.json`, шаблона PR, конфигов линтера, `manifests.yaml`, `STATUS.md` | 🟠 | 🤖→👤 | ✅ | Статус в Реестре |
 
 ---
 
@@ -72,6 +72,7 @@
 | **INFRA-018** | continue-on-error для Enable Auto-Merge во всех sync-workflows | awk-вставка флага | 🟠 | 🤖→👤 | ✅ | Закрыт PR 195 |
 | **INFRA-019** | Удаление update-manifest-dates.yml (осцилляция дат) | git rm воркфлоу | 🔴 | 🤖→ | ✅ | Закрыт PR 199 |
 | **INFRA-020** | Наполнение таксономии domains-graph, уточнение ролей хаба и r2 | общие категории и подтаксономии по 016.2 | 🟠 | 🤖→ | ⬜ | После INFRA-001 |
+| **INFRA-021** | Форматирование CHANGELOG.md и ГРЕК-ПАНТЕОН.md под markdownlint | Убрать .markdownlintignore (SAM-INFRA-011) | 🟡 |  | ⬜ | После VERIFY |
 
 ---
 
@@ -100,39 +101,39 @@
 
 | Путь | Манифест | Статус | Задача | Имя определено |
 |:---|:---|:---:|:---|:---:|
-| `scripts/apply_arch_patches.py` | AGENTS/САМ | ⚠️ Не проверено | VERIFY-001 | ✅ Да |
-| `scripts/blogger_page_parser.py` | МИГРАЦИЯ | ⚠️ Не проверено | VERIFY-001 | ✅ Да |
-| `scripts/blogger_postid_rescue.py` | МИГРАЦИЯ | ⚠️ Не проверено | VERIFY-001 | ✅ Да |
-| `scripts/image_storage_adapter.py` | САМ | ⚠️ Не проверено | VERIFY-001 | ✅ Да |
-| `scripts/pdn_scanner.py` | САН | ⚠️ Не проверено | VERIFY-001 | ✅ Да |
-| `scripts/sanitize_images.py` | САМ/СУМКа | ⚠️ Не проверено | VERIFY-001 | ✅ Да |
-| `scripts/sync_manifests.py` | САМ | ⚠️ Не проверено | VERIFY-001 | ✅ Да |
-| `scripts/sync_readme_licenses.py` | ЛИЦ | ⚠️ Не проверено | VERIFY-001 | ✅ Да |
-| `scripts/sync_readme_sections.py` | САМ | ⚠️ Не проверено | VERIFY-001 | ✅ Да |
-| `scripts/update_status.py` | САМ/СУМКа | ⚠️ Не проверено | VERIFY-001 | ✅ Да |
-| `scripts/branch-protection.json` | САМ | ⚠️ Не проверено | VERIFY-003 | ✅ Да |
-| `scripts/ruleset.json` | САМ | ⚠️ Не проверено | VERIFY-003 | ✅ Да |
-| `scripts/ruleset-repo.json` | САМ | ⚠️ Не проверено | VERIFY-003 | ✅ Да |
-| `.github/workflows/apply-architecture-patches.yml` | AGENTS | ⚠️ Не проверено | VERIFY-002 | ✅ Да |
-| `.github/workflows/architecture-check.yml` | САМ | ⚠️ Не проверено | VERIFY-002 | ✅ Да |
-| `.github/workflows/auto-update-status.yml` | САМ | ⚠️ Не проверено | VERIFY-002 | ✅ Да |
-| `.github/workflows/license-check.yml` | ЛИЦ | ⚠️ Не проверено | VERIFY-002 | ✅ Да |
-| `.github/workflows/manifest-consistency-check.yml` | INFRA | ⚠️ Не проверено | VERIFY-002 | ✅ Да |
-| `.github/workflows/manifest-lint.yml` | INFRA | ⚠️ Не проверено | VERIFY-002 | ✅ Да |
-| `.github/workflows/markdown-lint.yml` | INFRA | ⚠️ Не проверено | VERIFY-002 | ✅ Да |
-| `.github/workflows/pr-prefix-check.yml` | AGENTS | ⚠️ Не проверено | VERIFY-002 | ✅ Да |
-| `.github/workflows/readme-license-check.yml` | ЛИЦ | ⚠️ Не проверено | VERIFY-002 | ✅ Да |
-| `.github/workflows/sync-manifests.yml` | САМ | ⚠️ Не проверено | VERIFY-002 | ✅ Да |
-| `.github/workflows/sync-readme-sections.yml` | САМ | ⚠️ Не проверено | VERIFY-002 | ✅ Да |
-| `.github/workflows/update-manifest-dates.yml` | САМ | ⚠️ Не проверено | VERIFY-002 | ✅ Да |
-| `.github/workflows/update-status.yml` | САМ | ⚠️ Не проверено | VERIFY-002 | ✅ Да |
-| `.github/PULL_REQUEST_TEMPLATE.md` | AGENTS | ⚠️ Не проверено | VERIFY-003 | ✅ Да |
-| `docs/manifests.yaml` | САМ/README | ⚠️ Не проверено | VERIFY-003 | ✅ Да |
-| `docs/STATUS.md` | САМ/МИГРАЦИЯ/СУМКа | ⚠️ Не проверено | VERIFY-003 | ✅ Да |
-| `.cursorrules` | САМ | ⚠️ Не проверено | VERIFY-003 | ✅ Да |
-| `.markdownlint-cli2.jsonc` | INFRA | ⚠️ Не проверено | VERIFY-003 | ✅ Да |
-| `.markdownlint.yaml` | INFRA | ⚠️ Не проверено | VERIFY-003 | ✅ Да |
-| `.markdownlintignore` | INFRA | ⚠️ Не проверено | VERIFY-003 | ✅ Да |
+| `scripts/apply_arch_patches.py` | AGENTS/САМ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-001 | ✅ Да |
+| `scripts/blogger_page_parser.py` | МИГРАЦИЯ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-001 | ✅ Да |
+| `scripts/blogger_postid_rescue.py` | МИГРАЦИЯ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-001 | ✅ Да |
+| `scripts/image_storage_adapter.py` | САМ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-001 | ✅ Да |
+| `scripts/pdn_scanner.py` | САН | ✅ Проверено (VERIFY-001/002/003) | VERIFY-001 | ✅ Да |
+| `scripts/sanitize_images.py` | САМ/СУМКа | ✅ Проверено (VERIFY-001/002/003) | VERIFY-001 | ✅ Да |
+| `scripts/sync_manifests.py` | САМ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-001 | ✅ Да |
+| `scripts/sync_readme_licenses.py` | ЛИЦ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-001 | ✅ Да |
+| `scripts/sync_readme_sections.py` | САМ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-001 | ✅ Да |
+| `scripts/update_status.py` | САМ/СУМКа | ✅ Проверено (VERIFY-001/002/003) | VERIFY-001 | ✅ Да |
+| `scripts/branch-protection.json` | САМ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-003 | ✅ Да |
+| `scripts/ruleset.json` | САМ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-003 | ✅ Да |
+| `scripts/ruleset-repo.json` | САМ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-003 | ✅ Да |
+| `.github/workflows/apply-architecture-patches.yml` | AGENTS | ✅ Проверено (VERIFY-001/002/003) | VERIFY-002 | ✅ Да |
+| `.github/workflows/architecture-check.yml` | САМ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-002 | ✅ Да |
+| `.github/workflows/auto-update-status.yml` | САМ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-002 | ✅ Да |
+| `.github/workflows/license-check.yml` | ЛИЦ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-002 | ✅ Да |
+| `.github/workflows/manifest-consistency-check.yml` | INFRA | ✅ Проверено (VERIFY-001/002/003) | VERIFY-002 | ✅ Да |
+| `.github/workflows/manifest-lint.yml` | INFRA | ✅ Проверено (VERIFY-001/002/003) | VERIFY-002 | ✅ Да |
+| `.github/workflows/markdown-lint.yml` | INFRA | ✅ Проверено (VERIFY-001/002/003) | VERIFY-002 | ✅ Да |
+| `.github/workflows/pr-prefix-check.yml` | AGENTS | ✅ Проверено (VERIFY-001/002/003) | VERIFY-002 | ✅ Да |
+| `.github/workflows/readme-license-check.yml` | ЛИЦ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-002 | ✅ Да |
+| `.github/workflows/sync-manifests.yml` | САМ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-002 | ✅ Да |
+| `.github/workflows/sync-readme-sections.yml` | САМ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-002 | ✅ Да |
+| `.github/workflows/update-manifest-dates.yml` | САМ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-002 | ✅ Да |
+| `.github/workflows/update-status.yml` | САМ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-002 | ✅ Да |
+| `.github/PULL_REQUEST_TEMPLATE.md` | AGENTS | ✅ Проверено (VERIFY-001/002/003) | VERIFY-003 | ✅ Да |
+| `docs/manifests.yaml` | САМ/README | ✅ Проверено (VERIFY-001/002/003) | VERIFY-003 | ✅ Да |
+| `docs/STATUS.md` | САМ/МИГРАЦИЯ/СУМКа | ✅ Проверено (VERIFY-001/002/003) | VERIFY-003 | ✅ Да |
+| `.cursorrules` | САМ | ✅ Проверено (VERIFY-001/002/003) | VERIFY-003 | ✅ Да |
+| `.markdownlint-cli2.jsonc` | INFRA | ✅ Проверено (VERIFY-001/002/003) | VERIFY-003 | ✅ Да |
+| `.markdownlint.yaml` | INFRA | ✅ Проверено (VERIFY-001/002/003) | VERIFY-003 | ✅ Да |
+| `.markdownlintignore` | INFRA | ✅ Проверено (VERIFY-001/002/003) | VERIFY-003 | ✅ Да |
 
 ### Блок Б: Отсутствует — имя определено (требуют создания)
 
