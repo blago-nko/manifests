@@ -4,23 +4,23 @@ manifests:
   short_title: САМ
   title: Системный Архитектурный Манифест
   description: Системный Архитектурный Манифест (78 принципов, 14 доменов)
-  version: 2.11-н
+  version: 2.12-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-27'
+  last_revision: '2026-09-15'
   protocols: 3
-  content_hash: 4f6695a724a59f5d10e617de216ec2435e36c88b2f0ece4b8ef46507b7ecfaa0
+  content_hash: 012875357bf3a2156681674eb20c5d1ba5d15e21ae0d94183192beb5e98106fd
 - id: sumka
   file: СУМКа.md
   short_title: СУМКа
   title: Система Управления Медийным Контентом
   description: дистрибуция, соцсети, фиды
-  version: 1.9-н
+  version: 1.10-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-23'
+  last_revision: '2026-09-15'
   protocols: 1
-  content_hash: 7f15ea63d4f86273dfa2da096cb8c228203252b21a9dd7be1f072b1f78bc8d2a
+  content_hash: 4809be3d8e9213ecfce681cd675357f1bf4ef2d26c0a3bad0ef4ebe0d9bcabd6
 - id: san
   file: САН.md
   short_title: САН
@@ -36,24 +36,25 @@ manifests:
   file: ГРЕК-ПАНТЕОН.md
   short_title: ГРЕК-ПАНТЕОН
   title: База знаний по античной мифологии
-  description: База знаний по античной мифологии (~350 страниц сейчас; цель 16 505+, Hugo→Astro)
-  version: 1.8-н
+  description: База знаний по античной мифологии (~350 страниц сейчас; цель 16 505+,
+    Hugo→Astro)
+  version: 1.9-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-09-13'
+  last_revision: '2026-09-15'
   protocols: 1
-  content_hash: b4026d9d13e021da9cf2a435faa5c8f981603bbe36a617327aa3420e825087f6
+  content_hash: 686cbb23c73c4d4a1f8442dcc8fc35e2eb026e59aa37d5ee15a4c9e8084c5bce
 - id: migraciya
   file: МИГРАЦИЯ.md
   short_title: МИГРАЦИЯ
   title: План миграции 14 доменов на новую инфраструктуру
   description: План миграции 14 доменов на новую инфраструктуру
-  version: 1.11-н
+  version: 1.12-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-09-12'
+  last_revision: '2026-09-15'
   protocols: 1
-  content_hash: 93ab80c70f2595a79806dd161920c749d8ccc710cc92b7123f7a1a246262c0fa
+  content_hash: 1cd739f192efff53c19b0d9cb47f0888ac509f437d30d6f7544735f08ffa6e96
 - id: lic
   file: ЛИЦ.md
   short_title: ЛИЦ
@@ -70,9 +71,9 @@ manifests:
   short_title: AGENTS
   title: Инструкции для ИИ-агентов
   description: Единые стандарты поведения ИИ-агентов экосистемы blago-nko
-  version: 1.4-н
+  version: 1.5-н
   status: active
   approved_date: '2026-08-06'
-  last_revision: '2026-09-14'
+  last_revision: '2026-09-15'
   protocols: 1
-  content_hash: fb4f05e9203f894c072801f4e726ced5c0acf2c22873a7b604e01c09973c29ff
+  content_hash: 0d891b6385ab49068808630d6dd978eb5ce34904784ba5010bcfc003c0f846cb
