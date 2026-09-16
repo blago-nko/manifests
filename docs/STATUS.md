@@ -2,6 +2,7 @@
 
 > ⚠️ **Этот файл обновляется автоматически** через GitHub Actions
 > (`.github/workflows/update-status.yml`). Не редактируйте вручную.
+> Реестр задач: [TASKS.md](../TASKS.md). Долгосрочный план: [ROADMAP.md](../ROADMAP.md).
 
 ---
 
