@@ -79,6 +79,7 @@
 | **INFRA-028** | pull-requests: write в update-status.yml | permissions для create-pull-request | 🔴 | → | ✅ | Закрыт PR 211 |
 | **INFRA-029** | Контракт единственного писателя STATUS.md | sync_manifests не пишет STATUS; update_status.py из yaml; workflow регенерирует+валидирует | 🔴 | → | ✅ | Этот PR |
 | **INFRA-030** | Убрать reviewers из авто-PR; timestamp-шаг удалён (stamp владеет генератор) | фикс "Unexpected end of JSON input" и шумовых авто-PR | 🔴 | → | ✅ | Этот PR |
+| **INFRA-030** | Убрать reviewers из авто-PR; timestamp-шаг удалён (stamp владеет генератор) | фикс "Unexpected end of JSON input" и шумовых авто-PR | 🔴 | → | ✅ | Этот PR |
 | **LIC-001** | Модель лицензирования экосистемы | AGPLv3 (код) + CC BY-NC 4.0 (контент) | 🔴 | 👤 | ✅ | Закрыт PR 211 |
 
 ---
