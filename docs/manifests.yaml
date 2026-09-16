@@ -38,12 +38,12 @@ manifests:
   title: База знаний по античной мифологии
   description: База знаний по античной мифологии (~350 страниц сейчас; цель 16 505+,
     Hugo→Astro)
-  version: 1.9-н
+  version: 1.10-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-09-15'
+  last_revision: '2026-09-16'
   protocols: 1
-  content_hash: 686cbb23c73c4d4a1f8442dcc8fc35e2eb026e59aa37d5ee15a4c9e8084c5bce
+  content_hash: 80785c0354a33854887186ef879d26cc40ea39db8940454b21785f5dbc3599d1
 - id: migraciya
   file: МИГРАЦИЯ.md
   short_title: МИГРАЦИЯ
