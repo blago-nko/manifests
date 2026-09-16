@@ -32,7 +32,6 @@
   - 📁 **workflows/**
     - [apply-architecture-patches.yml](.github/workflows/apply-architecture-patches.yml)
     - [architecture-check.yml](.github/workflows/architecture-check.yml)
-    - [auto-update-status.yml](.github/workflows/auto-update-status.yml)
     - [license-check.yml](.github/workflows/license-check.yml)
     - [manifest-consistency-check.yml](.github/workflows/manifest-consistency-check.yml)
     - [manifest-lint.yml](.github/workflows/manifest-lint.yml)
