@@ -18,6 +18,7 @@ on:
   workflow_dispatch: # Ручной запуск
 
 permissions:
+  pull-requests: write
   contents: write
 
 jobs:
