@@ -63,7 +63,6 @@
 - [.gitignore](.gitignore)
 - [.markdownlint-cli2.jsonc](.markdownlint-cli2.jsonc)
 - [.markdownlint.yaml](.markdownlint.yaml)
-- [.markdownlintignore](.markdownlintignore)
 - [AGENTS.md](AGENTS.md)
 - [domains-graph.yaml](domains-graph.yaml)
 - [LICENSE](LICENSE)
