@@ -86,6 +86,7 @@
 | **INFRA-035** | Изоляция контура B (152-ФЗ) | Отдельные secrets для can.blagorussia.ru + CookieConsent на всех 14 сайтах | 🟡 | → | ⬜ | P1: важно |
 | **INFRA-036** | Тесты (pytest + Playwright) | Unit-тесты скриптов + E2E-тесты доменов + snapshot-тесты STATUS.md | 🟡 | → | ⬜ | P1: важно |
 | **INFRA-037** | Правило MSYS/Python в AGENTS.md (секция 1.5) + hotfix markdown-lint | Зафиксировать эмпирическое правило + починить MD028/MD060/MD012/MD031 | 🟡 | → | ✅ | Закрыт PR 228+230 |
+| **INFRA-039** | Удалить FETCH_HEAD из main + защита .gitignore | Артефакт git pull попал в репозиторий из-за сбоя force push | 🔴 | → | ✅ | Закрыт PR 232 |
 | **LIC-001** | Модель лицензирования экосистемы | AGPLv3 (код) + CC BY-NC 4.0 (контент) | 🔴 | 👤 | ✅ | Закрыт PR 211 |
 
 ---
