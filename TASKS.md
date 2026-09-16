@@ -72,7 +72,7 @@
 | **INFRA-018** | continue-on-error для Enable Auto-Merge во всех sync-workflows | awk-вставка флага | 🟠 | 🤖→👤 | ✅ | Закрыт PR 195 |
 | **INFRA-019** | Удаление update-manifest-dates.yml (осцилляция дат) | git rm воркфлоу | 🔴 | 🤖→ | ✅ | Закрыт PR 199 |
 | **INFRA-020** | Наполнение таксономии domains-graph, уточнение ролей хаба и r2 | общие категории и подтаксономии по 016.2 | 🟠 | 🤖→ | ⬜ | После INFRA-001 |
-| **INFRA-021** | Форматирование CHANGELOG.md и ГРЕК-ПАНТЕОН.md под markdownlint | Убрать .markdownlintignore (SAM-INFRA-011) | 🟡 |  | ⬜ | После VERIFY |
+| **INFRA-021** | Снятие markdownlint-долга (ГРЕК-ПАНТЕОН.md; CHANGELOG.md отсутствует) | Убраны из ignores; .markdownlintignore удалён | 🟡 | → | ✅ | Закрыт PR 220 |
 | **INFRA-022** | Восстановление обязательных секций STATUS.md + генерация из источников | 4 секции из domains-graph.yaml и manifests.yaml | 🔴 | 🤖→👤 | ✅ | Этот PR |
 | **INFRA-026** | Патч update_status.py: генерация 4 обязательных секций STATUS.md | из domains-graph.yaml, manifests.yaml, TASKS.md | 🔴 | 🤖→👤 | ✅ | Этот PR |
 | **INFRA-024** | Удалить auto-update-status.yml (битый дубль с путём STATUS.md) | git rm | 🟠 | → | ✅ | Этот PR |
