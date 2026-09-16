@@ -3,7 +3,7 @@
 <!-- MANIFEST:METADATA:BEGIN -->
 
 | Реквизит | Значение |
-|---|---|
+| --- | --- |
 | Манифест | AGENTS |
 | Название | Инструкции для ИИ-агентов |
 | Описание | Единые стандарты поведения ИИ-агентов экосистемы blago-nko |
@@ -322,6 +322,20 @@ def write_file(repo, path, content, message, branch="main"):
 [INFRA-CHORE-007] синхронизация README.md
 [SUMKA-CHORE-008] markdown cleanup
 ```
+
+#### 5.5.3. Авто-PR со статусом «not mergeable»: паттерн пересоздания
+
+Авто-PR (созданные `sync-manifests.yml`, `sync-readme-sections.yml`, `update-status.yml`) со статусом «not mergeable / merge commit cannot be cleanly created» **не мержим локально и не разрешаем конфликты вручную**.
+
+Причина: контент авто-PR полностью регенерируемый; конфликт — всегда артефакт устаревшей базы ветки (ветка создана до других мержей в main).
+
+Паттерн (3 шага):
+
+1. `gh pr close <N> --comment "Устаревшая ветка; пересоздаём с чистой ветки."`
+2. `git push origin --delete <branch>` (авто-ветки: `chore/auto-sync-manifests`, `chore/auto-sync-readme`, `chore/auto-update-status-md`)
+3. `gh workflow run <workflow>.yml --ref main` → дождаться новый авто-PR → смержить его.
+
+Запрещено: `gh pr checkout <N>` + ручное разрешение конфликтов для авто-PR.
 
 ### 5.6. Шаблон Pull Request
 
