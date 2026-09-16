@@ -48,30 +48,6 @@ jobs:
       
       - name: Regenerate STATUS.md
         run: python scripts/update_status.py
-      - name: Update timestamp and changelog
-        if: steps.check.outputs.exists == 'true'
-        run: |
-          CURRENT_DATE=$(date -u +"%d.%m.%Y %H:%M UTC")
-          CURRENT_DATE_SHORT=$(date -u +"%d.%m.%Y")
-          
-          # Получаем текущую дату из файла (для проверки изменений)
-          EXISTING_DATE=$(grep -oP "(?<=\*\*Последнее обновление\*\*: )[0-9]{2}\.[0-9]{2}\.[0-9]{4}" docs/STATUS.md | head -n 1 || echo "")
-          
-          echo "Existing date in file: $EXISTING_DATE"
-          echo "Current date: $CURRENT_DATE_SHORT"
-          
-          # Если дата уже актуальна — пропускаем обновление (защита от пустых коммитов)
-          if [ "$EXISTING_DATE" = "$CURRENT_DATE_SHORT" ]; then
-            echo "📋 Date is already up-to-date. Skipping update."
-            exit 0
-          fi
-          
-          # 1. Обновляем строку "Последнее обновление"
-          sed -i "s/^\*\*Последнее обновление\*\*: .*/\*\*Последнее обновление\*\*: $CURRENT_DATE/" docs/STATUS.md
-          
-          
-          echo "✅ Updated timestamp to: $CURRENT_DATE"
-      
       - name: Validate STATUS.md structure
         if: steps.check.outputs.exists == 'true'
         run: |
@@ -104,4 +80,3 @@ jobs:
           branch: "chore/auto-update-status-md"
           delete-branch: true
           labels: "chore, automated"
-          reviewers: "bobralv-cyber"

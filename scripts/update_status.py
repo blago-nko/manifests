@@ -26,7 +26,7 @@ def main():
     domains = load_yaml("domains-graph.yaml").get("domains", [])
     now_utc = datetime.now(timezone.utc)
     now = now_utc.strftime("%Y-%m-%dT%H:%M:%SZ")
-    stamp = now_utc.strftime("%d.%m.%Y %H:%M UTC")
+    stamp = now_utc.strftime("%d.%m.%Y")
 
     lines = [
         "# 📈 Статус документов",
