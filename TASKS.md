@@ -79,7 +79,7 @@
 | **INFRA-028** | pull-requests: write в update-status.yml | permissions для create-pull-request | 🔴 | → | ✅ | Закрыт PR 211 |
 | **INFRA-029** | Контракт единственного писателя STATUS.md | sync_manifests не пишет STATUS; update_status.py из yaml; workflow регенерирует+валидирует | 🔴 | → | ✅ | Этот PR |
 | **INFRA-030** | Убрать reviewers из авто-PR; timestamp-шаг удалён (stamp владеет генератор) | фикс "Unexpected end of JSON input" и шумовых авто-PR | 🔴 | → | ✅ | Этот PR |
-| **INFRA-031** | Uptime-мониторинг 14 доменов + алерты | UptimeRobot/Better Uptime + Telegram/Discord notifications | 🟡 | 🤖→ | | P0: критично |
+| **INFRA-031** | Uptime-мониторинг доменов + алерты | UptimeRobot + Telegram + runbook | 🟡 | → | ⏸️ | Отложено до миграции 13 сайтов с Blogger |
 | **INFRA-032** | Бэкапы в R2 + runbook восстановления + git-зеркало | Еженедельные бэкапы domains-graph + manifests.yaml + Blogger metadata | 🟡 | → | ⬜ | P0: критично |
 | **INFRA-033** | Создание blago-nko/shared-assets | Hugo-тема + Astro-компоненты + CookieConsent.js + общий CSS/JS | 🟡 | → | ⬜ | P0: критично |
 | **INFRA-034** | CONTRIBUTING/CODE_OF_CONDUCT/SECURITY/CHANGELOG | Инфраструктура контрибьюторов + issue templates + CODEOWNERS | 🟡 | → | ⬜ | P1: важно |
@@ -87,6 +87,7 @@
 | **INFRA-036** | Тесты (pytest + Playwright) | Unit-тесты скриптов + E2E-тесты доменов + snapshot-тесты STATUS.md | 🟡 | → | ⬜ | P1: важно |
 | **INFRA-037** | Правило MSYS/Python в AGENTS.md (секция 1.5) + hotfix markdown-lint | Зафиксировать эмпирическое правило + починить MD028/MD060/MD012/MD031 | 🟡 | → | ✅ | Закрыт PR 228+230 |
 | **INFRA-039** | Удалить FETCH_HEAD из main + защита .gitignore | Артефакт git pull попал в репозиторий из-за сбоя force push | 🔴 | → | ✅ | Закрыт PR 232 |
+| **INFRA-040** | Реструктуризация README (навигация + цифры экосистемы) | Точка входа для людей; сжатие секции автосинхронизации | 🟡 | → | ✅ | Этот PR |
 | **LIC-001** | Модель лицензирования экосистемы | AGPLv3 (код) + CC BY-NC 4.0 (контент) | 🔴 | 👤 | ✅ | Закрыт PR 211 |
 
 ---
