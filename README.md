@@ -119,7 +119,6 @@
 
 - `sync-manifests.yml` — при пуше в `main`, по расписанию и вручную запускает `scripts/sync_manifests.py`: обновляет метаданные манифестов, таблицу выше и `docs/manifests.yaml`;
 - `sync-readme-sections.yml` — обновляет в этом файле дерево файлов, список репозиториев и ссылку статуса;
-- `update-manifest-dates.yml` — обновляет даты редакций в файлах с маркером `MANIFEST:METADATA:BEGIN`;
 - `update-status.yml` — перегенерирует `docs/STATUS.md`.
 
 ## Вклад в проект
@@ -133,7 +132,7 @@
 
 ## Лицензия
 
-Контент — CC BY 4.0, код — MIT. Подробности: [ЛИЦ](ЛИЦ.md), [LICENSE](LICENSE), [LICENSE-CONTENT](LICENSE-CONTENT).
+Контент — CC BY-NC 4.0, код — AGPLv3. Подробности: [ЛИЦ](ЛИЦ.md), [LICENSE](LICENSE), [LICENSE-CONTENT](LICENSE-CONTENT).
 
 ## Контакты
 

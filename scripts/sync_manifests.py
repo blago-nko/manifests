@@ -12,7 +12,6 @@
                                     last_revision = дата последнего коммита файла;
    - hash не изменился           -> ничего не меняется.
 3. Генерирует таблицу в README.md (маркеры MANIFESTS:TABLE).
-4. Генерирует таблицу в docs/STATUS.md (секция "Состояние манифестов").
 5. Генерирует в каждом манифесте таблицу реквизитов (MANIFEST:METADATA)
    и блок «Связанные документы» (MANIFEST:RELATED) — все активные
    манифесты, кроме текущего.
@@ -33,7 +32,6 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 REGISTRY = ROOT / "docs" / "manifests.yaml"
 README = ROOT / "README.md"
-STATUS = ROOT / "docs" / "STATUS.md"
 
 META_BEGIN = "<!-- MANIFEST:METADATA:BEGIN -->"
 META_END = "<!-- MANIFEST:METADATA:END -->"
@@ -146,47 +144,6 @@ def rebuild(clean: str, meta: str, related: str) -> str:
     return re.sub(r"\n{3,}", "\n\n", result)
 
 
-def update_status_table(manifests: list) -> None:
-    """Обновляет таблицу 'Состояние манифестов' в docs/STATUS.md."""
-    if not STATUS.exists():
-        print(f"⚠️  {STATUS} не найден, пропускаем")
-        return
-    
-    status_content = STATUS.read_text(encoding="utf-8")
-    
-    # Находим секцию "Состояние манифестов"
-    section_pattern = re.compile(
-        r'(##\s*Состояние манифестов\s*\n\n)'
-        r'(\|.*?\|\n\|.*?\|\n)'
-        r'((?:\|.*?\|\n)*)',
-        re.MULTILINE
-    )
-    
-    match = section_pattern.search(status_content)
-    if not match:
-        print("⚠️  Не найдена таблица 'Состояние манифестов' в STATUS.md")
-        return
-    
-    # Генерируем новую таблицу
-    header = "| # | Манифест | Файл | Версия | Дата | Статус | Протоколов |\n"
-    separator = "|:-:|:-:|:-:|:-:|:-:|:-:|:-:|\n"
-    rows = []
-    
-    for idx, m in enumerate(manifests, 1):
-        status_icon = STATUS_LABELS.get(m['status'], '⚪')
-        row = f"| {idx} | {cell(m['short_title'])} | `{cell(m['file'])}` | {cell(m['version'])} | {cell(m['last_revision'] or '—')} | {status_icon} | {cell(m['protocols'])} |\n"
-        rows.append(row)
-    
-    new_table = header + separator + "".join(rows)
-    
-    # Заменяем старую таблицу на новую
-    old_table = match.group(2) + match.group(3)
-    status_content = status_content.replace(old_table, new_table)
-    
-    STATUS.write_text(status_content, encoding="utf-8")
-    print(f"✅ Таблица в STATUS.md обновлена")
-
-
 def main() -> None:
     if not REGISTRY.exists():
         fail("не найден docs/manifests.yaml")
@@ -262,7 +219,6 @@ def main() -> None:
             print("⚠️  В README.md нет маркеров MANIFESTS:TABLE")
 
     # --- таблица в STATUS.md ---
-    update_status_table(manifests)
 
     # --- файлы манифестов ---
     active = [m for m in manifests if m["status"] == "active"]

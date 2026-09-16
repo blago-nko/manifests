@@ -75,6 +75,10 @@
 | **INFRA-021** | Форматирование CHANGELOG.md и ГРЕК-ПАНТЕОН.md под markdownlint | Убрать .markdownlintignore (SAM-INFRA-011) | 🟡 |  | ⬜ | После VERIFY |
 | **INFRA-022** | Восстановление обязательных секций STATUS.md + генерация из источников | 4 секции из domains-graph.yaml и manifests.yaml | 🔴 | 🤖→👤 | ✅ | Этот PR |
 | **INFRA-026** | Патч update_status.py: генерация 4 обязательных секций STATUS.md | из domains-graph.yaml, manifests.yaml, TASKS.md | 🔴 | 🤖→👤 | ✅ | Этот PR |
+| **INFRA-024** | Удалить auto-update-status.yml (битый дубль с путём STATUS.md) | git rm | 🟠 | → | ✅ | Этот PR |
+| **INFRA-028** | pull-requests: write в update-status.yml | permissions для create-pull-request | 🔴 | → | ✅ | Закрыт PR 211 |
+| **INFRA-029** | Контракт единственного писателя STATUS.md | sync_manifests не пишет STATUS; update_status.py из yaml; workflow регенерирует+валидирует | 🔴 | → | ✅ | Этот PR |
+| **LIC-001** | Модель лицензирования экосистемы | AGPLv3 (код) + CC BY-NC 4.0 (контент) | 🔴 | 👤 | ✅ | Закрыт PR 211 |
 
 ---
 

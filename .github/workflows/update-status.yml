@@ -10,6 +10,9 @@ on:
       - main
     paths:
       - 'docs/STATUS.md'
+      - 'docs/manifests.yaml'
+      - 'domains-graph.yaml'
+      - 'scripts/update_status.py'
       - 'docs/TASKS.md'
       - 'blogger_image_metadata.json'
   schedule:
@@ -43,6 +46,8 @@ jobs:
             echo "⚠️ docs/STATUS.md not found - skipping update"
           fi
       
+      - name: Regenerate STATUS.md
+        run: python scripts/update_status.py
       - name: Update timestamp and changelog
         if: steps.check.outputs.exists == 'true'
         run: |
@@ -64,16 +69,6 @@ jobs:
           # 1. Обновляем строку "Последнее обновление"
           sed -i "s/^\*\*Последнее обновление\*\*: .*/\*\*Последнее обновление\*\*: $CURRENT_DATE/" docs/STATUS.md
           
-          # 2. Добавляем запись в журнал изменений ТОЛЬКО при push-событии
-          # (чтобы не спамить записями «Авто-обновление» каждые 6 часов)
-          if [ "${{ github.event_name }}" = "push" ]; then
-            TRIGGER_DESC="Изменение контента (${{ github.event.head_commit.id }})"
-            echo "" >> docs/STATUS.md
-            echo "| $CURRENT_DATE | $TRIGGER_DESC | github-actions[bot] |" >> docs/STATUS.md
-            echo "✅ Added changelog entry for push event"
-          elif [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "⏰ Scheduled/manual run — only updating main timestamp (no changelog entry)."
-          fi
           
           echo "✅ Updated timestamp to: $CURRENT_DATE"
       
