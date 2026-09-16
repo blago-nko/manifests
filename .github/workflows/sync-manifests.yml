@@ -58,7 +58,6 @@ jobs:
           branch: "chore/auto-sync-manifests"
           delete-branch: true
           labels: "automated, chore"
-          reviewers: "bobralv-cyber"
 
       - name: Enable Auto-Merge
         continue-on-error: true
