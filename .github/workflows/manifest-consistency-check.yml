@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Tasks registry validation (PROC-001)
+        run: python scripts/check_tasks_registry.py
       - run: |
           SAM=$(grep -oP 'SAM-PRINCIPLES-COUNT: \K\d+' САМ.md || grep -oP 'Количество принципов:\*\* \K\d+' САМ.md || grep -oP 'Принципы \(все \K\d+' САМ.md || true)
           if [ -z "$SAM" ]; then
