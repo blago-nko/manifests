@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Политика безопасности
+    url: https://github.com/blago-nko/manifests/security/policy
+    about: Уязвимости — только приватные отчёты (см. SECURITY.md).
