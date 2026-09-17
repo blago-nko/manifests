@@ -68,6 +68,7 @@
   - [blogger_postid_rescue.py](scripts/blogger_postid_rescue.py)
   - [branch-protection.json](scripts/branch-protection.json)
   - [check_docs_links.py](scripts/check_docs_links.py)
+  - [check_tasks_registry.py](scripts/check_tasks_registry.py)
   - [image_storage_adapter.py](scripts/image_storage_adapter.py)
   - [pdn_scanner.py](scripts/pdn_scanner.py)
   - [ruleset-repo.json](scripts/ruleset-repo.json)
