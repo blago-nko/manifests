@@ -85,7 +85,7 @@
 | **INFRA-034** | CONTRIBUTING/CODE_OF_CONDUCT/SECURITY/CHANGELOG | Инфраструктура контрибьюторов + issue templates + CODEOWNERS | 🟡 | → | ✅ | Этот PR |
 | **INFRA-046** | Единый .markdownlint.yaml в shared-assets | Консистентность стиля с manifests; hotfix MD013 | 🟡 | → | ✅ | Hotfix после PR 1 shared-assets |
 | **INFRA-035** | Изоляция контура B (152-ФЗ) | Отдельные secrets для can.blagorussia.ru + CookieConsent на всех 14 сайтах | 🟡 | → | ⬜ | P1: важно |
-| **INFRA-036** | Тесты (pytest + Playwright) | Unit-тесты скриптов + E2E-тесты доменов + snapshot-тесты STATUS.md | 🟡 | → | ⬜ | P1: важно |
+| **INFRA-036** | Тесты pytest + Playwright E2E + snapshot-тесты | Unit-тесты скриптов, E2E для 14 доменов, snapshot STATUS.md | 🟡 | → | ✅ | Этот PR |
 | **INFRA-037** | Правило MSYS/Python в AGENTS.md (секция 1.5) + hotfix markdown-lint | Зафиксировать эмпирическое правило + починить MD028/MD060/MD012/MD031 | 🟡 | → | ✅ | Закрыт PR 228+230 |
 | **INFRA-039** | Удалить FETCH_HEAD из main + защита .gitignore | Артефакт git pull попал в репозиторий из-за сбоя force push | 🔴 | → | ✅ | Закрыт PR 232 |
 | **INFRA-040** | Реструктуризация README (навигация + цифры экосистемы) | Точка входа для людей; сжатие секции автосинхронизации | 🟡 | → | ✅ | Этот PR |
