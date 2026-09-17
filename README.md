@@ -62,6 +62,7 @@
     - [readme-license-check.yml](.github/workflows/readme-license-check.yml)
     - [sync-manifests.yml](.github/workflows/sync-manifests.yml)
     - [sync-readme-sections.yml](.github/workflows/sync-readme-sections.yml)
+    - [tests.yml](.github/workflows/tests.yml)
     - [update-status.yml](.github/workflows/update-status.yml)
   - [CODEOWNERS](.github/CODEOWNERS)
   - [PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md)
@@ -87,6 +88,14 @@
   - [sync_readme_licenses.py](scripts/sync_readme_licenses.py)
   - [sync_readme_sections.py](scripts/sync_readme_sections.py)
   - [update_status.py](scripts/update_status.py)
+- 📁 **tests/**
+  - 📁 **e2e/**
+    - [test_domains.py](tests/e2e/test_domains.py)
+  - 📁 **snapshots/**
+    - [test_status_structure.py](tests/snapshots/test_status_structure.py)
+  - [test_check_docs_links.py](tests/test_check_docs_links.py)
+  - [test_check_tasks_registry.py](tests/test_check_tasks_registry.py)
+  - [test_update_status.py](tests/test_update_status.py)
 - [.cursorrules](.cursorrules)
 - [.gitignore](.gitignore)
 - [.markdownlint-cli2.jsonc](.markdownlint-cli2.jsonc)
@@ -99,6 +108,7 @@
 - [LICENSE](LICENSE)
 - [LICENSE-CONTENT](LICENSE-CONTENT)
 - [README.md](README.md)
+- [requirements.txt](requirements.txt)
 - [ROADMAP.md](ROADMAP.md)
 - [SECURITY.md](SECURITY.md)
 - [TASKS.md](TASKS.md)
