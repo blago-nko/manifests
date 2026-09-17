@@ -81,7 +81,7 @@
 | **INFRA-030** | Убрать reviewers из авто-PR; timestamp-шаг удалён (stamp владеет генератор) | фикс "Unexpected end of JSON input" и шумовых авто-PR | 🔴 | → | ✅ | Этот PR |
 | **INFRA-031** | Uptime-мониторинг доменов + алерты | UptimeRobot + Telegram + runbook | 🟡 | → | ⏸️ | Отложено до миграции 13 сайтов с Blogger |
 | **INFRA-032** | Бэкапы ключевых файлов + runbook восстановления | weekly-backup в ветку backups; R2 и зеркало — этап 2 | 🟡 | → | 🔄 | Этап 1: workflow + runbook |
-| **INFRA-033** | Создание blago-nko/shared-assets | Hugo-тема + Astro-компоненты + CookieConsent.js + общий CSS/JS | 🟡 | → | ⬜ | P0: критично |
+| **INFRA-033** | Создание blago-nko/shared-assets | Hugo-тема + Astro-компоненты + CookieConsent + RSS | 🟡 | 🤖→ | ✅ | Репозиторий blago-nko/shared-assets создан |
 | **INFRA-034** | CONTRIBUTING/CODE_OF_CONDUCT/SECURITY/CHANGELOG | Инфраструктура контрибьюторов + issue templates + CODEOWNERS | 🟡 | → | ⬜ | P1: важно |
 | **INFRA-035** | Изоляция контура B (152-ФЗ) | Отдельные secrets для can.blagorussia.ru + CookieConsent на всех 14 сайтах | 🟡 | → | ⬜ | P1: важно |
 | **INFRA-036** | Тесты (pytest + Playwright) | Unit-тесты скриптов + E2E-тесты доменов + snapshot-тесты STATUS.md | 🟡 | → | ⬜ | P1: важно |
