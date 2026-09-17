@@ -123,6 +123,7 @@
 <!-- README:REPOS:BEGIN -->
 
 - [manifests](https://github.com/blago-nko/manifests) — Единый источник правды: архитектурные манифесты и стандарты экосистемы blago-nko
+- [shared-assets](https://github.com/blago-nko/shared-assets) — Общие ассеты экосистемы: Hugo-тема, Astro-компоненты, CookieConsent, CSS/JS, RSS
 
 <!-- README:REPOS:END -->
 
