@@ -83,7 +83,7 @@
 | **INFRA-032** | Бэкапы ключевых файлов + runbook восстановления | weekly-backup в ветку backups; R2 и зеркало — этап 2 | 🟡 | → | 🔄 | Этап 1: workflow + runbook |
 | **INFRA-033** | Создание blago-nko/shared-assets | Hugo-тема + Astro-компоненты + CookieConsent + RSS | 🟡 | 🤖→ | ✅ | Репозиторий blago-nko/shared-assets создан |
 | **INFRA-034** | CONTRIBUTING/CODE_OF_CONDUCT/SECURITY/CHANGELOG | Инфраструктура контрибьюторов + issue templates + CODEOWNERS | 🟡 | → | ✅ | Этот PR |
-| **INFRA-035** | Единый .markdownlint.yaml в shared-assets | Консистентность стиля с manifests; hotfix MD013 | 🟡 | → | ✅ | Hotfix после PR 1 shared-assets |
+| **INFRA-046** | Единый .markdownlint.yaml в shared-assets | Консистентность стиля с manifests; hotfix MD013 | 🟡 | → | ✅ | Hotfix после PR 1 shared-assets |
 | **INFRA-035** | Изоляция контура B (152-ФЗ) | Отдельные secrets для can.blagorussia.ru + CookieConsent на всех 14 сайтах | 🟡 | → | ⬜ | P1: важно |
 | **INFRA-036** | Тесты (pytest + Playwright) | Unit-тесты скриптов + E2E-тесты доменов + snapshot-тесты STATUS.md | 🟡 | → | ⬜ | P1: важно |
 | **INFRA-037** | Правило MSYS/Python в AGENTS.md (секция 1.5) + hotfix markdown-lint | Зафиксировать эмпирическое правило + починить MD028/MD060/MD012/MD031 | 🟡 | → | ✅ | Закрыт PR 228+230 |
