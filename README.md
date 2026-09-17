@@ -46,6 +46,10 @@
 <!-- README:TREE:BEGIN -->
 
 - 📁 **.github/**
+  - 📁 **ISSUE_TEMPLATE/**
+    - [bug_report.md](.github/ISSUE_TEMPLATE/bug_report.md)
+    - [config.yml](.github/ISSUE_TEMPLATE/config.yml)
+    - [feature_request.md](.github/ISSUE_TEMPLATE/feature_request.md)
   - 📁 **workflows/**
     - [apply-architecture-patches.yml](.github/workflows/apply-architecture-patches.yml)
     - [architecture-check.yml](.github/workflows/architecture-check.yml)
@@ -59,6 +63,7 @@
     - [sync-manifests.yml](.github/workflows/sync-manifests.yml)
     - [sync-readme-sections.yml](.github/workflows/sync-readme-sections.yml)
     - [update-status.yml](.github/workflows/update-status.yml)
+  - [CODEOWNERS](.github/CODEOWNERS)
   - [PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md)
 - 📁 **docs/**
   - 📁 **backup/**
@@ -87,11 +92,15 @@
 - [.markdownlint-cli2.jsonc](.markdownlint-cli2.jsonc)
 - [.markdownlint.yaml](.markdownlint.yaml)
 - [AGENTS.md](AGENTS.md)
+- [CHANGELOG.md](CHANGELOG.md)
+- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- [CONTRIBUTING.md](CONTRIBUTING.md)
 - [domains-graph.yaml](domains-graph.yaml)
 - [LICENSE](LICENSE)
 - [LICENSE-CONTENT](LICENSE-CONTENT)
 - [README.md](README.md)
 - [ROADMAP.md](ROADMAP.md)
+- [SECURITY.md](SECURITY.md)
 - [TASKS.md](TASKS.md)
 - [ГРЕК-ПАНТЕОН.md](ГРЕК-ПАНТЕОН.md)
 - [ЛИЦ.md](ЛИЦ.md)
