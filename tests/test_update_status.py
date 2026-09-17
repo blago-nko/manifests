@@ -39,10 +39,10 @@ def test_status_md_contains_required_sections():
     status_path = Path(__file__).parent.parent / 'docs' / 'STATUS.md'
     content = status_path.read_text(encoding='utf-8')
     required = [
-        'Статус документов',
-        'Статус манифестов',
-        'Статус доменов',
-        'Последнее обновление',
+        '## Текущее состояние',
+        '## Состояние манифестов',
+        '## Состояние 14 доменов',
+        '## Ключевые метрики',
     ]
     for section in required:
         assert section in content, f"Секция '{section}' отсутствует в STATUS.md"
