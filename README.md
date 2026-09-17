@@ -49,6 +49,7 @@
   - 📁 **workflows/**
     - [apply-architecture-patches.yml](.github/workflows/apply-architecture-patches.yml)
     - [architecture-check.yml](.github/workflows/architecture-check.yml)
+    - [backup-ecosystem.yml](.github/workflows/backup-ecosystem.yml)
     - [license-check.yml](.github/workflows/license-check.yml)
     - [manifest-consistency-check.yml](.github/workflows/manifest-consistency-check.yml)
     - [manifest-lint.yml](.github/workflows/manifest-lint.yml)
@@ -60,6 +61,9 @@
     - [update-status.yml](.github/workflows/update-status.yml)
   - [PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md)
 - 📁 **docs/**
+  - 📁 **backup/**
+    - [backup-plan.yaml](docs/backup/backup-plan.yaml)
+    - [RESTORE.md](docs/backup/RESTORE.md)
   - [manifests.yaml](docs/manifests.yaml)
   - [STATUS.md](docs/STATUS.md)
 - 📁 **scripts/**
