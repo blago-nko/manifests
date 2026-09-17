@@ -1,0 +1,46 @@
+name: Backup ecosystem
+
+# Еженедельный бэкап ключевых файлов в orphan-ветку backups (хранит 4 последних архива).
+# Внешние цели (Cloudflare R2, Codeberg-зеркало) — этап 2 INFRA-032.
+
+on:
+  schedule:
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create archive
+        run: |
+          mkdir -p /tmp/backup
+          STAMP=$(date -u +%Y-%m-%d)
+          tar -czf "/tmp/backup/manifests-${STAMP}.tar.gz" \
+            docs/manifests.yaml domains-graph.yaml TASKS.md ROADMAP.md README.md AGENTS.md docs/STATUS.md
+          ls -la /tmp/backup
+
+      - name: Push archive to backups branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code origin backups; then
+            git fetch origin backups:backups
+            git checkout backups
+          else
+            git checkout --orphan backups
+            git rm -rf --cached . >/dev/null 2>&1 || true
+            find . -maxdepth 1 ! -name '.git' ! -name '.' -exec rm -rf {} +
+          fi
+          mkdir -p backups
+          cp /tmp/backup/manifests-*.tar.gz backups/
+          ls -1t backups/manifests-*.tar.gz | tail -n +5 | xargs -r rm --
+          git add -A backups
+          git commit -m "backup: $(date -u +%Y-%m-%d)" || echo "no changes to commit"
+          git push -f origin backups
