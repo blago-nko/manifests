@@ -84,7 +84,10 @@
 | **INFRA-033** | Создание blago-nko/shared-assets | Hugo-тема + Astro-компоненты + CookieConsent + RSS | 🟡 | 🤖→ | ✅ | Репозиторий blago-nko/shared-assets создан |
 | **INFRA-034** | CONTRIBUTING/CODE_OF_CONDUCT/SECURITY/CHANGELOG | Инфраструктура контрибьюторов + issue templates + CODEOWNERS | 🟡 | → | ✅ | Этот PR |
 | **INFRA-046** | Единый .markdownlint.yaml в shared-assets | Консистентность стиля с manifests; hotfix MD013 | 🟡 | → | ✅ | Hotfix после PR 1 shared-assets |
-| **INFRA-035** | Изоляция контура B (152-ФЗ) | Отдельные secrets для can.blagorussia.ru + CookieConsent на всех 14 сайтах | 🟡 | → | ⬜ | P1: важно |
+| **INFRA-047** | Стратегия миграции 14 сайтов с Blogger на Hugo/Astro | docs/migration/STRATEGY.md; MIG-001..014; hardening E2E | 🟡 | → | ✅ | Этот PR |
+| **INFRA-048** | Hardening E2E (канонический www, ретраи, 429-skip) + дизайн-решения миграции | Объединён с INFRA-047; ПДн-формы, артефакты СУМКа, apex www | 🟡 | → | ✅ | В составе INFRA-047 |
+| **INFRA-049** | Проверить apex TLS/редирект blagorussia.ru | E2E попал на apex с просроченным cert; канонический www валиден; настроить apex-редирект | 🟡 | | 🔄 | Не отказ: www работает |
+| **INFRA-035** | Изоляция контура B (152-ФЗ) | Отдельные secrets + перенос can.blagorussia.ru на отдельный аккаунт | 🟡 | → | ⬜ | Этап 7 миграции, после финальной проверки 14 сайтов |
 | **INFRA-036** | Тесты pytest + Playwright E2E + snapshot-тесты | Unit-тесты скриптов, E2E для 14 доменов, snapshot STATUS.md | 🟡 | → | ✅ | Этот PR |
 | **INFRA-037** | Правило MSYS/Python в AGENTS.md (секция 1.5) + hotfix markdown-lint | Зафиксировать эмпирическое правило + починить MD028/MD060/MD012/MD031 | 🟡 | → | ✅ | Закрыт PR 228+230 |
 | **INFRA-039** | Удалить FETCH_HEAD из main + защита .gitignore | Артефакт git pull попал в репозиторий из-за сбоя force push | 🔴 | → | ✅ | Закрыт PR 232 |
@@ -94,6 +97,24 @@
 | **INFRA-043** | Правило пересоздания конфликтных авто-PR (AGENTS.md §5.5.3) + MD060 hotfix | Правильная нумерация 5.5.3 + авто-фикс MD060 в строке 6 | 🟡 | → | ✅ | Этот PR |
 | **INFRA-044** | Сверка Фазы 0 + PROC-001 (автовалидация TASKS.md) | Дедупликация LIC-001, статусы LIC-002/003/PROC-002/INFRA-005 → ✅, check_tasks_registry.py | 🟡 | → | ✅ | Закрыт PR 252 |
 | **INFRA-045** | Удаление легаси корневого STATUS.md | Дубликат docs/STATUS.md; workflow работает только с docs/ | 🟡 | → | ✅ | Закрыт PR 254 |
+
+### Фаза 3: Миграция 14 сайтов с Blogger
+
+| **ID** | Задача | Описание | Приоритет | Владелец | Статус | Комментарий |
+| **MIG-001** | Миграция <www.blagorussia.ru> (хаб) | Hugo, сложная навигация, 13 рубрик; apex → www редирект | 🟡 | → | ⬜ | Этап 3 |
+| **MIG-002** | Миграция obrazslov.ru (база знаний) | Hugo, кандидат на пилот | 🟡 | → | ⬜ | Этап 2/3 |
+| **MIG-003** | Миграция partnerstvo.blagorussia.ru (юридический хаб НП) | Hugo + секция «Документы»; ПДн-формы → Yandex Forms | 🟡 | → | ⬜ | Этап 3 |
+| **MIG-004** | Миграция novosti.blagorussia.ru | Hugo, новостной поток | 🟡 | → | ⬜ | Этап 3 |
+| **MIG-005** | Миграция ot-gorozan.blagorussia.ru | Hugo, медиа-контент; формы без ПДн | 🟡 | → | ⬜ | Этап 3 |
+| **MIG-006** | Миграция obavlenia.blagorussia.ru | Hugo, объявления | 🟡 | → | ⬜ | Этап 3 |
+| **MIG-007** | Миграция interesnye-mesta.obrazslov.ru | Hugo, архив | 🟡 | → | ⬜ | Этап 3 |
+| **MIG-008** | Миграция moisites.blagorussia.ru | Hugo, школа | 🟡 | → | ⬜ | Этап 3 |
+| **MIG-009** | Миграция joga.blagorussia.ru | Hugo, йога | 🟡 | → | ⬜ | Этап 3 |
+| **MIG-010** | Миграция ideologia.obrazslov.ru | Hugo, тексты | 🟡 | → | ⬜ | Этап 3 |
+| **MIG-011** | Миграция nasa-istoria.blagorussia.ru (Наша история) | Hugo; ПДн-формы → Yandex Forms | 🟡 | → | ⬜ | Этап 3 |
+| **MIG-012** | Миграция grekpanteon.obrazslov.ru | Hugo, пантеон | 🟡 | → | ⬜ | Этап 3 |
+| **MIG-013** | Миграция gallery.obrazslov.ru | Astro, фотоархив | 🟡 | → | ⬜ | Этап 4 |
+| **MIG-014** | Миграция can.blagorussia.ru (САН) | Вместе со всеми сайтами; изоляция — после Этапа 6 | 🟡 | → | ⬜ | Этап 3 |
 
 ---
 
