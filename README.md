@@ -70,6 +70,8 @@
   - 📁 **backup/**
     - [backup-plan.yaml](docs/backup/backup-plan.yaml)
     - [RESTORE.md](docs/backup/RESTORE.md)
+  - 📁 **migration/**
+    - [STRATEGY.md](docs/migration/STRATEGY.md)
   - [manifests.yaml](docs/manifests.yaml)
   - [STATUS.md](docs/STATUS.md)
 - 📁 **scripts/**
