@@ -71,17 +71,21 @@
     - [backup-plan.yaml](docs/backup/backup-plan.yaml)
     - [RESTORE.md](docs/backup/RESTORE.md)
   - 📁 **migration/**
+    - [PILOT-checklist.md](docs/migration/PILOT-checklist.md)
     - [STRATEGY.md](docs/migration/STRATEGY.md)
+    - [SUMKA-MAPPING.md](docs/migration/SUMKA-MAPPING.md)
   - [manifests.yaml](docs/manifests.yaml)
   - [STATUS.md](docs/STATUS.md)
 - 📁 **scripts/**
   - [apply_arch_patches.py](scripts/apply_arch_patches.py)
+  - [blogger_export.py](scripts/blogger_export.py)
   - [blogger_page_parser.py](scripts/blogger_page_parser.py)
   - [blogger_postid_rescue.py](scripts/blogger_postid_rescue.py)
   - [branch-protection.json](scripts/branch-protection.json)
   - [check_docs_links.py](scripts/check_docs_links.py)
   - [check_tasks_registry.py](scripts/check_tasks_registry.py)
   - [image_storage_adapter.py](scripts/image_storage_adapter.py)
+  - [media_downloader.py](scripts/media_downloader.py)
   - [pdn_scanner.py](scripts/pdn_scanner.py)
   - [ruleset-repo.json](scripts/ruleset-repo.json)
   - [ruleset.json](scripts/ruleset.json)
@@ -90,6 +94,7 @@
   - [sync_readme_licenses.py](scripts/sync_readme_licenses.py)
   - [sync_readme_sections.py](scripts/sync_readme_sections.py)
   - [update_status.py](scripts/update_status.py)
+  - [url_mapping.py](scripts/url_mapping.py)
 - 📁 **tests/**
   - 📁 **e2e/**
     - [test_domains.py](tests/e2e/test_domains.py)
@@ -144,6 +149,7 @@
 <!-- README:REPOS:BEGIN -->
 
 - [manifests](https://github.com/blago-nko/manifests) — Единый источник правды: архитектурные манифесты и стандарты экосистемы blago-nko
+- [obrazslov](https://github.com/blago-nko/obrazslov) — Образ слов — база знаний экосистемы blago-nko (пилот миграции с Blogger на Hugo)
 - [shared-assets](https://github.com/blago-nko/shared-assets) — Общие ассеты экосистемы: Hugo-тема, Astro-компоненты, CookieConsent, CSS/JS, RSS
 
 <!-- README:REPOS:END -->
