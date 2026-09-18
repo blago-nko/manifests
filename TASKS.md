@@ -58,7 +58,7 @@
 | :--- | :--- | :--- | :---: | :--- | :---: | :--- |
 | **ORG-003** | Токен для автоматизации | Получить PAT с правами создания репо + настройки Branch Protection | 🟠 | 👤 | ⬜ | Зависимость для ORG-002, INFRA-010 |
 | **ORG-002** | Применение Branch Protection | Применить `branch-protection.json`, `ruleset.json` через API | 🟠 | 👤/🤖 | ⬜ | Зависит от ORG-003 |
-| **INFRA-010** | Пересоздание `shared-assets` | Репозиторий общих фронтенд-артефактов | 🟠 | 🤖→👤 | ⬜ | На него ссылаются все манифесты |
+| **INFRA-010** | Пересоздание `shared-assets` | Репозиторий общих фронтенд-артефактов | 🟠 | 🤖→👤 | ✅ | Репозиторий создан (INFRA-033); подключение через submodule ||
 | **INFRA-011** | Публикация в GitHub Packages | `npm.pkg.github.com`, SemVer, только через CI | 🟡 | 🤖→👤 | ⬜ | Протокол 014 САМ |
 | **INFRA-012** | Reusable workflows | `architecture-check`, `protocol-check`, `sync-manifests`, `publish-assets`, `ai-rules-sync` | 🟠 | 🤖→👤 | ⬜ | Унифицировать `protocol-check`↔`pr-prefix-check` |
 | **INFRA-013** | Blago Ecosystem Bot | GitHub App для кросс-орг проверок | 🟡 | 🤖→👤 | ⬜ | САМ 3.3.3 |
