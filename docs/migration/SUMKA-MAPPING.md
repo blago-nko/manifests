@@ -60,7 +60,7 @@
 
 | Артефакт СУМКа | Реализация в shared-assets | Где живёт | Когда | Статус |
 | :--- | :--- | :--- | :--- | :--- |
-| 6.1 Админка для всех 14 сайтов | Hugo Admin UI (децентрализованная, через GitHub PR) | Faq | ⬜ |
+| 6.1 Админка для всех 14 сайтов | Hugo Admin UI (децентрализованная, через GitHub PR) | отдельно | Фаза 4 | ⬜ |
 | 6.2 Модерация контента | workflow approval (PR review + CI checks) | .github/workflows/ | Фаза 4 | ⬜ |
 | 6.3 Аналитика трафика | self-hosted Matomo/Plausible (Фаза 4) | отдельно | Фаза 4 | ⬜ |
 | 6.4 Identity Graph | partial author-links.html (связи между авторами) | hugo/layouts/partials/ | Фаза 4 | ⬜ |
