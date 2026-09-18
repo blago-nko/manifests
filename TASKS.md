@@ -58,7 +58,7 @@
 | :--- | :--- | :--- | :---: | :--- | :---: | :--- |
 | **ORG-003** | Токен для автоматизации | Получить PAT с правами создания репо + настройки Branch Protection | 🟠 | 👤 | ⬜ | Зависимость для ORG-002, INFRA-010 |
 | **ORG-002** | Применение Branch Protection | Применить `branch-protection.json`, `ruleset.json` через API | 🟠 | 👤/🤖 | ⬜ | Зависит от ORG-003 |
-| **INFRA-010** | Пересоздание `shared-assets` | Репозиторий общих фронтенд-артефактов | 🟠 | 🤖→👤 | ✅ | Репозиторий создан (INFRA-033); подключение через submodule|
+| **INFRA-010** | Пересоздание `shared-assets` | Репозиторий общих фронтенд-артефактов | 🟠 | 🤖→👤 | ✅ | Репозиторий создан (INFRA-033); подключение через submodule |
 | **INFRA-011** | Публикация в GitHub Packages | `npm.pkg.github.com`, SemVer, только через CI | 🟡 | 🤖→👤 | ⬜ | Протокол 014 САМ |
 | **INFRA-012** | Reusable workflows | `architecture-check`, `protocol-check`, `sync-manifests`, `publish-assets`, `ai-rules-sync` | 🟠 | 🤖→👤 | ⬜ | Унифицировать `protocol-check`↔`pr-prefix-check` |
 | **INFRA-013** | Blago Ecosystem Bot | GitHub App для кросс-орг проверок | 🟡 | 🤖→👤 | ⬜ | САМ 3.3.3 |
@@ -103,7 +103,7 @@
 
 | **ID** | Задача | Описание | Приоритет | Владелец | Статус | Комментарий |
 | **MIG-001** | Миграция <www.blagorussia.ru> (хаб) | Hugo, сложная навигация, 13 рубрик; apex → www редирект | 🟡 | → | ⬜ | Этап 3 |
-| **MIG-002** | Миграция obrazslov.ru (база знаний) | Hugo, кандидат на пилот | 🟡 | → | ⬜ | Этап 2/3 |
+| **MIG-002** | Миграция obrazslov.ru (база знаний) | Hugo, кандидат на пилот | 🟡 | → | 🔄 | Этап 1-2: репозиторий создан, скрипты экспорта готовы ||
 | **MIG-003** | Миграция partnerstvo.blagorussia.ru (юридический хаб НП) | Hugo + секция «Документы»; ПДн-формы → Yandex Forms | 🟡 | → | ⬜ | Этап 3 |
 | **MIG-004** | Миграция novosti.blagorussia.ru | Hugo, новостной поток | 🟡 | → | ⬜ | Этап 3 |
 | **MIG-005** | Миграция ot-gorozan.blagorussia.ru | Hugo, медиа-контент; формы без ПДн | 🟡 | → | ⬜ | Этап 3 |
