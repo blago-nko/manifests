@@ -4,9 +4,9 @@
 
 ## Этап 1: Экспорт контента
 
-- [ ] Получить Blogger Blog ID и API Key
-- [ ] Запустить scripts/blogger_export.py для экспорта постов
-- [ ] Проверить: все посты экспортированы (сравнить с количеством в Blogger)
+- [x] Получить Blogger Blog ID и API Key
+- [x] Запустить scripts/blogger_export.py для экспорта постов
+- [x] Проверить: все посты экспортированы (сравнить с количеством в Blogger)
 - [ ] Запустить scripts/media_downloader.py для скачивания изображений
 - [ ] Проверить: все изображения скачаны в static/images/
 - [ ] Запустить scripts/url_mapping.py для генерации маппинга URL
