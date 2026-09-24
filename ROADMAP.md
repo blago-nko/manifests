@@ -8,7 +8,7 @@
 
 ### Миграция 14 доменов на новую инфраструктуру (MIG-002…014)
 
-- Hugo + GitHub Pages для 11 RSS-сайтов
+- Hugo + GitHub Pages для 13 сайтов на Hugo
 - Astro для grekpanteon и interesnye-mesta
 - Единые shared-assets из `blago-nko/shared-assets`
 - RSS-hub архитектура (hub-and-spokes)
@@ -40,3 +40,8 @@
 ---
 
 *Последнее обновление: 2026-09-16*
+
+## CI-техдолг (до старта волны 1)
+
+- **Node20 removal:** дедлайн 23.09.2026 прошёл. Actions (`checkout@v4`, `markdownlint-cli2-action@v18`, `configure-pages@v5`, `upload-artifact@v4`, `deploy-pages@v4`) target Node20, forced на Node24. Обновить до Node24-native версий до старта INFRA-083.
+- **ubuntu-latest → Ubuntu 26.04:** rollout 19.10–19.11.2026. Пин `ubuntu-24.04` или явный тест `ubuntu-26.04` до волны 1.
