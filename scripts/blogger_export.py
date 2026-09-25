@@ -29,7 +29,7 @@ def _img_attrs(tag):
 
 
 def _figure(src, alt, caption=""):
-    """Собрать шорткод imgfigure: relURL в шаблоне, alt/title/caption."""
+    """Собрать шорткод img: поддержка внешних URL и JSON-LD."""
     alt = (alt or "").strip().replace('"', "'")
     cap = (caption or "").strip() or alt
     sc = (
