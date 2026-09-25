@@ -25,7 +25,7 @@
 | 10 | ideologia.obrazslov.ru | Идеология | Hugo | Тексты |
 | 11 | nasa-istoria.blagorussia.ru | Наша история (архив памяти) | Hugo | ПДн-формы → Yandex Forms |
 | 12 | grekpanteon.obrazslov.ru | Пантеон | Hugo | Биографии |
-| 13 | gallery.obrazslov.ru | Фотоархив | Astro | Тяжёлая медийность |
+| 13 | gallery.obrazslov.ru | Фотоархив | Blogger | Хранение изображений в Blogger CDN (см. САМ п.2.4) |
 | 14 | can.blagorussia.ru | САН | Hugo | Мигрирует вместе со всеми; изоляция контура B — после финальной проверки 14 сайтов (Этап 7) |
 
 ## Этапы
