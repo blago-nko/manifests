@@ -33,7 +33,7 @@ def _figure(src, alt, caption=""):
     alt = (alt or "").strip().replace('"', "'")
     cap = (caption or "").strip() or alt
     sc = (
-        '{{< imgfigure src="' + src + '" alt="' + (alt or cap)
+        '{{< img src="' + src + '" alt="' + (alt or cap)
         + '" title="' + cap + '" caption="' + cap + '" >}}'
     )
     return sc, cap
