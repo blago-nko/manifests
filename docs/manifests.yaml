@@ -4,34 +4,34 @@ manifests:
   short_title: САМ
   title: Системный Архитектурный Манифест
   description: Системный Архитектурный Манифест (78 принципов, 14 доменов)
-  version: 2.12-н
+  version: 2.13-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-09-15'
+  last_revision: '2026-09-24'
   protocols: 3
-  content_hash: 012875357bf3a2156681674eb20c5d1ba5d15e21ae0d94183192beb5e98106fd
+  content_hash: 58a7a439a047e26718413cd4b787fdc744073e0e1e126c5d2f53d7cad4664776
 - id: sumka
   file: СУМКа.md
   short_title: СУМКа
   title: Система Управления Медийным Контентом
   description: дистрибуция, соцсети, фиды
-  version: 1.10-н
+  version: 1.11-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-09-15'
+  last_revision: '2026-09-24'
   protocols: 1
-  content_hash: 4809be3d8e9213ecfce681cd675357f1bf4ef2d26c0a3bad0ef4ebe0d9bcabd6
+  content_hash: 2f664d0523b167b6c853cd6fe08c8d11b079e4babe139f88c0d91d940017c7c3
 - id: san
   file: САН.md
   short_title: САН
   title: Сообщество Агентов Недвижимости
   description: Платформа САН (Сообщество Агентов Недвижимости, Next.js, RESO)
-  version: 1.5-н
+  version: 1.6-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-08-22'
+  last_revision: '2026-09-24'
   protocols: 1
-  content_hash: 7b82c5e94ff7d2bdc77af3aef30f6d92d29633e039374288612a0ca850e8ec03
+  content_hash: be8aaeea1e6e4270d780ff7b943f6287a34444cd3f0bef308035775ffa983046
 - id: grek-panteon
   file: ГРЕК-ПАНТЕОН.md
   short_title: ГРЕК-ПАНТЕОН
@@ -49,12 +49,12 @@ manifests:
   short_title: МИГРАЦИЯ
   title: План миграции 14 доменов на новую инфраструктуру
   description: План миграции 14 доменов на новую инфраструктуру
-  version: 1.12-н
+  version: 1.13-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-09-15'
+  last_revision: '2026-09-24'
   protocols: 1
-  content_hash: 1cd739f192efff53c19b0d9cb47f0888ac509f437d30d6f7544735f08ffa6e96
+  content_hash: df88e6dd09ad3b07c03daf994f9ce9a590c8663d5c14fbf1d897d253e1c8b57b
 - id: lic
   file: ЛИЦ.md
   short_title: ЛИЦ
