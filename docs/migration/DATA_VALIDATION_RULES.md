@@ -21,15 +21,15 @@
 
 ## 2. Запрещенные значения и паттерны
 CI-скрипт должен блокировать мердж, если найдены:
-*   **Placeholder Dates:** `1970-01-01T00:00:00Z`, `0001-01-01`.
-*   **Generic Descriptions:** `"Post description"`, `"Read more"`, `"Click here"`.
-*   **Broken Images:** Вызовы шорткода `{{< img >}}` без атрибута `alt`.
-*   **HTML Artifacts:** Остатки тегов Blogger (`<div class="post-body">`, inline стили `style="..."` внутри Markdown тела поста).
+* **Placeholder Dates:** `1970-01-01T00:00:00Z`, `0001-01-01`.
+* **Generic Descriptions:** `"Post description"`, `"Read more"`, `"Click here"`.
+* **Broken Images:** Вызовы шорткода `{{< img >}}` без атрибута `alt`.
+* **HTML Artifacts:** Остатки тегов Blogger (`<div class="post-body">`, inline стили `style="..."` внутри Markdown тела поста).
 
 ## 3. Проверка медиа-контента
-*   Все изображения должны быть загружены через шорткод `{{< img src="..." alt="..." >}}`.
-*   Внешние ссылки (Blogger CDN) допускаются на этапе пилота, но помечаются тикетом для локализации в `static/images/` на Этапе 3.
-*   Атрибут `loading="lazy"` должен присутствовать во всех изображениях ниже первого экрана (контролируется темой, но проверяется в output HTML).
+* Все изображения должны быть загружены через шорткод `{{< img src="..." alt="..." >}}`.
+* Внешние ссылки (Blogger CDN) допускаются на этапе пилота, но помечаются тикетом для локализации в `static/images/` на Этапе 3.
+* Атрибут `loading="lazy"` должен присутствовать во всех изображениях ниже первого экрана (контролируется темой, но проверяется в output HTML).
 
 ## 4. Автоматизация (CI Integration)
 В workflow GitHub Actions каждого сайта добавить шаг "Validate Data Integrity".
