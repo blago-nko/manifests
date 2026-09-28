@@ -71,9 +71,12 @@
     - [backup-plan.yaml](docs/backup/backup-plan.yaml)
     - [RESTORE.md](docs/backup/RESTORE.md)
   - 📁 **migration/**
+    - [DATA_VALIDATION_RULES.md](docs/migration/DATA_VALIDATION_RULES.md)
     - [PILOT-checklist.md](docs/migration/PILOT-checklist.md)
     - [STRATEGY.md](docs/migration/STRATEGY.md)
     - [SUMKA-MAPPING.md](docs/migration/SUMKA-MAPPING.md)
+    - [THEME-BOUNDARY.md](docs/migration/THEME-BOUNDARY.md)
+  - [domains-list.md](docs/domains-list.md)
   - [manifests.yaml](docs/manifests.yaml)
   - [STATUS.md](docs/STATUS.md)
 - 📁 **scripts/**
@@ -84,6 +87,7 @@
   - [branch-protection.json](scripts/branch-protection.json)
   - [check_docs_links.py](scripts/check_docs_links.py)
   - [check_tasks_registry.py](scripts/check_tasks_registry.py)
+  - [image_sanitizer.py](scripts/image_sanitizer.py)
   - [image_storage_adapter.py](scripts/image_storage_adapter.py)
   - [media_downloader.py](scripts/media_downloader.py)
   - [pdn_scanner.py](scripts/pdn_scanner.py)
