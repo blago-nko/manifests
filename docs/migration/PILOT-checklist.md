@@ -14,8 +14,8 @@
 
 ## Этап 2: Настройка Hugo-сайта
 
-- [ ] Репозиторий blago-nko/obrazslov создан
-- [ ] shared-assets подключён как submodule
+- [x] Репозиторий blago-nko/obrazslov создан
+- [x] shared-assets подключён как submodule
 - [ ] config.toml настроен с permalinks /YYYY/MM/slug.html
 - [ ] Локальный hugo server запускается без ошибок
 - [ ] Все посты отображаются корректно
@@ -46,14 +46,14 @@
 
 - [ ] Mobile-first layout работает (breakpoints 360/768/1024)
 - [ ] Шапка и подвал отображаются
-- [ ] CookieConsent.js загружается
+- [x] CookieConsent.js загружается
 - [ ] Футер-лицензия CC BY-NC 4.0 присутствует
 - [ ] Блок «Об экосистеме» со ссылками на домены
 
 ## Этап 7: Деплой и проверка
 
-- [ ] GitHub Pages деплой успешен (workflow зелёный)
-- [ ] Staging-URL доступен
+- [x] GitHub Pages деплой успешен (workflow зелёный)
+- [x] Staging-URL доступен
 - [ ] Все страницы загружаются без ошибок 404
 - [ ] Uptime-мониторинг 48 часов без сбоев
 
