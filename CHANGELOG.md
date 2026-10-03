@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-02
+
+- Пилот obrazslov.ru: финализация — INFRA-097 (Pagefind: pretty-URL glob, изоляция по .Kind, клиентский фразовый режим, weight h1), INFRA-098 (tap-подсветка ссылок), INFRA-100 (тёмная тема: persistence, логотип WebP 5.5 КБ, контраст), INFRA-074 (tap-target скоуп: инлайн-ссылки в потоке текста -> display:inline/min-height:0).
+- SEO/A11Y: alt обложек карточек следует за итерируемой статьёй ($article.Title); проверено живым curl (4 разных alt == 4 заголовка карточек).
+- Гигиена: тестовый example-post.md удалён из контента (git aa13485); CSS-обрезка карточек (-webkit-line-clamp) работает как задумано (computed flow-root — маппинг Blink vertical-box, не дефект).
+- MIG-002 понижен до 🔄: Этап 1 частичен — локализация обложек/URL-маппинг отнесены в блок артефактов (обложки на staging ещё внешние blogger, подтверждено curl ALT-3).
+- Документация: TASKS.md — секция дизайн-системы дополнена INFRA-074/097/098/100 в checkbox-формате (не таблицей, чтобы не задеть check_tasks_registry); PILOT-checklist — отмечены только верифицированные пункты; obrazslov/README и shared-assets/README обновлены в своих репо.
+
 ## 2026-09-22
 
 ## 2026-09-24
