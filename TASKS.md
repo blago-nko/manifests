@@ -234,6 +234,9 @@
 | `.github/workflows/ai-rules-sync.yml` | САМ | ❌ Отсутствует | INFRA-012 | ✅ Да |
 | `.github/workflows/protocol-check.yml` | AGENTS | ❌ Отсутствует | INFRA-012 | ✅ Да |
 | `.github/copilot-instructions.md` | САМ §3.3.5 | ❌ Отсутствует | INFRA-012 | ✅ Да |
+| `legal/privacy-policy.html` | САМ | ❌ Отсутствует | INFRA-103 | ✅ Да |
+| `hugo/layouts/shortcodes/img.html` | МИГРАЦИЯ/СУМКа | ❌ Отсутствует | INFRA-104 | ✅ Да |
+| `scripts/validate_redirect_map.py` | МИГРАЦИЯ | ❌ Отсутствует | INFRA-106 | ✅ Да |
 
 ### Блок В: Отсутствует — концепты (имя не определено)
 
