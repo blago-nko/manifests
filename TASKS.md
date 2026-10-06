@@ -98,6 +98,18 @@
 | **INFRA-043** | Правило пересоздания конфликтных авто-PR (AGENTS.md §5.5.3) + MD060 hotfix | Правильная нумерация 5.5.3 + авто-фикс MD060 в строке 6 | 🟡 | → | ✅ | Этот PR |
 | **INFRA-044** | Сверка Фазы 0 + PROC-001 (автовалидация TASKS.md) | Дедупликация LIC-001, статусы LIC-002/003/PROC-002/INFRA-005 → ✅, check_tasks_registry.py | 🟡 | → | ✅ | Закрыт PR 252 |
 | **INFRA-045** | Удаление легаси корневого STATUS.md | Дубликат docs/STATUS.md; workflow работает только с docs/ | 🟡 | → | ✅ | Закрыт PR 254 |
+| **INFRA-107** | Разработка `image_sanitizer.py` (Pipeline 5 этапов) | EXIF strip → WebP → Resize ≤1600px → pHash → Watermark | 🔴 BLOCKER | 🤖→ | ⬜ | Критично для Blogger безлимита |
+| **INFRA-108** | Настройка Blogger Gallery (`gallery.obrazslov.ru`) | Создание блога, привязка CNAME, получение API Key | 🔴 BLOCKER | 👤 | ⬜ | Источник правды для изображений |
+| **INFRA-109** | Скрипт `upload_to_blogger.py` + интеграция с API | Автоматизация загрузки sanitized-файлов | 🔴 BLOCKER | 🤖→ | ⬜ | Зависит от INFRA-107, 108 |
+| **INFRA-110** | Конфиг `image_storage_routing.json` в shared-assets | Маршрутизация типов файлов (Blogger/R2/Git) | 🟡 HIGH | → | ⬜ | Единый источник правил хранения |
+| **INFRA-111** | Обновление шорткода `img.html` (srcset, lazy load) | Поддержка 4 размеров, fetchpriority для Hero | 🔴 BLOCKER | 🤖→👤 | ⬜ | Core Web Vitals LCP |
+| **INFRA-112** | Внедрение `design-tokens.css` и базовой типографики | CSS-переменные цветов и шрифтов PT Sans/Serif | 🟡 HIGH | →👤 |  | Единый стандарт фронтенда |
+| **INFRA-113** | Реализация `CookieConsent.js` и `footer-legal.html` | Юридическое требование 152-ФЗ и ЛИЦ | 🔴 BLOCKER | 🤖→ | ⬜ | Обязательный компонент футера |
+| **INFRA-114** | Внедрение `StickyBottomBar.js` в тему Hugo | Mobile-First навигация (xs:320px) | 🟡 HIGH | →👤 |  | UX-требование Манифеста |
+| **INFRA-115** | Настройка Pagefind (конфиг + JS) в теме Hugo | Исправление glob для подкаталогов GH Pages | 🟡 HIGH | → | ⬜ | Внутренний поиск по сайту |
+| **INFRA-116** | Разработка `generate_redirect_map.py` | Парсинг sitemap Blogger → маппинг новых slug | 🔴 BLOCKER | 🤖→ | ⬜ | SEO-преемственность |
+| **INFRA-117** | Разработка `validate_redirect_map.py` | Проверка циклов, дублей, валидности URL | 🟡 HIGH | 🤖→ |  | Качество данных редиректов |
+| **INFRA-118** | Настройка `robots.txt` и `ai-hints.txt` | GEO-оптимизация, разрешение для GPTBot/Yandex | 🟡 MED | 🤖→ | ⬜ | Доступность для ИИ-поисковиков |
 
 ### Фаза 3: Миграция 14 сайтов с Blogger
 
