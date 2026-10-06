@@ -103,12 +103,12 @@
 | **INFRA-109** | Скрипт `upload_to_blogger.py` + интеграция с API | Автоматизация загрузки sanitized-файлов | 🔴 BLOCKER | 🤖→ | ⬜ | Зависит от INFRA-107, 108 |
 | **INFRA-110** | Конфиг `image_storage_routing.json` в shared-assets | Маршрутизация типов файлов (Blogger/R2/Git) | 🟡 HIGH | → | ⬜ | Единый источник правил хранения |
 | **INFRA-111** | Обновление шорткода `img.html` (srcset, lazy load) | Поддержка 4 размеров, fetchpriority для Hero | 🔴 BLOCKER | 🤖→👤 | ⬜ | Core Web Vitals LCP |
-| **INFRA-112** | Внедрение `design-tokens.css` и базовой типографики | CSS-переменные цветов и шрифтов PT Sans/Serif | 🟡 HIGH | →👤 |  | Единый стандарт фронтенда |
+| **INFRA-112** | Внедрение `design-tokens.css` и базовой типографики | CSS-переменные цветов и шрифтов PT Sans/Serif | 🟡 HIGH | →👤 |   ⬜ | Единый стандарт фронтенда |
 | **INFRA-113** | Реализация `CookieConsent.js` и `footer-legal.html` | Юридическое требование 152-ФЗ и ЛИЦ | 🔴 BLOCKER | 🤖→ | ⬜ | Обязательный компонент футера |
-| **INFRA-114** | Внедрение `StickyBottomBar.js` в тему Hugo | Mobile-First навигация (xs:320px) | 🟡 HIGH | →👤 |  | UX-требование Манифеста |
+| **INFRA-114** | Внедрение `StickyBottomBar.js` в тему Hugo | Mobile-First навигация (xs:320px) | 🟡 HIGH | →👤 |   ⬜ | UX-требование Манифеста |
 | **INFRA-115** | Настройка Pagefind (конфиг + JS) в теме Hugo | Исправление glob для подкаталогов GH Pages | 🟡 HIGH | → | ⬜ | Внутренний поиск по сайту |
 | **INFRA-116** | Разработка `generate_redirect_map.py` | Парсинг sitemap Blogger → маппинг новых slug | 🔴 BLOCKER | 🤖→ | ⬜ | SEO-преемственность |
-| **INFRA-117** | Разработка `validate_redirect_map.py` | Проверка циклов, дублей, валидности URL | 🟡 HIGH | 🤖→ |  | Качество данных редиректов |
+| **INFRA-117** | Разработка `validate_redirect_map.py` | Проверка циклов, дублей, валидности URL | 🟡 HIGH | 🤖→ |   ⬜ | Качество данных редиректов |
 | **INFRA-118** | Настройка `robots.txt` и `ai-hints.txt` | GEO-оптимизация, разрешение для GPTBot/Yandex | 🟡 MED | 🤖→ | ⬜ | Доступность для ИИ-поисковиков |
 
 ### Фаза 3: Миграция 14 сайтов с Blogger
