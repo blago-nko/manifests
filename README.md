@@ -70,6 +70,8 @@
   - 📁 **backup/**
     - [backup-plan.yaml](docs/backup/backup-plan.yaml)
     - [RESTORE.md](docs/backup/RESTORE.md)
+  - 📁 **infrastructure/**
+    - [R2_SETUP.md](docs/infrastructure/R2_SETUP.md)
   - 📁 **migration/**
     - [DATA_VALIDATION_RULES.md](docs/migration/DATA_VALIDATION_RULES.md)
     - [PILOT-checklist.md](docs/migration/PILOT-checklist.md)
@@ -91,6 +93,7 @@
   - [image_storage_adapter.py](scripts/image_storage_adapter.py)
   - [media_downloader.py](scripts/media_downloader.py)
   - [pdn_scanner.py](scripts/pdn_scanner.py)
+  - [r2_uploader.py](scripts/r2_uploader.py)
   - [ruleset-repo.json](scripts/ruleset-repo.json)
   - [ruleset.json](scripts/ruleset.json)
   - [sanitize_images.py](scripts/sanitize_images.py)
@@ -99,6 +102,8 @@
   - [sync_readme_sections.py](scripts/sync_readme_sections.py)
   - [update_status.py](scripts/update_status.py)
   - [url_mapping.py](scripts/url_mapping.py)
+- 📁 **test_out/**
+  - [blue_square.jpg](test_out/blue_square.jpg)
 - 📁 **tests/**
   - 📁 **e2e/**
     - [test_domains.py](tests/e2e/test_domains.py)
