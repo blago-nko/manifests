@@ -1,6 +1,7 @@
 # Инструкция по настройке Cloudflare R2 Object Storage
 
 ## 1. Создание Bucketa
+
 1. Войдите в [Cloudflare Dashboard](https://dash.cloudflare.com/).
 2. Перейдите в раздел **R2 Object Storage** (в левой боковой панели).
 3. Нажмите кнопку **Create Bucket**.
@@ -9,6 +10,7 @@
 6. Нажмите **Create Bucket**.
 
 ## 2. Привязка Домена (Public Access / Custom Domain)
+
 Чтобы файлы были доступны по красивому адресу `cdn.obrazslov.ru`, а не длинным URL от Cloudflare:
 
 1. Откройте созданный бакет `obrazslov-media`.
@@ -20,27 +22,30 @@
 7. После успешной проверки статус изменится на **Active**.
 
 ## 3. Получение API Keys (S3-Compatible Access)
+
 Для работы Python-скриптов и CI/CD пайплайнов нам нужны ключи доступа S3.
 
 1. В главном меню Cloudflare перейдите в **Account Details** -> **API Tokens**.
 2. Нажмите **Create Token**.
 3. Используйте шаблон **Start from Template** -> выберите **Cloudflare R2 Edit**.
 4. Настройте права доступа:
-   *   **Permissions:** Account | Cloudflare R2 storage | Read and Write
-   *   **Resources:** Specific account selected (ваш аккаунт ID)
+   * **Permissions:** Account | Cloudflare R2 storage | Read and Write
+   * **Resources:** Specific account selected (ваш аккаунт ID)
 5. Нажмите **Continue to summary** -> **Create Token**.
 6. Скопируйте полученные значения:
-   *   `Access Key ID`
-   *   `Secret Access Key`
-   *   `Endpoint URL` (выглядит как `https://<account_id>.r2.cloudflarestorage.com`)
+   * `Access Key ID`
+   * `Secret Access Key`
+   * `Endpoint URL` (выглядит как `https://<account_id>.r2.cloudflarestorage.com`)
 
 ⚠️ **Важно:** Сохраните эти ключи в переменных окружения (`.env`) или секретах GitHub Actions. Никогда не коммитьте их в Git!
 
 ## 4. Настройка CORS (Cross-Origin Resource Sharing)
+
 Чтобы изображения корректно отображались на сайтах `*.obrazslov.ru`:
 
 1. В настройках бакета найдите раздел **Settings** -> **CORS Policies**.
 2. Добавьте новую политику:
+
 ```json
 [
   {
