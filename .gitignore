@@ -1,3 +1,17 @@
 scripts/__pycache__/
 FETCH_HEAD
 *.pyc
+scripts/config/service-account-key.json
+scripts/config/blogger_config.json
+
+# SECURITY: Never commit credentials
+token.json
+client_secret.json
+.env
+
+# TEMP: Browser profiles and cache from failed attempts
+chrome_profile/
+chrome_profile_clean/
+chrome_session/
+temp_chrome_profile/
+*.tmp

@@ -5,7 +5,7 @@
 ## Основная сеть (Контур A) — 13 сайтов на Hugo + GitHub Pages
 
 | # | Домен | Роль | Движок | Хостинг | Статус |
-|:-:|:------|:-----|:------:|:-------:|:------:|
+| :-: | :------ | :----- | :------: | :-------: | :------: |
 | 1 | blagorussia.ru | rss-hub | Hugo | GitHub Pages | 🟢 |
 | 2 | obrazslov.ru | rss-site | Hugo | GitHub Pages | 🟢 |
 | 3 | partnerstvo.blagorussia.ru | rss-site | Hugo | GitHub Pages | 🟢 |
