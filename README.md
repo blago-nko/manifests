@@ -92,6 +92,7 @@
   - [image_sanitizer.py](scripts/image_sanitizer.py)
   - [image_storage_adapter.py](scripts/image_storage_adapter.py)
   - [media_downloader.py](scripts/media_downloader.py)
+  - [migrate_live_links.py](scripts/migrate_live_links.py)
   - [pdn_scanner.py](scripts/pdn_scanner.py)
   - [r2_uploader.py](scripts/r2_uploader.py)
   - [ruleset-repo.json](scripts/ruleset-repo.json)
