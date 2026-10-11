@@ -15,3 +15,9 @@ chrome_profile_clean/
 chrome_session/
 temp_chrome_profile/
 *.tmp
+
+# Hugo build output
+public/
+
+# Pagefind output
+pagefind/
