@@ -117,3 +117,22 @@
 | :-- | :-- | :-- | :-- | :-- |
 | 7.1 Blogger Image Storage | Шорткод {{< img >}} генерирует URL из params.blogger_id | hugo/layouts/shortcodes/img.html | Этап 2 (пилот) | ⬜ |
 | 7.2 Media Passport | Генерация JSON-LD ImageObject с авторством и лицензией | partials/jsonld-image.html | Этап 2 (пилот) | ⬜ |
+
+## Минимальный набор артефактов (все 14 сайтов) - ОБНОВЛЕНО 2026-10-11
+
+Эти артефакты реализуются на пилоте (Этап 2) и rollout'ятся на все сайты в Этапе 3:
+
+1. Mobile-first layout (baseof.html + CSS breakpoints) - реализовано
+2. Шапка и подвал (partials header.html, footer.html) - реализовано
+3. CookieConsent.js + стили баннера - реализовано
+4. Футер-лицензия CC BY-NC 4.0 - реализовано
+5. Блок «Об экосистеме» (ссылки на 14 доменов) - реализовано
+6. Favicon и OG-изображения - ТРЕБУЕТСЯ добавление favicon.ico
+7. RSS index.xml, sitemap.xml, robots.txt - реализовано
+8. Meta-тег верификации Search Console - реализовано
+9. PWA Manifest (manifest.json) - ТРЕБУЕТСЯ добавление
+10. .gitignore с исключениями public/, pagefind/ - ТРЕБУЕТСЯ добавление в manifests и shared-assets
+
+---
+
+_Последнее обновление: 2026-10-11_
