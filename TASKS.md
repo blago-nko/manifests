@@ -54,29 +54,31 @@
 Научно-исследовательский портал `science.obrazslov.ru`. Префикс протокола: `VAC-`.
 
 ### Техническая реализация Astro проекта (В работе)
+
 - [ ] VAC-008: Setup Astro project structure compatible with `shared-assets`.
-    - *Описание:* Инициализация папок `src/content/articles/`, настройка `astro.config.mjs` для поддержки Markdown/MDX.
-    - *Зависимость:* Требует наличия `shared-assets/css/base.css`.
+  - *Описание:* Инициализация папок `src/content/articles/`, настройка `astro.config.mjs` для поддержки Markdown/MDX.
+  - *Зависимость:* Требует наличия `shared-assets/css/base.css`.
 - [ ] VAC-009: Configure LaTeX rendering pipeline.
-    - *Описание:* Установка плагинов `remark-math` и `rehype-katex`. Проверка рендеринга формул `$E=mc^2$` на тестовой странице.
-    - *Зависимость:* VAC-008.
+  - *Описание:* Установка плагинов `remark-math` и `rehype-katex`. Проверка рендеринга формул `$E=mc^2$` на тестовой странице.
+  - *Зависимость:* VAC-008.
 - [ ] VAC-010: Implement first Python script for PBH mass function calculation.
-    - *Описание:* Создание `scripts/pbh_calc.py` для расчета функции масс компактных узлов $dn/dM$. Генерация JSON-артефакта в `public/data/`.
-    - *Зависимость:* Нет. Может выполняться параллельно с VAC-008.
+  - *Описание:* Создание `scripts/pbh_calc.py` для расчета функции масс компактных узлов $dn/dM$. Генерация JSON-артефакта в `public/data/`.
+  - *Зависимость:* Нет. Может выполняться параллельно с VAC-008.
 - [ ] VAC-011: Port main hypothesis text to Markdown/Astro pages.
-    - *Описание:* Перенос текста статьи «Гипотеза вакуумного конденсата Вселенной» в формат MDX с разбивкой на разделы (Introduction, Model, Dynamics, Black Holes, Conclusion).
-    - *Зависимость:* VAC-008, VAC-009.
+  - *Описание:* Перенос текста статьи «Гипотеза вакуумного конденсата Вселенной» в формат MDX с разбивкой на разделы (Introduction, Model, Dynamics, Black Holes, Conclusion).
+  - *Зависимость:* VAC-008, VAC-009.
 - [ ] VAC-012: Create interactive density evolution visualization ($\rho(a)$).
-    - *Описание:* Разработка JS-компонента (Astro Island) для графика эволюции плотности энергии вселенной на основе данных из VAC-010.
-    - *Зависимость:* VAC-010, VAC-011.
+  - *Описание:* Разработка JS-компонента (Astro Island) для графика эволюции плотности энергии вселенной на основе данных из VAC-010.
+  - *Зависимость:* VAC-010, VAC-011.
 - [ ] VAC-013: Set up RSS feed generation `/feed.xml`.
-    - *Описание:* Настройка генератора фидов для интеграции с СУМКой.
-    - *Зависимость:* VAC-008.
+  - *Описание:* Настройка генератора фидов для интеграции с СУМКой.
+  - *Зависимость:* VAC-008.
 - [ ] VAC-014: Deploy initial version to GitHub Pages under `science.obrazslov.ru`.
-    - *Описание:* Настройка CI/CD workflow для публикации собранного сайта на поддомен.
-    - *Зависимость:* VAC-008...013.
+  - *Описание:* Настройка CI/CD workflow для публикации собранного сайта на поддомен.
+  - *Зависимость:* VAC-008...013.
 
 ### Публикация и продвижение (Backlog)
+
 - [ ] VAC-015: Prepare English abstract and key figures for international audience.
 - [ ] VAC-016: Submit paper to arXiv/Zenodo with DOI linking back to this repo.
 - [ ] VAC-017: Integrate social sharing buttons (VK, Telegram) via shared-assets components.
@@ -162,7 +164,8 @@
 
 ### Фаза 3: Миграция 14 сайтов с Blogger
 
-| **ID** | Задача | Описание | Приоритет | Владелец | Статус | Комментарий |
+| ID | Задача | Описание | Приоритет | Владелец | Статус | Комментарий |
+| :--- | :--- | :--- | :---: | :--- | :---: | :--- |
 | **MIG-001** | Миграция <www.blagorussia.ru> (хаб) | Hugo, сложная навигация, 13 рубрик; apex → www редирект | 🟡 | → | ⬜ | Этап 3 |
 | **MIG-002** | Миграция obrazslov.ru (база знаний) | Hugo, пилот на staging. Текст мигрирован, SEO/поиск/тема проверены. Перевод на боевой домен — после блока артефактов. | 🟢 | → | 🔄 | Этап 1 частично: локализация обложек/URL-маппинг в блоке артефактов. |
 | **MIG-003** | Миграция partnerstvo.blagorussia.ru (юридический хаб НП) | Hugo + секция «Документы»; ПДн-формы → Yandex Forms | 🟡 | → | ⬜ | Этап 3 |
