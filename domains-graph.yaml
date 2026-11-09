@@ -7,9 +7,9 @@
 # Генераторы (Issue Forms, RSS, sitemap) берут категории ТОЛЬКО отсюда (016.4)
 # =============================================================
 
-version: 1
-updated: "2026-09-16"
-source: "САМ.md п.1.2, п.1.3 (Протокол 016), Приложение X; МИГРАЦИЯ.md разд. 5.1"
+version: 2
+updated: "2026-11-08" # Обновлено при добавлении домена science.obrazslov.ru
+source: "САМ.md п.1.2, п.1.3 (Протокол 016), Приложение X; МИГРАЦИЯ.md разд. 5.1; ВАКУУМНЫЙ_КОНДЕНСАТ.md"
 
 contours:
   A:
@@ -21,7 +21,7 @@ contours:
   V:
     note: сайт-витрина НКО
 
-# --- 14 доменов экосистемы (САМ п.1.2) ---
+# --- 15 доменов экосистемы (САМ п.1.2 + Новый научный портал) ---
 domains:
   # A. Core Network: 11 тематических RSS-сайтов (Hugo + GitHub Pages, ветка main, Actions)
   - fqdn: blagorussia.ru
@@ -87,6 +87,22 @@ domains:
     engine: Astro
     hosting: GitHub Pages
 
+  # NEW: Метафизико-научный портал (Гипотеза вакуумного конденсата)
+  # Размещается под крылом 'Образ слов' как расширение базы знаний смыслов
+  - fqdn: science.obrazslov.ru
+    id: vacuum_condensate         # ID для машинной идентификации
+    name: "Вакуумный Конденсат"
+    role: research-portal         # Специализированная роль: наука + философия
+    contour: A                    # Интегрирован в основную сеть для дистрибуции через СУМКа
+    engine: Astro                 # Требуется поддержка LaTeX/Python расчетов
+    hosting: GitHub Pages
+    license_override: "Text: CC BY 4.0 | Code: MIT" # Исключение из ЛИЦ.md
+    dependencies:
+      - shared_assets             # Использует общие стили/компоненты
+      - sumka_orchestrator        # Интеграция с дистрибуцией
+    tags: ["physics", "cosmology", "metaphysics", "philosophy-of-science", "open-science"]
+    rss_feed: "/feed.xml"
+
   # c. Платформа САН (изолированный контур B, 152-ФЗ)
   - fqdn: can.blagorussia.ru
     role: pdn-platform
@@ -102,11 +118,11 @@ domains:
     engine: Blogger
     hosting: Blogger
 
-# --- Технические поддомены (вне 14 доменов) ---
+# --- Технические поддомены (вне основных доменов) ---
 infra:
   - fqdn: r2.blagorussia.ru
     role: storage-cdn        # роль уточнить: INFRA-020
-    note: технический поддомен, не входит в 14 доменов
+    note: технический поддомен, не входит в список контентных доменов
 
 # --- Междоменные связи ---
 links:
@@ -123,9 +139,12 @@ links:
       - joga.blagorussia.ru
       - ideologia.obrazslov.ru
       - nasa-istoria.blagorussia.ru
-  - type: shared-component   # Приложение Г6: баннер на всех 14 сайтах
+      - grekpanteon.obrazslov.ru   # Пантеон остается споксом
+      - science.obrazslov.ru       # <-- ДОБАВЛЕНО: Наука как часть образа слов
+  
+  - type: shared-component   # Приложение Г6: баннер на всех сайтах экосистемы
     component: CookieConsent.js
-    applies_to: all-14
+    applies_to: all-content-domains # Обновлено описание применения (включает science.*)
 
 # --- Единая таксономия (016.2) ---
 taxonomy:
