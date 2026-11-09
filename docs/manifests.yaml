@@ -63,7 +63,7 @@ manifests:
   file: ЛИЦ.md
   short_title: ЛИЦ
   title: Лицензирование и интеллектуальная собственность
-  description: Лицензирование и интеллектуальная собственность (AGPLv3 + CC BY-NC 4.0; Исключение: CC BY 4.0 / MIT для науки)
+  description: "Лицензирование и интеллектуальная собственность (AGPLv3 + CC BY-NC 4.0; Исключение: CC BY 4.0 / MIT для науки)"
   version: 1.9-н
   status: active
   approved_date: '2026-08-10'
