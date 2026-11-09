@@ -92,6 +92,7 @@
   - [image_sanitizer.py](scripts/image_sanitizer.py)
   - [image_storage_adapter.py](scripts/image_storage_adapter.py)
   - [media_downloader.py](scripts/media_downloader.py)
+  - [migrate_live_links.py](scripts/migrate_live_links.py)
   - [pdn_scanner.py](scripts/pdn_scanner.py)
   - [r2_uploader.py](scripts/r2_uploader.py)
   - [ruleset-repo.json](scripts/ruleset-repo.json)
@@ -128,13 +129,13 @@
 - [ROADMAP.md](ROADMAP.md)
 - [SECURITY.md](SECURITY.md)
 - [TASKS.md](TASKS.md)
+- [ВАКУУМНЫЙ_КОНДЕНСАТ.md](ВАКУУМНЫЙ_КОНДЕНСАТ.md)
 - [ГРЕК-ПАНТЕОН.md](ГРЕК-ПАНТЕОН.md)
 - [ЛИЦ.md](ЛИЦ.md)
 - [МИГРАЦИЯ.md](МИГРАЦИЯ.md)
 - [САМ.md](САМ.md)
 - [САН.md](САН.md)
 - [СУМКа.md](СУМКа.md)
-- [ВАКУУМНЫЙ_КОНДЕНСАТ.md](ВАКУУМНЫЙ_КОНДЕНСАТ.md)
 
 <!-- README:TREE:END -->
 
@@ -162,7 +163,7 @@
 - [manifests](https://github.com/blago-nko/manifests) — Единый источник правды: архитектурные манифесты и стандарты экосистемы blago-nko
 - [obrazslov](https://github.com/blago-nko/obrazslov) — Образ слов — база знаний экосистемы blago-nko (пилот миграции с Blogger на Hugo)
 - [shared-assets](https://github.com/blago-nko/shared-assets) — Общие ассеты экосистемы: Hugo-тема, Astro-компоненты, CookieConsent, CSS/JS, RSS
-- [vacuum-condensate-hypothesis](https://github.com/blago-nko/vacuum-condensate-hypothesis) — Научный проект «Гипотеза вакуумного конденсата Вселенной» (science.obrazslov.ru)
+- [vacuum-condensate-hypothesis](https://github.com/blago-nko/vacuum-condensate-hypothesis) — Открытая исследовательская программа «Гипотеза вакуумного конденсата Вселенной». Объединение проблем ТМ, ТЕ, вращения и массы через модель фазового перехода.
 
 <!-- README:REPOS:END -->
 
