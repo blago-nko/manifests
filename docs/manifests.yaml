@@ -3,13 +3,14 @@ manifests:
   file: САМ.md
   short_title: САМ
   title: Системный Архитектурный Манифест
-  description: Системный Архитектурный Манифест (78 принципов, 14 доменов)
-  version: 2.14-н
+  description: Системный Архитектурный Манифест (78 принципов, 15 доменов)
+  version: 2.15-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-10-06'
+  last_revision: '2026-11-09'
   protocols: 3
-  content_hash: 3be3a1210a7d7abaad95dc9c9050557ee2e10edc82f4d1173d0555d15ba80824
+  content_hash: "" 
+  
 - id: sumka
   file: СУМКа.md
   short_title: СУМКа
@@ -21,6 +22,7 @@ manifests:
   last_revision: '2026-09-24'
   protocols: 1
   content_hash: 2f664d0523b167b6c853cd6fe08c8d11b079e4babe139f88c0d91d940017c7c3
+
 - id: san
   file: САН.md
   short_title: САН
@@ -32,49 +34,66 @@ manifests:
   last_revision: '2026-09-24'
   protocols: 1
   content_hash: be8aaeea1e6e4270d780ff7b943f6287a34444cd3f0bef308035775ffa983046
+
 - id: grek-panteon
   file: ГРЕК-ПАНТЕОН.md
   short_title: ГРЕК-ПАНТЕОН
   title: База знаний по античной мифологии
-  description: База знаний по античной мифологии (~350 страниц сейчас; цель 16 505+,
-    Hugo→Astro)
+  description: База знаний по античной мифологии (~350 страниц сейчас; цель 16 505+, Hugo→Astro)
   version: 1.10-н
   status: active
   approved_date: '2026-07-26'
   last_revision: '2026-09-16'
   protocols: 1
   content_hash: 80785c0354a33854887186ef879d26cc40ea39db8940454b21785f5dbc3599d1
+
 - id: migraciya
   file: МИГРАЦИЯ.md
   short_title: МИГРАЦИЯ
-  title: План миграции 14 доменов на новую инфраструктуру
-  description: План миграции 14 доменов на новую инфраструктуру
-  version: 1.15-н
+  title: План миграции доменов на новую инфраструктуру
+  description: Стратегия поэтапного перехода 15 доменов с legacy-платформ (Blogger) на Hugo/Astro/Next.js + GitHub Pages/Vercel; включает Greenfield-проекты
+  version: 1.16-н
   status: active
   approved_date: '2026-07-26'
-  last_revision: '2026-10-09'
-  protocols: 1
-  content_hash: 380253b273f2af56aa7c56c5d085d148adc99f1b2abaae0bc8d1351a623fea46
+  last_revision: '2026-11-09'
+  protocols: 2
+  content_hash: "" 
+
 - id: lic
   file: ЛИЦ.md
   short_title: ЛИЦ
   title: Лицензирование и интеллектуальная собственность
-  description: Лицензирование и интеллектуальная собственность (AGPLv3 + CC BY-NC
-    4.0)
-  version: 1.8-н
+  description: "Лицензирование и интеллектуальная собственность (AGPLv3 + CC BY-NC 4.0; Исключение: CC BY 4.0 / MIT для науки)"
+  version: 1.9-н
   status: active
   approved_date: '2026-08-10'
-  last_revision: '2026-10-06'
-  protocols: 1
-  content_hash: 88ca6c3d2ae196dff80aac09759fdd31a9eaa562060150942e35243e5de64ee6
+  last_revision: '2026-11-09'
+  protocols: 2
+  content_hash: "" 
+
 - id: agents
   file: AGENTS.md
   short_title: AGENTS
   title: Инструкции для ИИ-агентов
   description: Единые стандарты поведения ИИ-агентов экосистемы blago-nko
-  version: 1.9-н
+  version: 1.10-н
   status: active
   approved_date: '2026-08-06'
-  last_revision: '2026-10-04'
+  last_revision: '2026-11-09'
+  protocols: 2
+  content_hash: "" 
+
+- id: vacuum_condensate
+  file: ВАКУУМНЫЙ_КОНДЕНСАТ.md
+  short_title: ВАКУУМНЫЙ_КОНДЕНСАТ
+  title: Метафизико-научный портал (Гипотеза вакуумного конденсата Вселенной)
+  description: "Научный проект «Гипотеза вакуумного конденсата Вселенной» (science.obrazslov.ru). Astro + Python calculations. Special licensing: CC BY 4.0 (text) / MIT (code)."  
+  version: 0.1.0-draft
+  status: draft
+  approved_date: '2026-11-08'
+  last_revision: '2026-11-09'
   protocols: 1
-  content_hash: 95fc877ed7973b32d2ae9ac2a56ba152787a8502a12c1a7b1d6f6d880fd3167c
+  prefix: VAC-
+  domain: science.obrazslov.ru
+  cluster: B
+  content_hash: "" 

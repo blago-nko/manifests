@@ -1,4 +1,4 @@
-## Инструкции для ИИ-агентов
+# Инструкции для ИИ-агентов
 
 <!-- MANIFEST:METADATA:BEGIN -->
 
@@ -7,11 +7,11 @@
 | Манифест | AGENTS |
 | Название | Инструкции для ИИ-агентов |
 | Описание | Единые стандарты поведения ИИ-агентов экосистемы blago-nko |
-| Версия | 1.9-н |
+| Версия | 1.10-н |
 | Статус | 🟢 Активен |
 | Дата утверждения | 2026-08-06 |
-| Дата последней редакции | 2026-10-04 |
-| Протоколы | 1 |
+| Дата последней редакции | 2026-11-09 |
+| Протоколы | 2 |
 
 <!-- MANIFEST:METADATA:END -->
 
@@ -20,13 +20,14 @@
 
 Настоящий документ устанавливает единые стандарты поведения ИИ-агентов при работе с кодом, манифестами и инфраструктурой экосистемы. Все правила основаны на принципах Системного Архитектурного Манифеста (САМ) и подчинены ему.
 
-### 0. Навигация по документам
+## 0. Навигация по документам
 
 - Обзор репозитория и точка входа: [README.md](README.md)
 - Реестр задач (краткосрок): [TASKS.md](TASKS.md); протокол ведения задач — раздел 5 настоящего документа
 - Долгосрочные направления: [ROADMAP.md](ROADMAP.md)
 - Живой статус экосистемы (только чтение): [docs/STATUS.md](docs/STATUS.md)
 - Лицензии: код — [LICENSE](LICENSE) (AGPLv3), контент — [LICENSE-CONTENT](LICENSE-CONTENT) (CC BY-NC 4.0); операционное объяснение — [ЛИЦ.md](ЛИЦ.md)
+- Граф доменов: [domains-graph.yaml](domains-graph.yaml)
 
 ## 1. 🌩️ Среда разработки (Cloud vs Local Development)
 
@@ -43,19 +44,19 @@
 - неконтролируемого расползания архитектурных правок;
 - сложности с аудитом изменений до момента создания Pull Request.
 
-### 1. ОБЯЗАТЕЛЬНО ДЛЯ ИИ-АГЕНТА (Первое взаимодействие)
+### 1.1. ОБЯЗАТЕЛЬНО ДЛЯ ИИ-АГЕНТА (Первое взаимодействие)
 
 - Предложить пользователю выбор между Облачной и Локальной разработкой.
 - Кратко обозначить профили безопасности для обоих подходов.
 - Адаптировать дальнейшие инструкции, генерацию кода и шаблоны команд под выбранную среду (Colab/Codespaces для облака, терминал/локальные IDE для локальной среды).
 
-### 2. ЗАПРЕЩЕНО (Для обеих сред)
+### 1.2. ЗАПРЕЩЕНО (Для обеих сред)
 
 - Прямой коммит в ветку `main` любого репозитория экосистемы.
 - Коммит секретов, токенов и `.env`-файлов в git-историю.
 - Нарушение протокола именования веток и создание PR без прохождения CI-чеков.
 
-### 3. РЕГЛАМЕНТ ОБЛАЧНОЙ РАЗРАБОТКИ (Cloud-Only)
+### 1.3. РЕГЛАМЕНТ ОБЛАЧНОЙ РАЗРАБОТКИ (Cloud-Only)
 
 Если пользователь выбрал облако:
 
@@ -65,7 +66,7 @@
 - **Аутентификация** — через GitHub OAuth (для веб-интерфейса) или PAT (для Colab/API).
 - **Обработка данных** — в оперативной памяти, без сохранения на диск локальной машины.
 
-### 4. РЕГЛАМЕНТ ЛОКАЛЬНОЙ РАЗРАБОТКИ (Local Environment)
+### 1.4. РЕГЛАМЕНТ ЛОКАЛЬНОЙ РАЗРАБОТКИ (Local Environment)
 
 Если пользователь выбрал локальную среду:
 
@@ -208,7 +209,7 @@ def write_file(repo, path, content, message, branch="main"):
 
 ## 5. 🚀 Порядок внесения изменений в манифесты (Codespaces-Only Policy)
 
-Репозиторий `blago-nko/manifests` — высший орган архитектурного права экосистемы. Все изменения манифестов (САМ, САН, СУМКа, ГРЕК-ПАНТЕОН, МИГРАЦИЯ, ЛИЦ, AGENTS) вносятся **исключительно через GitHub Codespaces**. Локальное клонирование и `git push` вне Codespaces КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНЫ. GitHub Web UI допускается только для точечных опечаток, не меняющих смысл.
+Репозиторий `blago-nko/manifests` — высший орган архитектурного права экосистемы. Все изменения манифестов (САМ, САН, СУМКа, ГРЕК-ПАНТЕОН, МИГРАЦИЯ, ЛИЦ, AGENTS, ВАКУУМНЫЙ_КОНДЕНСАТ) вносятся **исключительно через GitHub Codespaces**. Локальное клонирование и `git push` вне Codespaces КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНЫ. GitHub Web UI допускается только для точечных опечаток, не меняющих смысл.
 
 ### 5.1. Почему только Codespaces
 
@@ -224,9 +225,13 @@ def write_file(repo, path, content, message, branch="main"):
 3. **Создайте ветку:** `git pull origin main && git checkout -b fix/<имя>`.
 4. **Внесите правки** в редакторе (левая панель), сохраните `Ctrl+S`.
 5. **Закоммитьте и запушьте:**
+
+    ```bash
     git add <файлы>
     git commit -m "fix(область): описание (ПРОТОКОЛ-XXX)"
     git push -u origin fix/<имя>
+    ```
+
 6. **Создайте PR:** `gh pr create`, тело — по шаблону `.github/PULL_REQUEST_TEMPLATE.md`.
 7. **Чеки и ревью:** вкладка **Checks** зелёная; approve Архитектурного комитета.
 8. **Мерж:** **Squash and merge**, удалить ветку.
@@ -247,12 +252,13 @@ def write_file(repo, path, content, message, branch="main"):
 
 Все изменения в манифесты вносятся исключительно через **Pull Request** из отдельной ветки. Прямой коммит в `main` категорически запрещён и будет заблокирован Branch Protection Rules.
 
-#### 🌿 Правило именования веток
+##### 🌿 Правило именования веток
 
 Имя ветки строго соответствует шаблону (согласно САМ п. 1.5, Протокол SAM-REF-007):
 
 ```text
 <тип>/<ПРЕФИКС>-<краткое-описание>
+```
 
 **Типы веток:**
 
@@ -272,8 +278,7 @@ def write_file(repo, path, content, message, branch="main"):
 | `MIG`   | МИГРАЦИЯ |
 | `LIC`   | ЛИЦ |
 | `INFRA` | Инфраструктура, скрипты, CI/CD |
-
-```
+| `VAC`   | Вакуумный Конденсат (наука) |
 
 #### 5.5.2. Примеры корректных имён веток
 
@@ -287,6 +292,7 @@ def write_file(repo, path, content, message, branch="main"):
 - `fix/LIC-FIX-006-dual-licensing`
 - `chore/INFRA-CHORE-007-readme-sync`
 - `docs/SUMKA-CHORE-008-markdown-cleanup`
+- `feat/VAC-009-add-science-domain`
 
 **Запрещено использовать:**
 
@@ -294,7 +300,7 @@ def write_file(repo, path, content, message, branch="main"):
 - Имена с пробелами, кириллицей или спецсимволами.
 - Префиксы `LITS-`, `MIGRATION-`, `LICENCE-` (не соответствуют стандарту SAM-REF-007).
 
-#### 📝 Правило атомарности
+##### 📝 Правило атомарности
 
 **1 протокол = 1 ветка = 1 PR.**
 
@@ -304,7 +310,7 @@ def write_file(repo, path, content, message, branch="main"):
 - возможности точечного отката (revert);
 - параллельного ревью независимых изменений.
 
-#### 📋 Шаблон commit message
+##### 📋 Шаблон commit message
 
 При создании коммита используйте следующий формат:
 
@@ -321,6 +327,7 @@ def write_file(repo, path, content, message, branch="main"):
 [LIC-FIX-006] настройка Dual Licensing (MIT + CC BY 4.0)
 [INFRA-CHORE-007] синхронизация README.md
 [SUMKA-CHORE-008] markdown cleanup
+[VAC-FEAT-009] регистрация научного домена science.obrazslov.ru
 ```
 
 #### 5.5.3. Авто-PR со статусом «not mergeable»: паттерн пересоздания
@@ -360,6 +367,7 @@ def write_file(repo, path, content, message, branch="main"):
 - [ ] МИГРАЦИЯ.md
 - [ ] ЛИЦ.md
 - [ ] AGENTS.md
+- [ ] ВАКУУМНЫЙ_КОНДЕНСАТ.md
 - [ ] Инфраструктура (скрипты, workflows)
 
 ### Проверка соответствия
@@ -435,10 +443,10 @@ def write_file(repo, path, content, message, branch="main"):
 
 **Результат:** Изменение успешно интегрировано в `main` с полной аудируемостью.
 
-## 6.  Единственный способ изменения манифестов (протокол SAM-AGT-001)
+## 6. Единственный способ изменения манифестов (протокол SAM-AGT-001)
 
 Если ИИ-агент обнаружил необходимость изменить любой манифест
-(САМ, СУМКа, САН, ГРЕК-ПАНТЕОН, МИГРАЦИЯ, ЛИЦ) или AGENTS.md, он ОБЯЗАН
+(САМ, СУМКа, САН, ГРЕК-ПАНТЕОН, МИГРАЦИЯ, ЛИЦ, AGENTS.md, ВАКУУМНЫЙ_КОНДЕНСАТ.md), он ОБЯЗАН
 предложить стандартизированный процесс и НЕ ИМЕЕТ ПРАВА предлагать ручные
 правки, прямые коммиты в main или diff-патчи для ручного применения.
 
@@ -520,54 +528,54 @@ def write_file(repo, path, content, message, branch="main"):
 Код скрипта generate_redirect_map.py:
 
 ```python
-    import xml.etree.ElementTree as ET
-    import json
-    import re
+import xml.etree.ElementTree as ET
+import json
+import re
 
-    def parse_blogger_feed(feed_path):
-        tree = ET.parse(feed_path)
-        root = tree.getroot()
+def parse_blogger_feed(feed_path):
+    tree = ET.parse(feed_path)
+    root = tree.getroot()
 
-        entries = []
-        for entry in root.findall('.//entry'):
-            title = entry.find('title').text
-            url = entry.find('link[@rel="alternate"]').get('href')
-            published = entry.find('published').text
-            slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')
+    entries = []
+    for entry in root.findall('.//entry'):
+        title = entry.find('title').text
+        url = entry.find('link[@rel="alternate"]').get('href')
+        published = entry.find('published').text
+        slug = re.sub(r'[^a-z0-9]+', '-', title.lower()).strip('-')
 
-            entries.append({
-                'old_url': url,
-                'title': title,
-                'published': published,
-                'slug': slug
-            })
+        entries.append({
+            'old_url': url,
+            'title': title,
+            'published': published,
+            'slug': slug
+        })
 
-        return entries
+    return entries
 
-    def generate_redirect_map(entries, site_type):
-        redirect_map = {}
+def generate_redirect_map(entries, site_type):
+    redirect_map = {}
 
-        for entry in entries:
-            if site_type == 'news':
-                year = entry['published'][:4]
-                month = entry['published'][5:7]
-                new_url = f"/posts/{year}/{month}/{entry['slug']}/"
-            elif site_type == 'educational':
-                new_url = f"/topics/general/{entry['slug']}/"
-            else:
-                new_url = f"/articles/{entry['slug']}/"
+    for entry in entries:
+        if site_type == 'news':
+            year = entry['published'][:4]
+            month = entry['published'][5:7]
+            new_url = f"/posts/{year}/{month}/{entry['slug']}/"
+        elif site_type == 'educational':
+            new_url = f"/topics/general/{entry['slug']}/"
+        else:
+            new_url = f"/articles/{entry['slug']}/"
 
-            redirect_map[entry['old_url']] = new_url
+        redirect_map[entry['old_url']] = new_url
 
-        return redirect_map
+    return redirect_map
 
-    entries = parse_blogger_feed('backup/feed.xml')
-    redirect_map = generate_redirect_map(entries, 'educational')
+entries = parse_blogger_feed('backup/feed.xml')
+redirect_map = generate_redirect_map(entries, 'educational')
 
-    with open('redirect_map.json', 'w') as f:
-        json.dump(redirect_map, f, indent=2, ensure_ascii=False)
+with open('redirect_map.json', 'w') as f:
+    json.dump(redirect_map, f, indent=2, ensure_ascii=False)
 
-    print(f"Сгенерировано {len(redirect_map)} редиректов")
+print(f"Сгенерировано {len(redirect_map)} редиректов")
 ```
 
 ### 7.4 Проверки качества (Quality Gates)
@@ -593,7 +601,6 @@ def write_file(repo, path, content, message, branch="main"):
 **Для контента**:
 
 - **Запрет ручных тегов `<img>`:** Все изображения в markdown-контенте обязаны быть обернуты в шорткод Hugo `{{< img src="..." alt="..." caption="..." />}}`. Наличие прямого HTML-тега `<img>` в `.md` файлах считается критической ошибкой сборки и блокирует деплой сайта.
-
 - Все изображения загружены на gallery.obrazslov.ru (Blogger, безлимитное хранение)
 - Все изображения ресайзнуты до 4 размеров (400, 800, 1200, 1600 px) согласно регламенту 5.6 СУМКа
 - PDF и медиа-паспорта загружены в R2 бакет blago-nko-backups
@@ -609,33 +616,32 @@ def write_file(repo, path, content, message, branch="main"):
 **Формат отчёта**:
 
 ```markdown
-    # Отчёт о миграции: [название задачи]
+# Отчёт о миграции: [название задачи]
 
-    **Дата**: YYYY-MM-DD
-    **ИИ-агент**: [название модели]
-    **Статус**: Успешно / Частично / Ошибка
+**Дата**: YYYY-MM-DD
+**ИИ-агент**: [название модели]
+**Статус**: Успешно / Частично / Ошибка
 
-    ## Выполнено
+## Выполнено
 
-    - Задача 1
-    - Задача 2
+- Задача 1
+- Задача 2
 
-    ## Метрики
+## Метрики
 
-    - Обработано записей: X
-    - Сгенерировано редиректов: Y
-    - Ошибок: Z
+- Обработано записей: X
+- Сгенерировано редиректов: Y
+- Ошибок: Z
 
-    ## Проблемы и решения
+## Проблемы и решения
 
-    ### Проблема 1
-    **Описание**: ...
-    **Решение**: ...
+### Проблема 1
+**Описание**: ...
+**Решение**: ...
 
-    ## Рекомендации
+## Рекомендации
 
-    ...
-
+...
 ```
 
 ### 7.6 Координация между ИИ-агентами
@@ -660,7 +666,7 @@ def write_file(repo, path, content, message, branch="main"):
 
 **Обязанности:**
 
-1. Поддерживать `domains-graph.yaml` в актуальном состоянии (14 доменов, связи, единая таксономия).
+1. Поддерживать `domains-graph.yaml` в актуальном состоянии (15 доменов, связи, единая таксономия).
 2. Новый домен / связь / категория СНАЧАЛА вносятся в граф через PR, ЗАТЕМ — в реализацию (Протокол 016.3).
 3. Контролировать, что генераторы RSS и sitemap берут категории ТОЛЬКО из графа (Протокол 016.4).
 
@@ -673,6 +679,43 @@ def write_file(repo, path, content, message, branch="main"):
 
 **Активация:** роль действует с момента создания `domains-graph.yaml` (задача INFRA-001 в TASKS.md).
 
+## 9. 🎓 Специфика домена ВАКУУМНЫЙ_КОНДЕНСАТ (Наука)
+
+При работе с репозиторием `blago-nko/vacuum-condensate-hypothesis` и доменом `science.obrazslov.ru` действуют дополнительные правила, отличающиеся от общих стандартов экосистемы.
+
+### 9.1 Формулы и LaTeX
+
+- Использовать KaTeX/MathJax для рендеринга математических выражений.
+- Синтаксис: `$inline$` для строчных формул, `$$block$$` для блочных уравнений.
+- Проверять корректность LaTeX перед коммитом (валидатор синтаксиса).
+- ЗАПРЕЩЕНО использовать HTML-теги внутри математических выражений.
+- Все переменные и константы должны быть определены в глоссарии статьи.
+
+### 9.2 Python-скрипты расчетов
+
+- Все скрипты в папке `scripts/*.py` предназначены для генерации данных перед сборкой сайта (pre-build step).
+- Результаты сохраняются в JSON-файлы (`public/data/*.json`) для последующей визуализации во фронтенде.
+- Каждый скрипт должен иметь unit-tests, проверяющие граничные условия и физическую осмысленность результатов.
+- Библиотеки: NumPy, SciPy, Matplotlib (для генерации графиков как SVG/PNG).
+
+### 9.3 Лицензии (Critical Exception)
+
+- **ЗАПРЕЩЕНО** применять стандартные шаблоны AGPLv3/CC-BY-NC к этому домену.
+- Текст и идея: **CC BY 4.0** (разрешает коммерческое использование при атрибуции).
+- Код и скрипты: **MIT License** (разрешает свободное использование, включая закрытые проекты).
+- Это исключение зафиксировано в `ЛИЦ.md` (Раздел 5) и `domains-graph.yaml` (`license_override`).
+
+### 9.4 Префиксы и ветки
+
+- Все Pull Requests используют префикс `VAC-`.
+- Пример: `feat/VAC-008-setup-astro-project`.
+
+### 9.5 Контентная стратегия
+
+- Основной язык публикации: Русский (для локальной аудитории НКО).
+- Обязательная англоязычная версия Abstract и Key Figures (для международной цитируемости).
+- Ссылки на внешние источники (arXiv, Zenodo, DOI) обязательны для всех ключевых утверждений.
+
 <!-- MANIFEST:RELATED:BEGIN -->
 
 ## Связанные документы
@@ -681,7 +724,8 @@ def write_file(repo, path, content, message, branch="main"):
 - [СУМКа — Система Управления Медийным Контентом](СУМКа.md)
 - [САН — Сообщество Агентов Недвижимости](САН.md)
 - [ГРЕК-ПАНТЕОН — База знаний по античной мифологии](ГРЕК-ПАНТЕОН.md)
-- [МИГРАЦИЯ — План миграции 14 доменов на новую инфраструктуру](МИГРАЦИЯ.md)
-- [ЛИЦ — Лицензирование и интеллектуальная собственность](ЛИЦ.md)
+- [МИГРАЦИЯ — План миграции доменов на новую инфраструктуру](МИГРАЦИЯ.md)
+- [ЛИЦ — Лицензионный Пакет](ЛИЦ.md)
+- [ВАКУУМНЫЙ_КОНДЕНСАТ — Метафизико-научный портал](ВАКУУМНЫЙ_КОНДЕНСАТ.md)
 
 <!-- MANIFEST:RELATED:END -->
