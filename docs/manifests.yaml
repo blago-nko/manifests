@@ -87,7 +87,7 @@ manifests:
   file: ВАКУУМНЫЙ_КОНДЕНСАТ.md
   short_title: ВАКУУМНЫЙ_КОНДЕНСАТ
   title: Метафизико-научный портал (Гипотеза вакуумного конденсата Вселенной)
-  description: Научный проект «Гипотеза вакуумного конденсата Вселенной» (science.obrazslov.ru). Astro + Python calculations. Special licensing: CC BY 4.0 (text) / MIT (code).
+  description: "Научный проект «Гипотеза вакуумного конденсата Вселенной» (science.obrazslov.ru). Astro + Python calculations. Special licensing: CC BY 4.0 (text) / MIT (code)."  
   version: 0.1.0-draft
   status: draft
   approved_date: '2026-11-08'
