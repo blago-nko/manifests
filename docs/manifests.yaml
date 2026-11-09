@@ -9,7 +9,7 @@ manifests:
   approved_date: '2026-07-26'
   last_revision: '2026-11-09'
   protocols: 3
-  content_hash: null # Will be recalculated by sync-manifests.yml
+  content_hash: "" 
   
 - id: sumka
   file: СУМКа.md
@@ -39,8 +39,7 @@ manifests:
   file: ГРЕК-ПАНТЕОН.md
   short_title: ГРЕК-ПАНТЕОН
   title: База знаний по античной мифологии
-  description: База знаний по античной мифологии (~350 страниц сейчас; цель 16 505+,
-    Hugo→Astro)
+  description: База знаний по античной мифологии (~350 страниц сейчас; цель 16 505+, Hugo→Astro)
   version: 1.10-н
   status: active
   approved_date: '2026-07-26'
@@ -52,27 +51,25 @@ manifests:
   file: МИГРАЦИЯ.md
   short_title: МИГРАЦИЯ
   title: План миграции доменов на новую инфраструктуру
-  description: Стратегия поэтапного перехода 15 доменов с legacy-платформ (Blogger)
-    на Hugo/Astro/Next.js + GitHub Pages/Vercel; включает Greenfield-проекты
+  description: Стратегия поэтапного перехода 15 доменов с legacy-платформ (Blogger) на Hugo/Astro/Next.js + GitHub Pages/Vercel; включает Greenfield-проекты
   version: 1.16-н
   status: active
   approved_date: '2026-07-26'
   last_revision: '2026-11-09'
   protocols: 2
-  content_hash: null # Will be recalculated by sync-manifests.yml
+  content_hash: "" 
 
 - id: lic
   file: ЛИЦ.md
   short_title: ЛИЦ
   title: Лицензирование и интеллектуальная собственность
-  description: Лицензирование и интеллектуальная собственность (AGPLv3 + CC BY-NC
-    4.0; Исключение: CC BY 4.0 / MIT для науки)
+  description: Лицензирование и интеллектуальная собственность (AGPLv3 + CC BY-NC 4.0; Исключение: CC BY 4.0 / MIT для науки)
   version: 1.9-н
   status: active
   approved_date: '2026-08-10'
   last_revision: '2026-11-09'
   protocols: 2
-  content_hash: null # Will be recalculated by sync-manifests.yml
+  content_hash: "" 
 
 - id: agents
   file: AGENTS.md
@@ -84,14 +81,13 @@ manifests:
   approved_date: '2026-08-06'
   last_revision: '2026-11-09'
   protocols: 2
-  content_hash: null # Will be recalculated by sync-manifests.yml
+  content_hash: "" 
 
 - id: vacuum_condensate
   file: ВАКУУМНЫЙ_КОНДЕНСАТ.md
   short_title: ВАКУУМНЫЙ_КОНДЕНСАТ
   title: Метафизико-научный портал (Гипотеза вакуумного конденсата Вселенной)
-  description: Научный проект «Гипотеза вакуумного конденсата Вселенной» (science.obrazslov.ru).
-    Astro + Python calculations. Special licensing: CC BY 4.0 (text) / MIT (code).
+  description: Научный проект «Гипотеза вакуумного конденсата Вселенной» (science.obrazslov.ru). Astro + Python calculations. Special licensing: CC BY 4.0 (text) / MIT (code).
   version: 0.1.0-draft
   status: draft
   approved_date: '2026-11-08'
@@ -99,5 +95,5 @@ manifests:
   protocols: 1
   prefix: VAC-
   domain: science.obrazslov.ru
-  cluster: B # Knowledge Graph extension
-  content_hash: null # Generated on first commit of the manifest file
+  cluster: B
+  content_hash: "" 
